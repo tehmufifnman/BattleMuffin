@@ -1,4 +1,6 @@
+using System.Reflection;
 using BattleMuffin.Enums;
+using BattleMuffin.Models;
 
 namespace BattleMuffin.Extensions
 {
@@ -17,7 +19,7 @@ namespace BattleMuffin.Extensions
                 case "none":
                     return string.Empty;
                 default:
-                    return ($"&fields={flags}");
+                    return $"&fields={flags}";
             }
         }
 
@@ -33,8 +35,22 @@ namespace BattleMuffin.Extensions
                 case "none":
                     return string.Empty;
                 default:
-                    return ($"&fields={flags}");
+                    return $"&fields={flags}";
             }
+        }
+
+        /// <summary>
+        ///     Checks if the locale is supported by the selected region.
+        /// </summary>
+        /// <param name="locale">The selected locale.</param>
+        /// <param name="region">The selected region.</param>
+        /// <returns>Returns true if the locale is supported by the selected region.</returns>
+        public static bool ValidateRegionLocale(this Locale locale, Region region)
+        {
+            var type = locale.GetType().GetRuntimeField(locale.ToString());
+            var attribute = type.GetCustomAttribute<LocaleRegion>();
+
+            return attribute.Region == region;
         }
     }
 }

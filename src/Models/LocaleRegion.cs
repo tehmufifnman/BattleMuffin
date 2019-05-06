@@ -11,7 +11,7 @@ namespace BattleMuffin.Models
         /// <summary>
         ///     Sets the region of the region.
         /// </summary>
-        public Region Region { get; set;  }
+        public Region Region { get; set; }
 
         /// <summary>
         ///     Sets a valid region for a locale.

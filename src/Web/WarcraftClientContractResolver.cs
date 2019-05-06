@@ -23,7 +23,6 @@ namespace BattleMuffin.Web
             JsonContract contract = base.CreateObjectContract(objectType);
             contract.Converter = new JsonEpochConverter();
             return contract;
-
         }
     }
 }
