@@ -5,7 +5,7 @@ namespace BattleMuffin.Auth
     /// <summary>
     ///     An OAuth access token for the Blizzard API.
     /// </summary>
-    internal abstract class OAuthAccessToken
+    public class OAuthAccessToken
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
