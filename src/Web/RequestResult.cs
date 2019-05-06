@@ -9,19 +9,19 @@ namespace BattleMuffin.Web
     public class RequestResult<T>
     {
         /// <summary>
-        ///    The requested object value from the Blizzard API.
+        ///     The requested object value from the Blizzard API.
         /// </summary>
-        public T Value { get; }
+        public T Value { get; set; }
 
         /// <summary>
         ///     The request error response from the Blizzard API.
         /// </summary>
-        public RequestError Error { get; }
+        public RequestError Error { get; set; }
 
         /// <summary>
         ///     Indicates if the HTTP request succeeded.
         /// </summary>
-        public bool Success { get; }
+        public bool Success { get; set; }
 
         /// <summary>
         ///     Initializes a request result with an object value.
