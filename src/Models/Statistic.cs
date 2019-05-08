@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A statistic.
     /// </summary>
-    public class Statistic
+    public class Statistic : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the statistic ID.
@@ -18,7 +18,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the statistic name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the quantity.
@@ -42,6 +42,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the highest.
         /// </summary>
         [JsonProperty("highest")]
-        public string Highest { get; set; }
+        public string? Highest { get; set; }
     }
 }

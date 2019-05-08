@@ -6,12 +6,12 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An Azerite-empowered item.
     /// </summary>
-    public class AzeriteEmpoweredItem
+    public class AzeriteEmpoweredItem : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the Azerite powers.
         /// </summary>
         [JsonProperty("azeritePowers")]
-        public IEnumerable<AzeritePower> AzeritePowers { get; set; }
+        public IEnumerable<AzeritePower>? AzeritePowers { get; set; }
     }
 }

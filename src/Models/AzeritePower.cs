@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An Azerite power.
     /// </summary>
-    public class AzeritePower
+    public class AzeritePower : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the ID.

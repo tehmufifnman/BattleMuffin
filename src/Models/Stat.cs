@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A stat.
     /// </summary>
-    public class Stat
+    public class Stat : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the stat ID.

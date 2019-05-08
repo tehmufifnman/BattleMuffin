@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A relic.
     /// </summary>
-    public class Relic
+    public class Relic : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the socket.
@@ -30,6 +30,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<int> BonusLists { get; set; }
+        public IEnumerable<int>? BonusLists { get; set; }
     }
 }

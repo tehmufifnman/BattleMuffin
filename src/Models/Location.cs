@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A location.
     /// </summary>
-    public class Location
+    public class Location : IWarcraftModel
     {
         /// <summary>
         ///     Gets the location ID.
@@ -17,6 +17,6 @@ namespace BattleMuffin.Models
         ///     Gets the name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

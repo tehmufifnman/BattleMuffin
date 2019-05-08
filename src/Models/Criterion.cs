@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An achievement criterion.
     /// </summary>
-    public class Criterion
+    public class Criterion : IWarcraftModel
     {
         /// <summary>
         ///     Gets the criterion description.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets the criterion ID.

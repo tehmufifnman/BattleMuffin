@@ -11,19 +11,19 @@ namespace BattleMuffin.Web
         ///     The HTTP status code.
         /// </summary>
         [JsonProperty("code")]
-        public string Code { get; set; }
+        public string? Code { get; set; }
 
         /// <summary>
         ///     The HTTP status code type.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         ///     The details of why the request failed.
         /// </summary>
         [JsonProperty("detail")]
-        public string Detail { get; set; }
+        public string? Detail { get; set; }
 
         /// <summary>
         ///     Blizzard two types of responses, a 404 and anything else.

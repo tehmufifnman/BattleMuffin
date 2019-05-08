@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An emblem.
     /// </summary>
-    public class Emblem
+    public class Emblem : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the icon.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the icon color.
         /// </summary>
         [JsonProperty("iconColor")]
-        public string IconColor { get; set; }
+        public string? IconColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon color ID.
@@ -35,7 +35,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the border color.
         /// </summary>
         [JsonProperty("borderColor")]
-        public string BorderColor { get; set; }
+        public string? BorderColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the border color ID.
@@ -47,7 +47,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the background color.
         /// </summary>
         [JsonProperty("backgroundColor")]
-        public string BackgroundColor { get; set; }
+        public string? BackgroundColor { get; set; }
 
         /// <summary>
         ///     Gets or sets the background color ID.

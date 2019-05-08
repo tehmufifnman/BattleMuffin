@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A character equipment item.
     /// </summary>
-    public class CharacterItem
+    public class CharacterItem : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the item ID.
@@ -19,13 +19,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the item name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon for the item.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the item quality.
@@ -43,13 +43,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the tooltip parameters.
         /// </summary>
         [JsonProperty("tooltipParams")]
-        public TooltipParams TooltipParams { get; set; }
+        public TooltipParams? TooltipParams { get; set; }
 
         /// <summary>
         ///     Gets or sets the item stats.
         /// </summary>
         [JsonProperty("stats")]
-        public IEnumerable<Stat> Stats { get; set; }
+        public IEnumerable<Stat>? Stats { get; set; }
 
         /// <summary>
         ///     Gets or sets the item's armor points.
@@ -61,13 +61,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the context.
         /// </summary>
         [JsonProperty("context")]
-        public string Context { get; set; }
+        public string? Context { get; set; }
 
         /// <summary>
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<int> BonusLists { get; set; }
+        public IEnumerable<int>? BonusLists { get; set; }
 
         /// <summary>
         ///     Gets or sets the artifact ID.
@@ -91,36 +91,36 @@ namespace BattleMuffin.Models
         ///     Gets or sets the artifact traits.
         /// </summary>
         [JsonProperty("artifactTraits")]
-        public IEnumerable<ArtifactTrait> ArtifactTraits { get; set; }
+        public IEnumerable<ArtifactTrait>? ArtifactTraits { get; set; }
 
         /// <summary>
         ///     Gets or sets the relics.
         /// </summary>
         [JsonProperty("relics")]
-        public IEnumerable<Relic> Relics { get; set; }
+        public IEnumerable<Relic>? Relics { get; set; }
 
         /// <summary>
         ///     Gets or sets the appearance.
         /// </summary>
         [JsonProperty("appearance")]
-        public Appearance Appearance { get; set; }
+        public Appearance? Appearance { get; set; }
 
         /// <summary>
         ///     Gets or sets the Azerite item.
         /// </summary>
         [JsonProperty("azeriteItem")]
-        public AzeriteItem AzeriteItem { get; set; }
+        public AzeriteItem? AzeriteItem { get; set; }
 
         /// <summary>
         ///     Gets or sets the Azerite-empowered item.
         /// </summary>
         [JsonProperty("azeriteEmpoweredItem")]
-        public AzeriteEmpoweredItem AzeriteEmpoweredItem { get; set; }
+        public AzeriteEmpoweredItem? AzeriteEmpoweredItem { get; set; }
 
         /// <summary>
         ///     Gets or sets the weapon info.
         /// </summary>
         [JsonProperty("weaponInfo")]
-        public WeaponInfo WeaponInfo { get; set; }
+        public WeaponInfo? WeaponInfo { get; set; }
     }
 }

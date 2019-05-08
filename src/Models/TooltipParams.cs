@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Tooltip parameters.
     /// </summary>
-    public class TooltipParams
+    public class TooltipParams : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the item ID of the enchantment.
@@ -42,7 +42,7 @@ namespace BattleMuffin.Models
         ///     Gets the set.
         /// </summary>
         [JsonProperty(PropertyName = "set")]
-        public IEnumerable<int> Set { get; set; }
+        public IEnumerable<int>? Set { get; set; }
 
         /// <summary>
         ///     Gets the timewalker level.

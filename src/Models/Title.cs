@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A title.
     /// </summary>
-    public class Title
+    public class Title : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the title ID.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the title name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the title is selected.

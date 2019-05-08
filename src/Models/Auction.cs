@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction.
     /// </summary>
-    public class Auction
+    public class Auction : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the auction ID.
@@ -25,13 +25,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the owner's name.
         /// </summary>
         [JsonProperty("owner")]
-        public string Owner { get; set; }
+        public string? Owner { get; set; }
 
         /// <summary>
         ///     Gets or sets the owner's realm name.
         /// </summary>
         [JsonProperty("ownerRealm")]
-        public string OwnerRealm { get; set; }
+        public string? OwnerRealm { get; set; }
 
         /// <summary>
         ///     Gets or sets the current bid.
@@ -55,7 +55,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the time left.
         /// </summary>
         [JsonProperty("timeLeft")]
-        public string TimeLeft { get; set; }
+        public string? TimeLeft { get; set; }
 
         /// <summary>
         ///     Gets or sets the rand.
@@ -79,13 +79,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<BonusList> BonusLists { get; set; }
+        public IEnumerable<BonusList>? BonusLists { get; set; }
 
         /// <summary>
         ///     Gets or sets the modifiers.
         /// </summary>
         [JsonProperty("modifiers")]
-        public IEnumerable<Modifier> Modifiers { get; set; }
+        public IEnumerable<Modifier>? Modifiers { get; set; }
 
         /// <summary>
         ///     Gets or sets the pet species ID.

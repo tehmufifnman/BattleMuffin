@@ -6,18 +6,18 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction house snapshot, loaded from an auction file.
     /// </summary>
-    public class AuctionHouseSnapshot
+    public class AuctionHouseSnapshot : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the realms with access to these auctions.
         /// </summary>
         [JsonProperty("realms")]
-        public IEnumerable<AuctionRealm> Realms { get; set; }
+        public IEnumerable<AuctionRealm>? Realms { get; set; }
 
         /// <summary>
         ///     Gets or sets the auctions.
         /// </summary>
         [JsonProperty("auctions")]
-        public IEnumerable<Auction> Auctions { get; set; }
+        public IEnumerable<Auction>? Auctions { get; set; }
     }
 }

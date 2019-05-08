@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An item class.
     /// </summary>
-    public class ItemClass
+    public class ItemClass : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the item class ID.
@@ -18,12 +18,12 @@ namespace BattleMuffin.Models
         ///     Gets or sets the item class name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the item subclasses.
         /// </summary>
         [JsonProperty("subclasses")]
-        public IEnumerable<ItemSubclass> Subclasses { get; set; }
+        public IEnumerable<ItemSubclass>? Subclasses { get; set; }
     }
 }

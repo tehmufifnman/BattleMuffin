@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A zone.
     /// </summary>
-    public class Zone
+    public class Zone : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the zone ID.
@@ -18,25 +18,25 @@ namespace BattleMuffin.Models
         ///     Gets or sets the zone name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the URL slug.
         /// </summary>
         [JsonProperty("urlSlug")]
-        public string UrlSlug { get; set; }
+        public string? UrlSlug { get; set; }
 
         /// <summary>
         ///     Gets or sets the description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets or sets the location.
         /// </summary>
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
 
         /// <summary>
         ///     Gets or sets the expansion ID.
@@ -48,13 +48,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the patch.
         /// </summary>
         [JsonProperty("patch")]
-        public string Patch { get; set; }
+        public string? Patch { get; set; }
 
         /// <summary>
         ///     Gets or sets the number of players.
         /// </summary>
         [JsonProperty("numPlayers")]
-        public string NumPlayers { get; set; }
+        public string? NumPlayers { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the zone is a dungeon.
@@ -96,7 +96,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the available modes.
         /// </summary>
         [JsonProperty("availableModes")]
-        public IEnumerable<string> AvailableModes { get; set; }
+        public IEnumerable<string>? AvailableModes { get; set; }
 
         /// <summary>
         ///     Gets or sets Looking for Group Normal mode minimum gear level.
@@ -120,6 +120,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the bosses.
         /// </summary>
         [JsonProperty("bosses")]
-        public IEnumerable<Boss> Bosses { get; set; }
+        public IEnumerable<Boss>? Bosses { get; set; }
     }
 }

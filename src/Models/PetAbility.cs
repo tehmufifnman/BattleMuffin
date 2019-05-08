@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A pet ability.
     /// </summary>
-    public class PetAbility
+    public class PetAbility : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the pet ability ID.
@@ -17,13 +17,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the pet ability name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the cooldown.

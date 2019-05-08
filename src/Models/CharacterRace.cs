@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A character race.
     /// </summary>
-    public class CharacterRace
+    public class CharacterRace : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the race ID.
@@ -23,12 +23,12 @@ namespace BattleMuffin.Models
         ///     Gets or sets the side.
         /// </summary>
         [JsonProperty("side")]
-        public string Side { get; set; }
+        public string? Side { get; set; }
 
         /// <summary>
         ///     Gets or sets the name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

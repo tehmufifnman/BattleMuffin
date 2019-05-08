@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Information about a character's mounts.
     /// </summary>
-    public class CharacterMounts
+    public class CharacterMounts : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the number of mounts collected.
@@ -24,6 +24,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the collected mounts.
         /// </summary>
         [JsonProperty("collected")]
-        public IEnumerable<Mount> Collected { get; set; }
+        public IEnumerable<Mount>? Collected { get; set; }
     }
 }

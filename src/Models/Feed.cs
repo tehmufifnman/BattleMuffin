@@ -7,13 +7,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An activity feed item.
     /// </summary>
-    public class Feed
+    public class Feed : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the feed type.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         ///     Gets or sets the timestamp.
@@ -31,19 +31,19 @@ namespace BattleMuffin.Models
         ///     Gets or sets the context.
         /// </summary>
         [JsonProperty("context")]
-        public string Context { get; set; }
+        public string? Context { get; set; }
 
         /// <summary>
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<int> BonusLists { get; set; }
+        public IEnumerable<int>? BonusLists { get; set; }
 
         /// <summary>
         ///     Gets or sets the achievement.
         /// </summary>
         [JsonProperty("achievement")]
-        public Achievement Achievement { get; set; }
+        public Achievement? Achievement { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether it is a feat of strength.
@@ -55,7 +55,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the criteria.
         /// </summary>
         [JsonProperty("criteria")]
-        public Criterion Criteria { get; set; }
+        public Criterion? Criteria { get; set; }
 
         /// <summary>
         ///     Gets or sets the quantity.
@@ -67,6 +67,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

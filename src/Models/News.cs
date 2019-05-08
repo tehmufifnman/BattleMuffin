@@ -7,19 +7,19 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild news event.
     /// </summary>
-    public class News
+    public class News : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the type of news.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         ///     Gets or sets the character name.
         /// </summary>
         [JsonProperty("character")]
-        public string Character { get; set; }
+        public string? Character { get; set; }
 
         /// <summary>
         ///     Gets or sets the timestamp.
@@ -37,18 +37,18 @@ namespace BattleMuffin.Models
         ///     Gets or sets the context.
         /// </summary>
         [JsonProperty("context")]
-        public string Context { get; set; }
+        public string? Context { get; set; }
 
         /// <summary>
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<int> BonusLists { get; set; }
+        public IEnumerable<int>? BonusLists { get; set; }
 
         /// <summary>
         ///     Gets or sets the achievement.
         /// </summary>
         [JsonProperty("achievement")]
-        public Achievement Achievement { get; set; }
+        public Achievement? Achievement { get; set; }
     }
 }

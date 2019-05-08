@@ -7,25 +7,25 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A character in a challenge mode dungeon group.
     /// </summary>
-    public class GroupCharacter
+    public class GroupCharacter : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the character name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the realm.
         /// </summary>
         [JsonProperty("realm")]
-        public string Realm { get; set; }
+        public string? Realm { get; set; }
 
         /// <summary>
         ///     Gets or sets the battlegroup.
         /// </summary>
         [JsonProperty("battlegroup")]
-        public string Battlegroup { get; set; }
+        public string? Battlegroup { get; set; }
 
         /// <summary>
         ///     Gets or sets the class.
@@ -61,25 +61,25 @@ namespace BattleMuffin.Models
         ///     Gets or sets the thumbnail.
         /// </summary>
         [JsonProperty("thumbnail")]
-        public string Thumbnail { get; set; }
+        public string? Thumbnail { get; set; }
 
         /// <summary>
         ///     Gets or sets the spec.
         /// </summary>
         [JsonProperty("spec")]
-        public Spec Spec { get; set; }
+        public Spec? Spec { get; set; }
 
         /// <summary>
         ///     Gets or sets the guild name.
         /// </summary>
         [JsonProperty("guild")]
-        public string Guild { get; set; }
+        public string? Guild { get; set; }
 
         /// <summary>
         ///     Gets or sets the guild realm.
         /// </summary>
         [JsonProperty("guildRealm")]
-        public string GuildRealm { get; set; }
+        public string? GuildRealm { get; set; }
 
         /// <summary>
         ///     Gets or sets the last modified timestamp.

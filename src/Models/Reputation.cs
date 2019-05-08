@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Reputation.
     /// </summary>
-    public class Reputation
+    public class Reputation : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the reputation ID.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the reputation name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the standing.

@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An item source.
     /// </summary>
-    public class ItemSource
+    public class ItemSource : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the source ID.
@@ -17,6 +17,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the source type.
         /// </summary>
         [JsonProperty("sourceType")]
-        public string SourceType { get; set; }
+        public string? SourceType { get; set; }
     }
 }

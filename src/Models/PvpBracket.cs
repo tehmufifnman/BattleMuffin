@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A PvP bracket.
     /// </summary>
-    public class PvpBracket
+    public class PvpBracket : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the slug.
         /// </summary>
         [JsonProperty("slug")]
-        public string Slug { get; set; }
+        public string? Slug { get; set; }
 
         /// <summary>
         ///     Gets or sets the rating.

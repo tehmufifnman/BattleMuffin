@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A boss.
     /// </summary>
-    public class Boss
+    public class Boss : IWarcraftModel
     {
         /// <summary>
         ///     Gets a value indicating whether the boss is available in heroic mode.
@@ -24,7 +24,7 @@ namespace BattleMuffin.Models
         ///     Gets the description.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets the health.
@@ -66,25 +66,25 @@ namespace BattleMuffin.Models
         ///     Gets the location.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
 
         /// <summary>
         ///     Gets the name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets the NPCs in the boss encounter.
         /// </summary>
         [JsonProperty(PropertyName = "npcs")]
-        public IEnumerable<Npc> Npcs { get; set; }
+        public IEnumerable<Npc>? Npcs { get; set; }
 
         /// <summary>
         ///     Gets the URL slug.
         /// </summary>
         [JsonProperty(PropertyName = "urlSlug")]
-        public string UrlSlug { get; set; }
+        public string? UrlSlug { get; set; }
 
         /// <summary>
         ///     Gets the zone ID.

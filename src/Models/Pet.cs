@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A pet.
     /// </summary>
-    public class Pet
+    public class Pet : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets a value indicating whether the pet is a battle pet.
@@ -25,19 +25,19 @@ namespace BattleMuffin.Models
         ///     Gets or sets the name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the family.
         /// </summary>
         [JsonProperty("family")]
-        public string Family { get; set; }
+        public string? Family { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the quality.
@@ -49,13 +49,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the stats.
         /// </summary>
         [JsonProperty("stats")]
-        public PetStats Stats { get; set; }
+        public PetStats? Stats { get; set; }
 
         /// <summary>
         ///     Gets or sets the pet families that this pet is strong against.
         /// </summary>
         [JsonProperty("strongAgainst")]
-        public IEnumerable<string> StrongAgainst { get; set; }
+        public IEnumerable<string>? StrongAgainst { get; set; }
 
         /// <summary>
         ///     Gets or sets the type ID.
@@ -67,6 +67,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the pet families that this pet is weak against.
         /// </summary>
         [JsonProperty("weakAgainst")]
-        public IEnumerable<string> WeakAgainst { get; set; }
+        public IEnumerable<string>? WeakAgainst { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An achievement.
     /// </summary>
-    public class Achievement
+    public class Achievement : IWarcraftModel
     {
         /// <summary>
         ///     Gets a value indicating whether the achievement is account-wide.
@@ -18,13 +18,13 @@ namespace BattleMuffin.Models
         ///     Gets the achievement criteria.
         /// </summary>
         [JsonProperty(PropertyName = "criteria")]
-        public IEnumerable<Criterion> Criteria { get; set; }
+        public IEnumerable<Criterion> Criteria { get; set; } = new List<Criterion>();
 
         /// <summary>
         ///     Gets the achievement description.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets the faction ID.
@@ -36,7 +36,7 @@ namespace BattleMuffin.Models
         ///     Gets the name of the icon for the achievement.
         /// </summary>
         [JsonProperty(PropertyName = "icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets the achievement ID.
@@ -54,18 +54,18 @@ namespace BattleMuffin.Models
         ///     Gets the name of the achievement reward.
         /// </summary>
         [JsonProperty(PropertyName = "reward")]
-        public string Reward { get; set; }
+        public string? Reward { get; set; }
 
         /// <summary>
         ///     Gets the reward items.
         /// </summary>
         [JsonProperty(PropertyName = "rewardItems")]
-        public IEnumerable<CharacterItem> RewardItems { get; set; }
+        public IEnumerable<CharacterItem>? RewardItems { get; set; }
 
         /// <summary>
         ///     Gets the achievement title.
         /// </summary>
         [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild.
     /// </summary>
-    public class CharacterGuild
+    public class CharacterGuild : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the last modified timestamp.
@@ -19,19 +19,19 @@ namespace BattleMuffin.Models
         ///     Gets or sets the guild name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the realm.
         /// </summary>
         [JsonProperty("realm")]
-        public string Realm { get; set; }
+        public string? Realm { get; set; }
 
         /// <summary>
         ///     Gets or sets the battlegroup.
         /// </summary>
         [JsonProperty("battlegroup")]
-        public string Battlegroup { get; set; }
+        public string? Battlegroup { get; set; }
 
         /// <summary>
         ///     Gets or sets the guild level.
@@ -61,6 +61,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the guild emblem.
         /// </summary>
         [JsonProperty("emblem")]
-        public Emblem Emblem { get; set; }
+        public Emblem? Emblem { get; set; }
     }
 }

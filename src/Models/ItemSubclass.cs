@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An item subclass.
     /// </summary>
-    public class ItemSubclass
+    public class ItemSubclass : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the item subclass ID.
@@ -17,6 +17,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the item subclass name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

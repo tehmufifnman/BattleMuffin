@@ -6,12 +6,12 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Character raid progression.
     /// </summary>
-    public class Progression
+    public class Progression : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets progression information for raids.
         /// </summary>
         [JsonProperty("raids")]
-        public IEnumerable<Raid> Raids { get; set; }
+        public IEnumerable<Raid>? Raids { get; set; }
     }
 }

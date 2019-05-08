@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A set bonus.
     /// </summary>
-    public class SetBonus
+    public class SetBonus : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets or sets the minimum number of set items that must be equipped to receive the set bonus.

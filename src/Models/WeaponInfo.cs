@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Weapon info.
     /// </summary>
-    public class WeaponInfo
+    public class WeaponInfo : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the damage.
         /// </summary>
         [JsonProperty("damage")]
-        public Damage Damage { get; set; }
+        public Damage? Damage { get; set; }
 
         /// <summary>
         ///     Gets or sets the weapon speed.

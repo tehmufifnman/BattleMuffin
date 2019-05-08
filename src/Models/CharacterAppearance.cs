@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Details about a character's appearance.
     /// </summary>
-    public class CharacterAppearance
+    public class CharacterAppearance : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the face variation.
@@ -54,6 +54,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the custom display options.
         /// </summary>
         [JsonProperty("customDisplayOptions")]
-        public IEnumerable<int> CustomDisplayOptions { get; set; }
+        public IEnumerable<int>? CustomDisplayOptions { get; set; }
     }
 }

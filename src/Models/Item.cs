@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An item.
     /// </summary>
-    public class Item
+    public class Item : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the item ID.
@@ -19,7 +19,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets or sets the disenchanting skill rank required to disenchant the item.
@@ -31,13 +31,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the stackable setting.
@@ -55,13 +55,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the bonus stats.
         /// </summary>
         [JsonProperty("bonusStats")]
-        public IEnumerable<Stat> BonusStats { get; set; }
+        public IEnumerable<Stat>? BonusStats { get; set; }
 
         /// <summary>
         ///     Gets or sets the item spells.
         /// </summary>
         [JsonProperty("itemSpells")]
-        public IEnumerable<ItemSpell> ItemSpells { get; set; }
+        public IEnumerable<ItemSpell>? ItemSpells { get; set; }
 
         /// <summary>
         ///     Gets or sets the buy price.
@@ -91,7 +91,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the weapon info.
         /// </summary>
         [JsonProperty("weaponInfo")]
-        public WeaponInfo WeaponInfo { get; set; }
+        public WeaponInfo? WeaponInfo { get; set; }
 
         /// <summary>
         ///     Gets or sets the inventory type.
@@ -169,7 +169,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the item source.
         /// </summary>
         [JsonProperty("itemSource")]
-        public ItemSource ItemSource { get; set; }
+        public ItemSource? ItemSource { get; set; }
 
         /// <summary>
         ///     Gets or sets the base armor.
@@ -205,13 +205,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the name description.
         /// </summary>
         [JsonProperty("nameDescription")]
-        public string NameDescription { get; set; }
+        public string? NameDescription { get; set; }
 
         /// <summary>
         ///     Gets or sets the name description color.
         /// </summary>
         [JsonProperty("nameDescriptionColor")]
-        public string NameDescriptionColor { get; set; }
+        public string? NameDescriptionColor { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the item is upgradeable.
@@ -229,25 +229,25 @@ namespace BattleMuffin.Models
         ///     Gets or sets the context.
         /// </summary>
         [JsonProperty("context")]
-        public string Context { get; set; }
+        public string? Context { get; set; }
 
         /// <summary>
         ///     Gets or sets the bonus lists.
         /// </summary>
         [JsonProperty("bonusLists")]
-        public IEnumerable<int> BonusLists { get; set; }
+        public IEnumerable<int>? BonusLists { get; set; }
 
         /// <summary>
         ///     Gets or sets the available contexts.
         /// </summary>
         [JsonProperty("availableContexts")]
-        public IEnumerable<string> AvailableContexts { get; set; }
+        public IEnumerable<string>? AvailableContexts { get; set; }
 
         /// <summary>
         ///     Gets or sets the bonus summary.
         /// </summary>
         [JsonProperty("bonusSummary")]
-        public BonusSummary BonusSummary { get; set; }
+        public BonusSummary? BonusSummary { get; set; }
 
         /// <summary>
         ///     Gets or sets the artifact ID.

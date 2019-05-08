@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Character class data.
     /// </summary>
-    public class CharacterClassData
+    public class CharacterClassData : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the character class ID.
@@ -23,12 +23,12 @@ namespace BattleMuffin.Models
         ///     Gets or sets the power type.
         /// </summary>
         [JsonProperty("powerType")]
-        public string PowerType { get; set; }
+        public string? PowerType { get; set; }
 
         /// <summary>
         ///     Gets or sets the character class name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

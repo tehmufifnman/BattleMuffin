@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A spell.
     /// </summary>
-    public class Spell
+    public class Spell : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the spell ID.
@@ -17,48 +17,48 @@ namespace BattleMuffin.Models
         ///     Gets or sets the spell name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the subtext.
         /// </summary>
         [JsonProperty("subtext")]
-        public string Subtext { get; set; }
+        public string? Subtext { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets or sets the cast time.
         /// </summary>
         [JsonProperty("castTime")]
-        public string CastTime { get; set; }
+        public string? CastTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the cooldown.
         /// </summary>
         [JsonProperty("cooldown")]
-        public string Cooldown { get; set; }
+        public string? Cooldown { get; set; }
 
         /// <summary>
         ///     Gets or sets the range.
         /// </summary>
         [JsonProperty("range")]
-        public string Range { get; set; }
+        public string? Range { get; set; }
 
         /// <summary>
         ///     Gets or sets the power cost.
         /// </summary>
         [JsonProperty("powerCost")]
-        public string PowerCost { get; set; }
+        public string? PowerCost { get; set; }
     }
 }

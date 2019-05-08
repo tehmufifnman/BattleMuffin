@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An achievement category.
     /// </summary>
-    public class AchievementCategory
+    public class AchievementCategory : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the achievment category ID.
@@ -18,18 +18,18 @@ namespace BattleMuffin.Models
         ///     Gets or sets the achievements belonging to this category.
         /// </summary>
         [JsonProperty("achievements")]
-        public IEnumerable<Achievement> Achievements { get; set; }
+        public IEnumerable<Achievement>? Achievements { get; set; }
 
         /// <summary>
         ///     Gets or sets the subcategories belonging to this category.
         /// </summary>
         [JsonProperty("categories")]
-        public IEnumerable<AchievementCategory> Categories { get; set; }
+        public IEnumerable<AchievementCategory>? Categories { get; set; }
 
         /// <summary>
         ///     Gets or sets the achievment category name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

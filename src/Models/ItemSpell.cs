@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An item spell.
     /// </summary>
-    public class ItemSpell
+    public class ItemSpell : IWarcraftModel
     {
         /// <summary>
         ///     Get or sets the spell ID.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Get or sets the spell.
         /// </summary>
         [JsonProperty("spell")]
-        public Spell Spell { get; set; }
+        public Spell? Spell { get; set; }
 
         /// <summary>
         ///     Get or sets the number of charges.
@@ -41,12 +41,12 @@ namespace BattleMuffin.Models
         ///     Get or sets the trigger.
         /// </summary>
         [JsonProperty("trigger")]
-        public string Trigger { get; set; }
+        public string? Trigger { get; set; }
 
         /// <summary>
         ///     Get or sets the scaled description.
         /// </summary>
         [JsonProperty("scaledDescription")]
-        public string ScaledDescription { get; set; }
+        public string? ScaledDescription { get; set; }
     }
 }

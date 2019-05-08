@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild member.
     /// </summary>
-    public class GuildMember
+    public class GuildMember : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the character.
         /// </summary>
         [JsonProperty("character")]
-        public GuildCharacter Character { get; set; }
+        public GuildCharacter? Character { get; set; }
 
         /// <summary>
         ///     Gets or sets the character's rank in the guild.

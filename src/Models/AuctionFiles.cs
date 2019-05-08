@@ -6,12 +6,12 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction files listing.
     /// </summary>
-    public class AuctionFiles
+    public class AuctionFiles : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the auction file summaries.
         /// </summary>
         [JsonProperty("files")]
-        public IEnumerable<AuctionFileSummary> Files { get; set; }
+        public IEnumerable<AuctionFileSummary>? Files { get; set; }
     }
 }

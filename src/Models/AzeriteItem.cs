@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An Azerite item.
     /// </summary>
-    public class AzeriteItem
+    public class AzeriteItem : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the Azerite level.

@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A pet slot.
     /// </summary>
-    public class PetSlot
+    public class PetSlot : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the slot number.
@@ -18,7 +18,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the battle pet GUID.
         /// </summary>
         [JsonProperty("battlePetGuid")]
-        public string BattlePetGuid { get; set; }
+        public string? BattlePetGuid { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the slot is empty.
@@ -36,6 +36,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the pet ability IDs.
         /// </summary>
         [JsonProperty("abilities")]
-        public IEnumerable<int> Abilities { get; set; }
+        public IEnumerable<int>? Abilities { get; set; }
     }
 }

@@ -6,19 +6,19 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A realm.
     /// </summary>
-    public class Realm
+    public class Realm : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the realm type.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         ///     Gets or sets the population.
         /// </summary>
         [JsonProperty("population")]
-        public string Population { get; set; }
+        public string? Population { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether there is a queue to log in to the realm.
@@ -36,36 +36,36 @@ namespace BattleMuffin.Models
         ///     Gets or sets the realm name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the slug.
         /// </summary>
         [JsonProperty("slug")]
-        public string Slug { get; set; }
+        public string? Slug { get; set; }
 
         /// <summary>
         ///     Gets or sets the battlegroup to which the realm belongs.
         /// </summary>
         [JsonProperty("battlegroup")]
-        public string Battlegroup { get; set; }
+        public string? Battlegroup { get; set; }
 
         /// <summary>
         ///     Gets or sets the locale.
         /// </summary>
         [JsonProperty("locale")]
-        public string Locale { get; set; }
+        public string? Locale { get; set; }
 
         /// <summary>
         ///     Gets or sets the time zone.
         /// </summary>
         [JsonProperty("timezone")]
-        public string Timezone { get; set; }
+        public string? Timezone { get; set; }
 
         /// <summary>
         ///     Gets or sets the slugs of connected realms.
         /// </summary>
         [JsonProperty("connected_realms")]
-        public IEnumerable<string> ConnectedRealms { get; set; }
+        public IEnumerable<string>? ConnectedRealms { get; set; }
     }
 }

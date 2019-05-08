@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Information about a character's pets.
     /// </summary>
-    public class CharacterPets
+    public class CharacterPets : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the number of pets this character has collected.
@@ -24,6 +24,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the pets this character has collected.
         /// </summary>
         [JsonProperty("collected")]
-        public IEnumerable<ChararcterPet> Collected { get; set; }
+        public IEnumerable<CharacterPet>? Collected { get; set; }
     }
 }

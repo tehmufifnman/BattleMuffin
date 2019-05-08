@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A modifier.
     /// </summary>
-    public class Modifier
+    public class Modifier : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the modifier type.

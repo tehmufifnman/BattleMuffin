@@ -6,13 +6,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A character's pet.
     /// </summary>
-    public class ChararcterPet
+    public class CharacterPet : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the pet name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the spell ID.
@@ -42,19 +42,19 @@ namespace BattleMuffin.Models
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the stats.
         /// </summary>
         [JsonProperty("stats")]
-        public PetStats Stats { get; set; }
+        public PetStats? Stats { get; set; }
 
         /// <summary>
         ///     Gets or sets the battle pet GUID.
         /// </summary>
         [JsonProperty("battlePetGuid")]
-        public string BattlePetGuid { get; set; }
+        public string? BattlePetGuid { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this pet is a favorite.
@@ -84,7 +84,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the creature name.
         /// </summary>
         [JsonProperty("creatureName")]
-        public string CreatureName { get; set; }
+        public string? CreatureName { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the pet can battle.

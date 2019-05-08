@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A pet type.
     /// </summary>
-    public class PetType
+    public class PetType : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the pet type ID.
@@ -17,13 +17,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the pet type key.
         /// </summary>
         [JsonProperty("key")]
-        public string Key { get; set; }
+        public string? Key { get; set; }
 
         /// <summary>
         ///     Gets or sets the pet type name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the type ability ID.

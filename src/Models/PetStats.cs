@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Pet stats.
     /// </summary>
-    public class PetStats
+    public class PetStats : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the species ID.

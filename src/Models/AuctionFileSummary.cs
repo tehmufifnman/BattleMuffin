@@ -6,13 +6,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction file.
     /// </summary>
-    public class AuctionFileSummary
+    public class AuctionFileSummary : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the URL for the JSON-formatted auction data file.
         /// </summary>
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         /// <summary>
         ///     Gets or sets the last modified timestamp.

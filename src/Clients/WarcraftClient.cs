@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using BattleMuffin.Auth;
 using BattleMuffin.Enums;
 using BattleMuffin.Extensions;
 using BattleMuffin.Models;
@@ -26,7 +25,7 @@ namespace BattleMuffin.Clients
         private readonly Locale _locale;
         private readonly Region _region;
 
-        private OAuthAccessToken _token;
+        private OAuthAccessToken? _token;
         private DateTime _tokenExpiration;
 
         /// <summary>
@@ -505,7 +504,7 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
         /// </returns>
-        private async Task<RequestResult<T>> Get<T>(string requestUri, string arrayName = null)
+        private async Task<RequestResult<T>> Get<T>(string requestUri, string? arrayName = null) where T : class
         {
             // Acquire a new OAuth token if we don't have one. Get a new one if it's expired.
             if (_token == null || DateTime.UtcNow >= _tokenExpiration)
@@ -554,11 +553,7 @@ namespace BattleMuffin.Clients
                 RequestResult<T> requestResult = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
                 {
                     ContractResolver = new WarcraftClientContractResolver(),
-#if DEBUG
                     MissingMemberHandling = MissingMemberHandling.Error
-#else
-                    MissingMemberHandling = MissingMemberHandling.Ignore
-#endif
                 });
 
                 return requestResult;

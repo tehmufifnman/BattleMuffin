@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     The time for a challenge mode dungeon.
     /// </summary>
-    public class ChallengeTime
+    public class ChallengeTime : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the time.

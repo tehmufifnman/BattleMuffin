@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Progression information for a boss.
     /// </summary>
-    public class ProgressionBoss
+    public class ProgressionBoss : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the boss ID.
@@ -18,7 +18,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the boss name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the number of kills in Normal mode.

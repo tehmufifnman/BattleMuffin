@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An appearance.
     /// </summary>
-    public class Appearance
+    public class Appearance : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the enchant display info ID.

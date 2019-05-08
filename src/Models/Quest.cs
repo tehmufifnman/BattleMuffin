@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A quest.
     /// </summary>
-    public class Quest
+    public class Quest : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the quest ID.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the title.
         /// </summary>
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         ///     Gets or sets the required level.
@@ -35,7 +35,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the category.
         /// </summary>
         [JsonProperty("category")]
-        public string Category { get; set; }
+        public string? Category { get; set; }
 
         /// <summary>
         ///     Gets or sets the level.

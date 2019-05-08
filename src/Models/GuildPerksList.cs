@@ -6,12 +6,12 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild perks list.
     /// </summary>
-    public class GuildPerksList
+    public class GuildPerksList : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the guild perks.
         /// </summary>
         [JsonProperty("perks")]
-        public IEnumerable<Perk> Perks { get; set; }
+        public IEnumerable<Perk>? Perks { get; set; }
     }
 }

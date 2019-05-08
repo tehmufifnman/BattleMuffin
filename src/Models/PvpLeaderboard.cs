@@ -6,12 +6,12 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A PvP leaderboard.
     /// </summary>
-    public class PvpLeaderboard
+    public class PvpLeaderboard : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the characters.
         /// </summary>
         [JsonProperty("rows")]
-        public IEnumerable<PvpCharacter> Characters { get; set; }
+        public IEnumerable<PvpCharacter>? Characters { get; set; }
     }
 }

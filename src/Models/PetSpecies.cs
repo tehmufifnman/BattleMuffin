@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A pet species.
     /// </summary>
-    public class PetSpecies
+    public class PetSpecies : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the species ID.
@@ -30,7 +30,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the species name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the pet is a battle pet.
@@ -42,24 +42,24 @@ namespace BattleMuffin.Models
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the description.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         ///     Gets or sets the source.
         /// </summary>
         [JsonProperty("source")]
-        public string Source { get; set; }
+        public string? Source { get; set; }
 
         /// <summary>
         ///     Gets or sets the abilities.
         /// </summary>
         [JsonProperty("abilities")]
-        public IEnumerable<PetSpeciesAbility> Abilities { get; set; }
+        public IEnumerable<PetSpeciesAbility>? Abilities { get; set; }
     }
 }

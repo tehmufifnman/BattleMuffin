@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An NPC.
     /// </summary>
-    public class Npc
+    public class Npc : IWarcraftModel
     {
         /// <summary>
         ///     Gets the creature display ID.
@@ -23,12 +23,12 @@ namespace BattleMuffin.Models
         ///     Gets the name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets the URL slug.
         /// </summary>
         [JsonProperty(PropertyName = "urlSlug")]
-        public string UrlSlug { get; set; }
+        public string? UrlSlug { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using BattleMuffin.Enums;
 
-namespace BattleMuffin.Models
+namespace BattleMuffin.Attributes
 {
     /// <summary>
     ///     Used to set a valid region for a locale.

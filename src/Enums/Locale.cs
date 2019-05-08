@@ -1,4 +1,4 @@
-﻿using BattleMuffin.Models;
+﻿using BattleMuffin.Attributes;
 
 namespace BattleMuffin.Enums
 {

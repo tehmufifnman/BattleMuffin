@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Character stats.
     /// </summary>
-    public class Stats
+    public class Stats : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the health.
@@ -17,7 +17,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the power type.
         /// </summary>
         [JsonProperty("powerType")]
-        public string PowerType { get; set; }
+        public string? PowerType { get; set; }
 
         /// <summary>
         ///     Gets or sets the power.

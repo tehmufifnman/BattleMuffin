@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A PvP character
     /// </summary>
-    public class PvpCharacter
+    public class PvpCharacter : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the ranking.
@@ -24,7 +24,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the character's name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the realm ID.
@@ -36,13 +36,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the realm name.
         /// </summary>
         [JsonProperty("realmName")]
-        public string RealmName { get; set; }
+        public string? RealmName { get; set; }
 
         /// <summary>
         ///     Gets or sets the realm slug.
         /// </summary>
         [JsonProperty("realmSlug")]
-        public string RealmSlug { get; set; }
+        public string? RealmSlug { get; set; }
 
         /// <summary>
         ///     Gets or sets the race.
@@ -102,6 +102,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the character's PVP tier.
         /// </summary>
         [JsonProperty("tier")]
-        public string Tier { get; set; }
+        public string? Tier { get; set; }
     }
 }

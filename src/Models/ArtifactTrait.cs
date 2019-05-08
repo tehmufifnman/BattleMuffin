@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An artifact trait.
     /// </summary>
-    public class ArtifactTrait
+    public class ArtifactTrait : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the artifact trait ID.

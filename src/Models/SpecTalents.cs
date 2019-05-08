@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     The talents for a spec.
     /// </summary>
-    public class SpecTalents
+    public class SpecTalents : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets a value indicating whether this spec is selected.
@@ -18,24 +18,24 @@ namespace BattleMuffin.Models
         ///     Gets or sets the talents.
         /// </summary>
         [JsonProperty("talents")]
-        public IEnumerable<Talent> Talents { get; set; }
+        public IEnumerable<Talent>? Talents { get; set; }
 
         /// <summary>
         ///     Gets or sets the spec.
         /// </summary>
         [JsonProperty("spec")]
-        public Spec Spec { get; set; }
+        public Spec? Spec { get; set; }
 
         /// <summary>
         ///     Gets or sets the calculated talent.
         /// </summary>
         [JsonProperty("calcTalent")]
-        public string CalcTalent { get; set; }
+        public string? CalcTalent { get; set; }
 
         /// <summary>
         ///     Gets or sets the calculated spec.
         /// </summary>
         [JsonProperty("calcSpec")]
-        public string CalcSpec { get; set; }
+        public string? CalcSpec { get; set; }
     }
 }

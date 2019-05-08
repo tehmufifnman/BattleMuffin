@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild perk.
     /// </summary>
-    public class Perk
+    public class Perk : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the guild level.
@@ -17,6 +17,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the spell.
         /// </summary>
         [JsonProperty("spell")]
-        public Spell Spell { get; set; }
+        public Spell? Spell { get; set; }
     }
 }

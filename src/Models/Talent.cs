@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A talent.
     /// </summary>
-    public class Talent
+    public class Talent : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the tier number.
@@ -23,12 +23,12 @@ namespace BattleMuffin.Models
         ///     Gets or sets the spell.
         /// </summary>
         [JsonProperty("spell")]
-        public Spell Spell { get; set; }
+        public Spell? Spell { get; set; }
 
         /// <summary>
         ///     Gets or sets the spec.
         /// </summary>
         [JsonProperty("spec")]
-        public Spec Spec { get; set; }
+        public Spec? Spec { get; set; }
     }
 }

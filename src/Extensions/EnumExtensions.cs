@@ -1,6 +1,6 @@
 using System.Reflection;
+using BattleMuffin.Attributes;
 using BattleMuffin.Enums;
-using BattleMuffin.Models;
 
 namespace BattleMuffin.Extensions
 {

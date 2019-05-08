@@ -6,13 +6,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A mount.
     /// </summary>
-    public class Mount
+    public class Mount : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the mount name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the spell ID.
@@ -42,7 +42,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether the mount is a ground mount.

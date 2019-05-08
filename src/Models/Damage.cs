@@ -5,7 +5,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     Damage.
     /// </summary>
-    public class Damage
+    public class Damage : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the minimum damage.

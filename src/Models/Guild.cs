@@ -8,7 +8,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild.
     /// </summary>
-    public class Guild
+    public class Guild : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the last modified timestamp.
@@ -20,19 +20,19 @@ namespace BattleMuffin.Models
         ///     Gets or sets the guild name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the realm.
         /// </summary>
         [JsonProperty("realm")]
-        public string Realm { get; set; }
+        public string? Realm { get; set; }
 
         /// <summary>
         ///     Gets or sets the battlegroup.
         /// </summary>
         [JsonProperty("battlegroup")]
-        public string Battlegroup { get; set; }
+        public string? Battlegroup { get; set; }
 
         /// <summary>
         ///     Gets or sets the guild level.
@@ -50,7 +50,7 @@ namespace BattleMuffin.Models
         ///     Gets or sets the members of the guild.
         /// </summary>
         [JsonProperty("members")]
-        public IEnumerable<GuildMember> Members { get; set; }
+        public IEnumerable<GuildMember>? Members { get; set; }
 
         /// <summary>
         ///     Gets or sets the number of achievement points for the guild.
@@ -62,24 +62,24 @@ namespace BattleMuffin.Models
         ///     Gets or sets the achievements.
         /// </summary>
         [JsonProperty("achievements")]
-        public Achievements Achievements { get; set; }
+        public Achievements? Achievements { get; set; }
 
         /// <summary>
         ///     Gets or sets the guild emblem.
         /// </summary>
         [JsonProperty("emblem")]
-        public Emblem Emblem { get; set; }
+        public Emblem? Emblem { get; set; }
 
         /// <summary>
         ///     Gets or sets the news feed for the guild.
         /// </summary>
         [JsonProperty("news")]
-        public IEnumerable<News> News { get; set; }
+        public IEnumerable<News>? News { get; set; }
 
         /// <summary>
         ///     Gets or sets the challenge mode dungeon information.
         /// </summary>
         [JsonProperty("challenge")]
-        public IEnumerable<Challenge> Challenge { get; set; }
+        public IEnumerable<Challenge>? Challenge { get; set; }
     }
 }

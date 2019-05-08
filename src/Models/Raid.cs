@@ -6,13 +6,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A raid.
     /// </summary>
-    public class Raid
+    public class Raid : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the raid name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the completion status in LFR mode.
@@ -48,6 +48,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets progression information for the raid bosses.
         /// </summary>
         [JsonProperty("bosses")]
-        public IEnumerable<ProgressionBoss> Bosses { get; set; }
+        public IEnumerable<ProgressionBoss>? Bosses { get; set; }
     }
 }

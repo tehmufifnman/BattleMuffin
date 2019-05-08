@@ -1,4 +1,5 @@
 using System;
+using BattleMuffin.Models;
 
 namespace BattleMuffin.Web
 {
@@ -6,22 +7,22 @@ namespace BattleMuffin.Web
     ///     Represents a request made to the Blizzard API.
     /// </summary>
     /// <typeparam name="T">The type of request made.</typeparam>
-    public class RequestResult<T>
+    public class RequestResult<T> where T : class
     {
         /// <summary>
         ///     The requested object value from the Blizzard API.
         /// </summary>
-        public T Value { get; set; }
+        public T? Value { get; }
 
         /// <summary>
         ///     The request error response from the Blizzard API.
         /// </summary>
-        public RequestError Error { get; set; }
+        public RequestError? Error { get; }
 
         /// <summary>
         ///     Indicates if the HTTP request succeeded.
         /// </summary>
-        public bool Success { get; set; }
+        public bool Success { get; }
 
         /// <summary>
         ///     Initializes a request result with an object value.

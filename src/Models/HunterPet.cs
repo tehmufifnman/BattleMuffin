@@ -5,13 +5,13 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A hunter pet.
     /// </summary>
-    public class HunterPet
+    public class HunterPet : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the pet name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the creature ID.
@@ -35,13 +35,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the spec.
         /// </summary>
         [JsonProperty("spec")]
-        public Spec Spec { get; set; }
+        public Spec? Spec { get; set; }
 
         /// <summary>
         ///     Gets or sets the calculated spec.
         /// </summary>
         [JsonProperty("calcSpec")]
-        public string CalcSpec { get; set; }
+        public string? CalcSpec { get; set; }
 
         /// <summary>
         ///     Gets or sets the family ID.
@@ -53,6 +53,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the family name.
         /// </summary>
         [JsonProperty("familyName")]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
     }
 }

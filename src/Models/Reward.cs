@@ -7,7 +7,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A guild reward.
     /// </summary>
-    public class Reward
+    public class Reward : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the minimum guild level.
@@ -25,18 +25,18 @@ namespace BattleMuffin.Models
         ///     Gets or sets the achievement associated with the reward.
         /// </summary>
         [JsonProperty("achievement")]
-        public Achievement Achievement { get; set; }
+        public Achievement? Achievement { get; set; }
 
         /// <summary>
         ///     Gets or sets the reward item.
         /// </summary>
         [JsonProperty("item")]
-        public CharacterItem Item { get; set; }
+        public CharacterItem? Item { get; set; }
 
         /// <summary>
         ///     Gets or sets the races.
         /// </summary>
         [JsonProperty("races")]
-        public IEnumerable<Race> Races { get; set; }
+        public IEnumerable<Race>? Races { get; set; }
     }
 }

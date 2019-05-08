@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     A profession.
     /// </summary>
-    public class Profession
+    public class Profession : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the profession ID.
@@ -18,13 +18,13 @@ namespace BattleMuffin.Models
         ///     Gets or sets the profession name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the icon.
         /// </summary>
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         ///     Gets or sets the rank.
@@ -42,6 +42,6 @@ namespace BattleMuffin.Models
         ///     Gets or sets the recipe IDs known by the character.
         /// </summary>
         [JsonProperty("recipes")]
-        public IEnumerable<int> Recipes { get; set; }
+        public IEnumerable<int>? Recipes { get; set; }
     }
 }
