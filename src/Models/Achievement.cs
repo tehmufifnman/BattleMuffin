@@ -18,7 +18,7 @@ namespace BattleMuffin.Models
         ///     Gets the achievement criteria.
         /// </summary>
         [JsonProperty(PropertyName = "criteria")]
-        public IEnumerable<Criterion> Criteria { get; set; } = new List<Criterion>();
+        public IEnumerable<Criterion>? Criteria { get; set; }
 
         /// <summary>
         ///     Gets the achievement description.
