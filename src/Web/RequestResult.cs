@@ -1,5 +1,4 @@
 using System;
-using BattleMuffin.Models;
 
 namespace BattleMuffin.Web
 {
