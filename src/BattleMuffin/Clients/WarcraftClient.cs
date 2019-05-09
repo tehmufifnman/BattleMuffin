@@ -38,7 +38,8 @@ namespace BattleMuffin.Clients
         ///     Specifies the language that the result will be in. Visit
         ///     https://dev.battle.net/docs/read/community_apis to see a list of available locales.
         /// </param>
-        public WarcraftClient(string clientId, string clientSecret, Region region = Region.US, Locale locale = Locale.en_US) : this(clientId, clientSecret, region, locale, InternalHttpClient.Instance)
+        public WarcraftClient(string clientId, string clientSecret, Region region = Region.US,
+            Locale locale = Locale.en_US) : this(clientId, clientSecret, region, locale, InternalHttpClient.Instance)
         {
         }
 
@@ -113,7 +114,8 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Battlegroup>>> GetBattlegroupsAsync()
         {
-            return await Get<IEnumerable<Battlegroup>>($"{_host}/wow/data/battlegroups/?locale={_locale}", "battlegroups");
+            return await Get<IEnumerable<Battlegroup>>($"{_host}/wow/data/battlegroups/?locale={_locale}",
+                "battlegroups");
         }
 
         /// <summary>
@@ -178,10 +180,12 @@ namespace BattleMuffin.Clients
         ///     The specified character.
         /// </returns>
         /// >
-        public async Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName, CharacterFields fields = CharacterFields.None)
+        public async Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName,
+            CharacterFields fields = CharacterFields.None)
         {
             var queryStringFields = fields.BuildQueryString();
-            return await Get<Character>($"{_host}/wow/character/{realm}/{characterName}?&locale={_locale}{queryStringFields}");
+            return await Get<Character>(
+                $"{_host}/wow/character/{realm}/{characterName}?&locale={_locale}{queryStringFields}");
         }
 
         /// <summary>
@@ -192,7 +196,8 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetCharacterAchievementsAsync()
         {
-            return await Get<IEnumerable<AchievementCategory>>($"{_host}/wow/data/character/achievements?locale={_locale}", "achievements");
+            return await Get<IEnumerable<AchievementCategory>>(
+                $"{_host}/wow/data/character/achievements?locale={_locale}", "achievements");
         }
 
         /// <summary>
@@ -203,7 +208,8 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<CharacterClassData>>> GetCharacterClassesAsync()
         {
-            return await Get<IEnumerable<CharacterClassData>>($"{_host}/wow/data/character/classes?locale={_locale}", "classes");
+            return await Get<IEnumerable<CharacterClassData>>($"{_host}/wow/data/character/classes?locale={_locale}",
+                "classes");
         }
 
         /// <summary>
@@ -226,7 +232,8 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<GuildCharacter>>> GetCharactersAsync(string accessToken)
         {
-            return await Get<IEnumerable<GuildCharacter>>($"{_host}/wow/user/characters?access_token={accessToken}", "characters");
+            return await Get<IEnumerable<GuildCharacter>>($"{_host}/wow/user/characters?access_token={accessToken}",
+                "characters");
         }
 
         /// <summary>
@@ -238,10 +245,12 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The specified guild.
         /// </returns>
-        public async Task<RequestResult<Guild>> GetGuildAsync(string realm, string guildName, GuildFields fields = GuildFields.None)
+        public async Task<RequestResult<Guild>> GetGuildAsync(string realm, string guildName,
+            GuildFields fields = GuildFields.None)
         {
             var queryStringFields = fields.BuildQueryString();
-            return await Get<Guild>($"{_host}/wow/guild/{realm}/{Uri.EscapeUriString(guildName)}?locale={_locale}{queryStringFields}");
+            return await Get<Guild>(
+                $"{_host}/wow/guild/{realm}/{Uri.EscapeUriString(guildName)}?locale={_locale}{queryStringFields}");
         }
 
         /// <summary>
@@ -252,7 +261,8 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetGuildAchievementsAsync()
         {
-            return await Get<IEnumerable<AchievementCategory>>($"{_host}/wow/data/guild/achievements?locale={_locale}", "achievements");
+            return await Get<IEnumerable<AchievementCategory>>($"{_host}/wow/data/guild/achievements?locale={_locale}",
+                "achievements");
         }
 
         /// <summary>
@@ -368,9 +378,11 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The pet stats for the specified pet species, level, breed, and quality.
         /// </returns>
-        public async Task<RequestResult<PetStats>> GetPetStatsAsync(int speciesId, int level, int breedId, BattlePetQuality quality)
+        public async Task<RequestResult<PetStats>> GetPetStatsAsync(int speciesId, int level, int breedId,
+            BattlePetQuality quality)
         {
-            return await Get<PetStats>($"{_host}/wow/pet/stats/{speciesId}?level={level}&breedId={breedId}&qualityId={quality:D}&locale={_locale}");
+            return await Get<PetStats>(
+                $"{_host}/wow/pet/stats/{speciesId}?level={level}&breedId={breedId}&qualityId={quality:D}&locale={_locale}");
         }
 
         /// <summary>
@@ -535,7 +547,8 @@ namespace BattleMuffin.Clients
                 }
 
                 // If not then it is most likely a problem on our end due to an HTTP error.
-                var message = $"Response code {(int) response.StatusCode} ({response.ReasonPhrase}) does not indicate success. Request: {requestUri}";
+                var message =
+                    $"Response code {(int) response.StatusCode} ({response.ReasonPhrase}) does not indicate success. Request: {requestUri}";
 
                 throw new HttpRequestException(message);
             }
@@ -583,7 +596,8 @@ namespace BattleMuffin.Clients
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(credentials)));
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(Encoding.UTF8.GetBytes(credentials)));
 
             var requestBody = new FormUrlEncodedContent(new[]
             {

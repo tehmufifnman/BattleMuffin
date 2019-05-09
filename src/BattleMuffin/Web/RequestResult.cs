@@ -9,21 +9,6 @@ namespace BattleMuffin.Web
     public class RequestResult<T> where T : class
     {
         /// <summary>
-        ///     The requested object value from the Blizzard API.
-        /// </summary>
-        public T? Value { get; }
-
-        /// <summary>
-        ///     The request error response from the Blizzard API.
-        /// </summary>
-        public RequestError? Error { get; }
-
-        /// <summary>
-        ///     Indicates if the HTTP request succeeded.
-        /// </summary>
-        public bool Success { get; }
-
-        /// <summary>
         ///     Initializes a request result with an object value.
         /// </summary>
         /// <param name="value">Instance of the Blizzard API request</param>
@@ -42,6 +27,21 @@ namespace BattleMuffin.Web
             Error = error ?? throw new ArgumentNullException(nameof(error));
             Success = false;
         }
+
+        /// <summary>
+        ///     The requested object value from the Blizzard API.
+        /// </summary>
+        public T? Value { get; }
+
+        /// <summary>
+        ///     The request error response from the Blizzard API.
+        /// </summary>
+        public RequestError? Error { get; }
+
+        /// <summary>
+        ///     Indicates if the HTTP request succeeded.
+        /// </summary>
+        public bool Success { get; }
 
         /// <summary>
         ///     Implicit operator for initializing an object result with a value.

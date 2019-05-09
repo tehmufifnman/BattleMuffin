@@ -3,28 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Xunit.Sdk;
 
 namespace BattleMuffin.UnitTests.Attributes
 {
-    public class JsonFileDataAttribute : DataAttribute
+    public class JsonDataAttribute : DataAttribute
     {
         private readonly string _filePath;
-        private readonly Type _type;
 
         /// <summary>
         ///     Load data from a JSON file as the data source for a theory
         /// </summary>
         /// <param name="filePath">The absolute or relative path to the JSON file to load</param>
-        /// <param name="type">The type of the object to deserialize</param>
-        public JsonFileDataAttribute(string filePath, Type type)
+        public JsonDataAttribute(string filePath)
         {
             _filePath = filePath;
-            _type = type;
         }
 
         /// <inheritDoc />
-        public override object GetData(MethodInfo testMethod)
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             if (testMethod == null)
             {
@@ -32,9 +29,7 @@ namespace BattleMuffin.UnitTests.Attributes
             }
 
             // Get the absolute path to the JSON file
-            var path = Path.IsPathRooted(_filePath)
-                ? _filePath
-                : Path.GetRelativePath(Directory.GetCurrentDirectory(), _filePath);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "Data", _filePath);
 
             if (!File.Exists(path))
             {
@@ -44,8 +39,8 @@ namespace BattleMuffin.UnitTests.Attributes
             // Load the file
             var fileData = File.ReadAllText(path);
 
-            // Return deserialized object
-            return JsonConvert.DeserializeObject(fileData, _type);
+            // Deserialize the data
+            return JsonConvert.DeserializeObject<IEnumerable<object[]>>(fileData);
         }
     }
 }
