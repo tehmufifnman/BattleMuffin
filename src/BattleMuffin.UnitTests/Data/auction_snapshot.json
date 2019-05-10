@@ -1,0 +1,5 @@
+[
+  [
+    "http:\/\/auction-api-us.worldofwarcraft.com\/auction-data\/ab1239c3bc437d48321a64e6b5e5ab7f\/auctions.json", "{\"realms\":[{\"name\":\"Medivh\",\"slug\":\"medivh\"},{\"name\":\"Exodar\",\"slug\":\"exodar\"}],\"auctions\":[{\"auc\":1988392580,\"item\":21841,\"owner\":\"Earn\",\"ownerRealm\":\"Exodar\",\"bid\":289947,\"buyout\":289947,\"quantity\":1,\"timeLeft\":\"VERY_LONG\",\"rand\":0,\"seed\":0,\"context\":0},{\"auc\":1988916876,\"item\":9950,\"owner\":\"Galimor\",\"ownerRealm\":\"Medivh\",\"bid\":9108379,\"buyout\":9587768,\"quantity\":1,\"timeLeft\":\"LONG\",\"rand\":0,\"seed\":0,\"context\":54,\"bonusLists\":[{\"bonusListId\":1695},{\"bonusListId\":4277}],\"modifiers\":[{\"type\":9,\"value\":120}]},{\"auc\":1988457943,\"item\":82800,\"owner\":\"Suiane\",\"ownerRealm\":\"Exodar\",\"bid\":163247579,\"buyout\":199939999,\"quantity\":1,\"timeLeft\":\"VERY_LONG\",\"rand\":0,\"seed\":0,\"context\":0,\"modifiers\":[{\"type\":3,\"value\":1432},{\"type\":4,\"value\":50331666},{\"type\":5,\"value\":1},{\"type\":6,\"value\":57824}],\"petSpeciesId\":1432,\"petBreedId\":18,\"petLevel\":1,\"petQualityId\":3}]}"
+  ]
+]

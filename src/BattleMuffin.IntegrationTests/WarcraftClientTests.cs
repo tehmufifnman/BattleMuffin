@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using BattleMuffin.Clients;
 using BattleMuffin.IntegrationTests.Attributes;
 using Xunit;
@@ -31,6 +32,22 @@ namespace BattleMuffin.IntegrationTests
         public async void GetAchievementAsyncTest(int achievementId)
         {
             var result = await Client.GetAchievementAsync(achievementId);
+            Assert.NotNull(result.Value);
+        }
+        
+        [Theory]
+        [JsonData("auction.json")]
+        public async void GetAuctionAsyncTest(string realm)
+        {
+            var result = await Client.GetAuctionAsync(realm);
+            Assert.NotNull(result.Value);
+        }
+        
+        [Theory]
+        [JsonData("auction_snapshot.json")]
+        public async void GetAuctionHouseSnapshotAsyncTest(string auctionSnapshotUrl)
+        {
+            var result = await Client.GetAuctionHouseSnapshotAsync(auctionSnapshotUrl);
             Assert.NotNull(result.Value);
         }
     }

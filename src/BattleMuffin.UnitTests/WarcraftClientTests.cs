@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using BattleMuffin.Clients;
 using BattleMuffin.Enums;
@@ -20,6 +21,30 @@ namespace BattleMuffin.UnitTests
             var result = await warcraftClient.GetAchievementAsync(achievementId);
             Assert.NotNull(result.Value);
         }
+        
+        [Theory]
+        [JsonData("auction.json")]
+        public async void GetAuctionAsyncTest(string realm, string auctionResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/auction/data/{realm}?locale=en_US",
+                auctionResponse);
+
+            var result = await warcraftClient.GetAuctionAsync(realm);
+            Assert.NotNull(result.Value);
+        }
+        
+        [Theory]
+        [JsonData("auction_snapshot.json")]
+        public async void GetAuctionSnapshotAsyncTest(string auctionSnapshotUrl, string auctionSnapshotResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                auctionSnapshotUrl,
+                auctionSnapshotResponse);
+
+            var result = await warcraftClient.GetAuctionHouseSnapshotAsync(auctionSnapshotUrl);
+            Assert.NotNull(result.Value);
+        }        
 
         private static IWarcraftClient BuildMockClient(string requestUri, string responseContent,
             HttpStatusCode? statusCode = null)
