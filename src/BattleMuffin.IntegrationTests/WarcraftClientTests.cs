@@ -1,12 +1,13 @@
 using System;
 using BattleMuffin.Clients;
+using BattleMuffin.IntegrationTests.Attributes;
 using Xunit;
 
 namespace BattleMuffin.IntegrationTests
 {
     public class WarcraftClientTests
     {
-        private WarcraftClient _client;
+        private WarcraftClient? _client;
         
         private WarcraftClient Client
         {
@@ -25,10 +26,11 @@ namespace BattleMuffin.IntegrationTests
             set => _client = value;
         }
 
-        [Fact]
-        public async void GetAchievementAsyncTest()
+        [Theory]
+        [JsonData("achievement.json")]
+        public async void GetAchievementAsyncTest(int achievementId)
         {
-            var result = await Client.GetAchievementAsync(2144);
+            var result = await Client.GetAchievementAsync(achievementId);
             Assert.NotNull(result.Value);
         }
     }

@@ -17,4 +17,10 @@
       <ProjectReference Include="..\BattleMuffin\BattleMuffin.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Update="Data\achievement.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>    
+
 </Project>
