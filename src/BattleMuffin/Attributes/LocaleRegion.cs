@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BattleMuffin.Enums;
 
 namespace BattleMuffin.Attributes

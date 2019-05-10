@@ -1,4 +1,4 @@
-﻿namespace BattleMuffin.Enums
+namespace BattleMuffin.Enums
 {
     /// <summary>
     ///     A region.

@@ -1,4 +1,4 @@
-﻿using BattleMuffin.Enums;
+using BattleMuffin.Enums;
 using Newtonsoft.Json;
 
 namespace BattleMuffin.Models

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using BattleMuffin.Enums;
 using Newtonsoft.Json;
 
