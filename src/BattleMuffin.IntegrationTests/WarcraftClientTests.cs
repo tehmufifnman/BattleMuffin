@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using BattleMuffin.Clients;
 using BattleMuffin.IntegrationTests.Attributes;
 using Xunit;
@@ -9,7 +8,7 @@ namespace BattleMuffin.IntegrationTests
     public class WarcraftClientTests
     {
         private WarcraftClient? _client;
-        
+
         private WarcraftClient Client
         {
             get
@@ -34,7 +33,7 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetAchievementAsync(achievementId);
             Assert.NotNull(result.Value);
         }
-        
+
         [Theory]
         [JsonData("auction.json")]
         public async void GetAuctionAsyncTest(string realm)
@@ -42,7 +41,7 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetAuctionAsync(realm);
             Assert.NotNull(result.Value);
         }
-        
+
         [Theory]
         [JsonData("auction_snapshot.json")]
         public async void GetAuctionHouseSnapshotAsyncTest(string auctionSnapshotUrl)
