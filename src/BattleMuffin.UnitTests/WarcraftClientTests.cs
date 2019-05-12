@@ -47,13 +47,25 @@ namespace BattleMuffin.UnitTests
 
         [Theory]
         [JsonData("bosses.json")]
-        public async void GetBossesAsycTest(string bossesResponse)
+        public async void GetBossesAsyncTest(string bossesResponse)
         {
             var warcraftClient = BuildMockClient(
                 "https://us.api.blizzard.com/wow/boss/?locale=en_US",
                 bossesResponse);
 
             var result = await warcraftClient.GetBossesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("boss.json")]
+        public async void GetBossAsyncTest(int bossId, string bossResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/boss/{bossId}?locale=en_US",
+                bossResponse);
+
+            var result = await warcraftClient.GetBossAsync(bossId);
             Assert.NotNull(result.Value);
         }
 
