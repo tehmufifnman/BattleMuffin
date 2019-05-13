@@ -5,10 +5,15 @@
         <LangVersion>8</LangVersion>
         <NullableContextOptions>enable</NullableContextOptions>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <PackageIconUrl>https://www.gravatar.com/avatar/74828271ae9d0a2b32e492f337cbe506</PackageIconUrl>
+        <PackageProjectUrl>https://gitlab.com/themuffinman/BattleMuffin</PackageProjectUrl>
+        <RepositoryUrl>https://gitlab.com/themuffinman/BattleMuffin</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>Warcraft BattleNet Battle.Net Blizzard</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     </ItemGroup>
 
 </Project>
