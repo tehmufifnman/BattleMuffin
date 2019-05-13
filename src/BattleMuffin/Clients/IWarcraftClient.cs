@@ -96,8 +96,7 @@ namespace BattleMuffin.Clients
         ///     The specified character.
         /// </returns>
         /// >
-        Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName,
-            CharacterFields fields = CharacterFields.None);
+        Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName, CharacterFields fields = CharacterFields.None);
 
         /// <summary>
         ///     Get a list of all of the achievements that characters can earn as well as the category structure and hierarchy.
