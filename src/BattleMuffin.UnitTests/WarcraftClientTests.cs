@@ -105,6 +105,18 @@ namespace BattleMuffin.UnitTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("guild.json")]
+        public async void GetGuildAsyncTest(string realm, string guild, string guildResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/guild/{realm}/{guild}?locale=en_US&fields=members,achievements,news,challenge",
+                guildResponse);
+
+            var result = await warcraftClient.GetGuildAsync(realm, guild, GuildFields.All);
+            Assert.NotNull(result.Value);
+        }
+
         private static IWarcraftClient BuildMockClient(string requestUri, string responseContent,
             HttpStatusCode? statusCode = null)
         {
