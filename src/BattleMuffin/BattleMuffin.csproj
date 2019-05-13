@@ -11,6 +11,9 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Warcraft BattleNet Battle.Net Blizzard</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Description>BattleMuffin is a .NET Core 3.0 wrapper for the Blizzard Web API writte in C# 8.0.
+
+Requires .NET Core 3.0 or higher.</Description>
     </PropertyGroup>
 
     <ItemGroup>
