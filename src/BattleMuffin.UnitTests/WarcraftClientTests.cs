@@ -119,6 +119,66 @@ namespace BattleMuffin.UnitTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("mounts.json")]
+        public async void GetMountsAsyncTest(string mountsResponse)
+        {
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/mount/?locale=en_US", mountsResponse);
+
+            var result = await warcraftClient.GetMountsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pets.json")]
+        public async void GetPetsAsyncTest(string petsResponse)
+        {
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/pet/?locale=en_US", petsResponse);
+
+            var result = await warcraftClient.GetPetsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_abilities.json")]
+        public async void GetPetAbilityAsyncTest(int petAbilityId, string petAbilityResponse)
+        {
+            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/pet/ability/{petAbilityId}?locale=en_US", petAbilityResponse);
+
+            var result = await warcraftClient.GetPetAbilityAsync(petAbilityId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_species.json")]
+        public async void GetPetSpeciesAsyncTest(int petSpeciesId, string petSpeciesResponse)
+        {
+            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/pet/species/{petSpeciesId}?locale=en_US", petSpeciesResponse);
+
+            var result = await warcraftClient.GetPetSpeciesAsync(petSpeciesId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_stats.json")]
+        public async void GetPetStatsAsyncTest(int petSpeciesId, int level, int breedId, int quality, string petStatsResponse)
+        {
+            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/pet/stats/{petSpeciesId}?level={level}&breedId={breedId}&qualityId={quality}&locale=en_US", petStatsResponse);
+
+            var result = await warcraftClient.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality)quality);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pvp_leaderboard.json")]
+        public async void GetPvpLeaderboardAsyncTest(string bracket, string pvpLeaderboardResponse)
+        {
+            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/leaderboard/{bracket}?locale=en_US", pvpLeaderboardResponse);
+
+            var result = await warcraftClient.GetPvpLeaderboardAsync(bracket);
+            Assert.NotNull(result.Value);
+        }
+
         private static IWarcraftClient BuildMockClient(string requestUri, string responseContent, HttpStatusCode? statusCode = null)
         {
             var mockHttp = new MockHttpMessageHandler();

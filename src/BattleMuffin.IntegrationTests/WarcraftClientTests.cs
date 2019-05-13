@@ -112,5 +112,51 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetChallengesAsync();
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetMountsAsyncTest()
+        {
+            var result = await Client.GetMountsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPetsAsyncTest()
+        {
+            var result = await Client.GetPetsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_abilities.json")]
+        public async void GetPetAbilityAsyncTest(int petAbilityId)
+        {
+            var result = await Client.GetPetAbilityAsync(petAbilityId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_species.json")]
+        public async void GetPetSpeciesAsyncTest(int petSpeciesId)
+        {
+            var result = await Client.GetPetSpeciesAsync(petSpeciesId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pet_stats.json")]
+        public async void GetPetStatsAsyncTest(int petSpeciesId, int level, int breedId, int quality)
+        {
+            var result = await Client.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality)quality);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("pvp_leaderboard.json")]
+        public async void GetPvpLeaderboardAsyncTest(string bracket)
+        {
+            var result = await Client.GetPvpLeaderboardAsync(bracket);
+            Assert.NotNull(result.Value);
+        }
     }
 }
