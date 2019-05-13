@@ -4,6 +4,7 @@ stages:
     - build
 
 before_script:
+    - "dotnet --version"
     - "dotnet restore"
     
 build:
