@@ -110,7 +110,7 @@ namespace BattleMuffin.UnitTests
         }
 
         [Theory]
-        [JsonData("item.json")]
+        [JsonData("item_set.json")]
         public async void GetItemSetAsyncTest(int itemSetId, string itemSetResponse)
         {
             var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/item/set/{itemSetId}?locale=en_US", itemSetResponse);
