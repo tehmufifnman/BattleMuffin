@@ -69,6 +69,30 @@ namespace BattleMuffin.UnitTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("challenges_realm.json")]
+        public async void GetChallengesRealmAsyncTest(string challengeRealm, string challengeRealmResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/challenge/{challengeRealm}?locale=en_US",
+                challengeRealmResponse);
+
+            var result = await warcraftClient.GetChallengesAsync(challengeRealm);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("challenges_region.json")]
+        public async void GetChallengesRegionAsyncTest(string challengeRegionResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/challenge/region?locale=en_US",
+                challengeRegionResponse);
+
+            var result = await warcraftClient.GetChallengesAsync();
+            Assert.NotNull(result.Value);
+        }
+
         private static IWarcraftClient BuildMockClient(string requestUri, string responseContent,
             HttpStatusCode? statusCode = null)
         {

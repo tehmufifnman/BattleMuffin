@@ -64,5 +64,20 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetBossAsync(bossId);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("challenges_realm.json")]
+        public async void GetChallengesRealmAsyncTest(string realm)
+        {
+            var result = await Client.GetChallengesAsync(realm);
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetChallengesRegionAsyncTest()
+        {
+            var result = await Client.GetChallengesAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }
