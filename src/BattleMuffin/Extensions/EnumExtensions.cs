@@ -8,33 +8,28 @@ namespace BattleMuffin.Extensions
     {
         public static string BuildQueryString(this CharacterFields fields)
         {
-            // The Blizzard API only accepts lowercase fields.
-            var flags = fields.ToString().ToLower();
-
-            switch (flags)
+            switch (fields)
             {
-                case "all":
-                    return "&fields=achievements,appearance,feed,guild,hunter pets,items,mounts,pets,pet slots," +
-                           "professions,progression,pvp,quests,reputation,statistics,stats,talents,titles,audit";
-                case "none":
+                case CharacterFields.All:
+                    return "&fields=achievements,appearance,feed,guild,hunter pets,items,mounts,pets,pet slots,professions,progression,pvp,quests,reputation,statistics,stats,talents,titles,audit";
+                case CharacterFields.None:
                     return string.Empty;
                 default:
+                    var flags = fields.ToString().ToLower();
                     return $"&fields={flags}";
             }
         }
 
         public static string BuildQueryString(this GuildFields fields)
         {
-            // The Blizzard API only accepts lowercase fields.
-            var flags = fields.ToString().ToLower();
-
-            switch (flags)
+            switch (fields)
             {
-                case "all":
+                case GuildFields.All:
                     return "&fields=members,achievements,news,challenge";
-                case "none":
+                case GuildFields.None:
                     return string.Empty;
                 default:
+                    var flags = fields.ToString().ToLower();
                     return $"&fields={flags}";
             }
         }

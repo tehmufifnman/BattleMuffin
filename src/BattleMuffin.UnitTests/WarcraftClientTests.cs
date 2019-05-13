@@ -71,13 +71,13 @@ namespace BattleMuffin.UnitTests
 
         [Theory]
         [JsonData("challenges_realm.json")]
-        public async void GetChallengesRealmAsyncTest(string challengeRealm, string challengeRealmResponse)
+        public async void GetChallengesRealmAsyncTest(string realm, string challengeRealmResponse)
         {
             var warcraftClient = BuildMockClient(
-                $"https://us.api.blizzard.com/wow/challenge/{challengeRealm}?locale=en_US",
+                $"https://us.api.blizzard.com/wow/challenge/{realm}?locale=en_US",
                 challengeRealmResponse);
 
-            var result = await warcraftClient.GetChallengesAsync(challengeRealm);
+            var result = await warcraftClient.GetChallengesAsync(realm);
             Assert.NotNull(result.Value);
         }
 
@@ -90,6 +90,18 @@ namespace BattleMuffin.UnitTests
                 challengeRegionResponse);
 
             var result = await warcraftClient.GetChallengesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("character.json")]
+        public async void GetCharacterAsyncTest(string realm, string character, string characterResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/character/{realm}/{character}?locale=en_US&fields=achievements,appearance,feed,guild,hunter pets,items,mounts,pets,pet slots,professions,progression,pvp,quests,reputation,statistics,stats,talents,titles,audit",
+                characterResponse);
+
+            var result = await warcraftClient.GetCharacterAsync(realm, character, CharacterFields.All);
             Assert.NotNull(result.Value);
         }
 

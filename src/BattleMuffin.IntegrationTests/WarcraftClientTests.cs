@@ -1,5 +1,6 @@
 using System;
 using BattleMuffin.Clients;
+using BattleMuffin.Enums;
 using BattleMuffin.IntegrationTests.Attributes;
 using Xunit;
 
@@ -77,6 +78,14 @@ namespace BattleMuffin.IntegrationTests
         public async void GetChallengesRegionAsyncTest()
         {
             var result = await Client.GetChallengesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("character.json")]
+        public async void GetCharacterAsyncTest(string realm, string character)
+        {
+            var result = await Client.GetCharacterAsync(realm, character, CharacterFields.All);
             Assert.NotNull(result.Value);
         }
     }

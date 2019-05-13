@@ -224,19 +224,6 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the characters for a user account.
-        /// </summary>
-        /// <param name="accessToken">An OAuth access token for the user.</param>
-        /// <returns>
-        ///     The characters for a user account.
-        /// </returns>
-        public async Task<RequestResult<IEnumerable<GuildCharacter>>> GetCharactersAsync(string accessToken)
-        {
-            return await Get<IEnumerable<GuildCharacter>>($"{_host}/wow/user/characters?access_token={accessToken}",
-                "characters");
-        }
-
-        /// <summary>
         ///     Get the specified guild.
         /// </summary>
         /// <param name="realm">The realm.</param>
