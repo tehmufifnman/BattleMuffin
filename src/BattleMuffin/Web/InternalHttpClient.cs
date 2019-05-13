@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 
 namespace BattleMuffin.Web
 {
@@ -24,6 +25,7 @@ namespace BattleMuffin.Web
 
                 _instance = new HttpClient();
                 _instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                _instance.Timeout = Timeout.InfiniteTimeSpan;
 
                 return _instance;
             }

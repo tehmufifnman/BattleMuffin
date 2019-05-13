@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using BattleMuffin.Enums;
 using BattleMuffin.Extensions;
@@ -477,6 +479,18 @@ namespace BattleMuffin.Clients
             return await Get<IEnumerable<Zone>>($"{_host}/wow/zone/?locale={_locale}", "zones");
         }
 
+        private static async Task<string?> StreamToStringAsync(Stream stream)
+        {
+            if (stream == null)
+            {
+                return null;
+            }
+
+            using var sr = new StreamReader(stream);
+            var content = await sr.ReadToEndAsync();
+            return content;
+        }
+
         /// <summary>
         ///     Retrieve an item of type <typeparamref name="T" /> from the Blizzard Community API.
         /// </summary>
@@ -505,57 +519,52 @@ namespace BattleMuffin.Clients
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token.AccessToken);
 
             // Retrieve the response.
-            var response = await _client.GetAsync(requestUri).ConfigureAwait(false);
+            var tokenSource = new CancellationTokenSource();
+            var token = tokenSource.Token;
+            using var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(false);
 
-            if (!response.IsSuccessStatusCode)
+            if (response.Content != null)
             {
-                // Check if the request was successful and made it to the Blizzard API.
-                // The API will always send back content if successful.
-                if (response.Content != null)
-                {
-                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var stream = await response.Content.ReadAsStreamAsync();
+                var json = await StreamToStringAsync(stream);
 
-                    if (!string.IsNullOrEmpty(content))
+                if (!response.IsSuccessStatusCode || string.IsNullOrEmpty(json))
+                {
+                    var requestError = JsonConvert.DeserializeObject<RequestError>(json);
+                    return requestError;
+                }
+
+                try
+                {
+                    if (arrayName != null)
                     {
-                        RequestResult<T> requestError = JsonConvert.DeserializeObject<RequestError>(content);
-                        return requestError;
+                        json = JObject.Parse(json).SelectToken(arrayName).ToString();
                     }
+
+                    RequestResult<T> requestResult = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
+                    {
+                        ContractResolver = new WarcraftClientContractResolver(),
+                        MissingMemberHandling = MissingMemberHandling.Error
+                    });
+
+                    return requestResult;
                 }
-
-                // If not then it is most likely a problem on our end due to an HTTP error.
-                var message = $"Response code {(int) response.StatusCode} ({response.ReasonPhrase}) does not indicate success. Request: {requestUri}";
-
-                throw new HttpRequestException(message);
-            }
-
-            // Deserialize an object of type T from the JSON string.
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            try
-            {
-                if (arrayName != null)
+                catch (JsonReaderException ex)
                 {
-                    json = JObject.Parse(json).SelectToken(arrayName).ToString();
+                    var requestError = new RequestError
+                    {
+                        Code = string.Empty,
+                        Detail = ex.Message,
+                        Type = typeof(JsonReaderException).ToString()
+                    };
+                    return new RequestResult<T>(requestError);
                 }
-
-                RequestResult<T> requestResult = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
-                {
-                    ContractResolver = new WarcraftClientContractResolver(),
-                    MissingMemberHandling = MissingMemberHandling.Error
-                });
-
-                return requestResult;
             }
-            catch (JsonReaderException ex)
-            {
-                var requestError = new RequestError
-                {
-                    Code = string.Empty,
-                    Detail = ex.Message,
-                    Type = typeof(JsonReaderException).ToString()
-                };
-                return new RequestResult<T>(requestError);
-            }
+
+            // If not then it is most likely a problem on our end due to an HTTP error.
+            var message = $"Response code {(int)response.StatusCode} ({response.ReasonPhrase}) does not indicate success. Request: {requestUri}";
+            throw new HttpRequestException(message);
         }
 
         /// <summary>
