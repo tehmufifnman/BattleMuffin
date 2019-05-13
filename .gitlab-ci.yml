@@ -1,4 +1,4 @@
-image: mcr.microsoft.com/dotnet/core-nightly/runtime
+image: mcr.microsoft.com/dotnet/core-nightly/sdk
 
 stages:
     - build
