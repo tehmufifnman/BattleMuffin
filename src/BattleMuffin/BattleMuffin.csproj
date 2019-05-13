@@ -10,6 +10,7 @@
         <RepositoryUrl>https://gitlab.com/themuffinman/BattleMuffin</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Warcraft BattleNet Battle.Net Blizzard</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
