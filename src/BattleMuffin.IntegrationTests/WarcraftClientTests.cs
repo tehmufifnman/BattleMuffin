@@ -96,5 +96,21 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetGuildAsync(realm, guild, GuildFields.All);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("item.json")]
+        public async void GetItemAsyncTest(int itemId)
+        {
+            var result = await Client.GetItemAsync(itemId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("item_set.json")]
+        public async void GetItemSetAsyncTest(int itemSetId)
+        {
+            var result = await Client.GetItemSetAsync(itemSetId);
+            Assert.NotNull(result.Value);
+        }
     }
 }

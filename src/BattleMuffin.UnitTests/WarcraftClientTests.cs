@@ -117,6 +117,30 @@ namespace BattleMuffin.UnitTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("item.json")]
+        public async void GetItemAsyncTest(int itemId, string itemResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/item/{itemId}?locale=en_US",
+                itemResponse);
+
+            var result = await warcraftClient.GetItemAsync(itemId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("item.json")]
+        public async void GetItemSetAsyncTest(int itemSetId, string itemSetResponse)
+        {
+            var warcraftClient = BuildMockClient(
+                $"https://us.api.blizzard.com/wow/item/set/{itemSetId}?locale=en_US",
+                itemSetResponse);
+
+            var result = await warcraftClient.GetItemSetAsync(itemSetId);
+            Assert.NotNull(result.Value);
+        }
+
         private static IWarcraftClient BuildMockClient(string requestUri, string responseContent,
             HttpStatusCode? statusCode = null)
         {

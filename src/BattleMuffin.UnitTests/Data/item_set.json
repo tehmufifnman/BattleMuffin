@@ -1,0 +1,5 @@
+[
+  [
+    1060, "{\"id\":1060,\"name\":\"Deep Earth Vestments\",\"setBonuses\":[{\"description\":\"Reduces the mana cost of Healing Touch and Rejuvenation by 5%.\",\"threshold\":2},{\"description\":\"Your Rejuvenation and Regrowth spells have a 10% chance to Timeslip and have double the normal duration.\",\"threshold\":4}],\"items\":[76749,76750,76751,76752,76753]}"
+  ]
+]
