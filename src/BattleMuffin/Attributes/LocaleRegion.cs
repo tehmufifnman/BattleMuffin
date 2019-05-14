@@ -4,19 +4,19 @@ using BattleMuffin.Enums;
 namespace BattleMuffin.Attributes
 {
     /// <summary>
-    ///     Used to set a valid region for a locale.
+    ///     Attribute used to set a valid <see cref="Region" /> for a given <see cref="Locale" />.
     /// </summary>
     public class LocaleRegion : Attribute
     {
         /// <summary>
-        ///     Sets the region of the region.
+        ///     Sets the <see cref="Region" /> of the attribute.
         /// </summary>
-        public Region Region { get; set; }
+        public Region Region { get; }
 
         /// <summary>
-        ///     Sets a valid region for a locale.
+        ///     Sets a valid <see cref="Region" /> for a <see cref="Locale" />.
         /// </summary>
-        /// <param name="region">The selected region.</param>
+        /// <param name="region">The valid <see cref="Region" />.</param>
         public LocaleRegion(Region region)
         {
             Region = region;

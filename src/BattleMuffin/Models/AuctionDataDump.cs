@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction house snapshot, loaded from an auction file.
     /// </summary>
-    public class AuctionHouseSnapshot : IWarcraftModel
+    public class AuctionDataDump : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the realms with access to these auctions.

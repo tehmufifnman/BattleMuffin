@@ -15,7 +15,10 @@ using Newtonsoft.Json.Linq;
 
 namespace BattleMuffin.Clients
 {
-    public class Client : IClient
+    /// <summary>
+    ///     Base Blizzard API client extended by all game-specific clients.
+    /// </summary>
+    public class BaseClient
     {
         private readonly HttpClient _client;
         private readonly string _clientId;
@@ -28,19 +31,20 @@ namespace BattleMuffin.Clients
         private DateTime _tokenExpiration;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WarcraftClient" /> class.
+        ///     Initializes a new instance of the <see cref="BaseClient" /> class.
         /// </summary>
         /// <param name="clientId">The Blizzard OAuth client ID.</param>
         /// <param name="clientSecret">The Blizzard OAuth client secret.</param>
         /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
         /// <param name="locale">
         ///     Specifies the language that the result will be in. Visit
-        ///     https://dev.battle.net/docs/read/community_apis to see a list of available locales.
+        ///     https://develop.battle.net/documentation/guides/regionality-partitions-and-localization
+        ///     to see a list of available locales.
         /// </param>
-        /// <param name="client">The <see cref="HttpClient" /> that communicates with Blizzard.</param>
-        protected Client(string clientId, string clientSecret, Region region, Locale locale, HttpClient client)
+        /// <param name="client">HttpClient to use for all API requests.</param>
+        protected BaseClient(string clientId, string clientSecret, Region region, Locale locale, HttpClient? client)
         {
-            _client = client ?? throw new ArgumentNullException(nameof(client));
+            _client = client ?? InternalHttpClient.Instance;
             _clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
             _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
 
@@ -80,7 +84,8 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Retrieve an item of type <typeparamref name="T" /> from the Blizzard Community API.
+        ///     Retrieve an item of type <typeparamref name="T" /> from the Blizzard Community
+        ///     or Game Data API.
         /// </summary>
         /// <typeparam name="T">
         ///     The return type.
@@ -94,7 +99,7 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
         /// </returns>
-        public async Task<RequestResult<T>> Get<T>(string requestUri, string? arrayName = null) where T : class
+        protected async Task<RequestResult<T>> Get<T>(string requestUri, string? arrayName = null) where T : class
         {
             // Acquire a new OAuth token if we don't have one. Get a new one if it's expired.
             if (_token == null || DateTime.UtcNow >= _tokenExpiration)

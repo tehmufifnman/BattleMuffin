@@ -6,7 +6,7 @@ namespace BattleMuffin.Models
     /// <summary>
     ///     An auction file.
     /// </summary>
-    public class AuctionFileSummary : IWarcraftModel
+    public class AuctionDataFile : IWarcraftModel
     {
         /// <summary>
         ///     Gets or sets the URL for the JSON-formatted auction data file.

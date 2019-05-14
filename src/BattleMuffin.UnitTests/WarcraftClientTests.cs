@@ -21,21 +21,21 @@ namespace BattleMuffin.UnitTests
 
         [Theory]
         [JsonData("auction.json")]
-        public async void GetAuctionAsyncTest(string realm, string auctionResponse)
+        public async void GetAuctionAsyncTest(string realm, string auctionDataStatusResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/auction/data/{realm}?locale=en_US", auctionResponse);
+            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/auction/data/{realm}?locale=en_US", auctionDataStatusResponse);
 
-            var result = await warcraftClient.GetAuctionAsync(realm);
+            var result = await warcraftClient.GetAuctionDataStatusAsync(realm);
             Assert.NotNull(result.Value);
         }
 
         [Theory]
         [JsonData("auction_snapshot.json")]
-        public async void GetAuctionSnapshotAsyncTest(string auctionSnapshotUrl, string auctionSnapshotResponse)
+        public async void GetAuctionSnapshotAsyncTest(string auctionDataDumpUrl, string auctionDataDumpResponse)
         {
-            var warcraftClient = BuildMockClient(auctionSnapshotUrl, auctionSnapshotResponse);
+            var warcraftClient = BuildMockClient(auctionDataDumpUrl, auctionDataDumpResponse);
 
-            var result = await warcraftClient.GetAuctionHouseSnapshotAsync(auctionSnapshotUrl);
+            var result = await warcraftClient.GetAuctionHouseDataDumpAsync(auctionDataDumpUrl);
             Assert.NotNull(result.Value);
         }
 

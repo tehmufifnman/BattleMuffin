@@ -10,43 +10,30 @@ using BattleMuffin.Web;
 namespace BattleMuffin.Clients
 {
     /// <summary>
-    ///     A client for the World of Warcraft Community APIs.
+    ///     A client for the World of Warcraft Community & Game Data APIs.
     /// </summary>
-    public class WarcraftClient : Client, IWarcraftClient
+    public class WarcraftClient : BaseClient, IWarcraftClient
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="WarcraftClient" /> class.
         /// </summary>
         /// <param name="clientId">The Blizzard OAuth client ID.</param>
         /// <param name="clientSecret">The Blizzard OAuth client secret.</param>
-        /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
+        /// <param name="region">Specifies the <see cref="Region" /> that the API will retrieve its data from.</param>
         /// <param name="locale">
-        ///     Specifies the language that the result will be in. Visit
-        ///     https://dev.battle.net/docs/read/community_apis to see a list of available locales.
+        ///     Specifies the language that the result will be localized in. Visit
+        ///     https://develop.battle.net/documentation/guides/regionality-partitions-and-localization
+        ///     to see a list of available locales.
         /// </param>
-        public WarcraftClient(string clientId, string clientSecret, Region region = Region.US, Locale locale = Locale.en_US) : this(clientId, clientSecret, region, locale, InternalHttpClient.Instance)
+        /// <param name="client">The <see cref="HttpClient" /> to use for all API requests.</param>
+        public WarcraftClient(string clientId, string clientSecret, Region region = Region.US, Locale locale = Locale.en_US, HttpClient? client = null) : base(clientId, clientSecret, region, locale, client)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WarcraftClient" /> class.
+        ///     Returns data about an individual achievement.
         /// </summary>
-        /// <param name="clientId">The Blizzard OAuth client ID.</param>
-        /// <param name="clientSecret">The Blizzard OAuth client secret.</param>
-        /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
-        /// <param name="locale">
-        ///     Specifies the language that the result will be in. Visit
-        ///     https://dev.battle.net/docs/read/community_apis to see a list of available locales.
-        /// </param>
-        /// <param name="client">The <see cref="HttpClient" /> that communicates with Blizzard.</param>
-        public WarcraftClient(string clientId, string clientSecret, Region region, Locale locale, HttpClient client) : base(clientId, clientSecret, region, locale, client)
-        {
-        }
-
-        /// <summary>
-        ///     Get the specified achievement.
-        /// </summary>
-        /// <param name="id">The achievement ID.</param>
+        /// <param name="id">The ID of the achievement to retrieve.</param>
         /// <returns>
         ///     The specified achievement.
         /// </returns>
@@ -56,34 +43,39 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified auction.
+        ///     This API resource provides a per-realm list of recently generated auction house data dumps.
         /// </summary>
-        /// <param name="realm">The realm.</param>
+        /// <remarks>
+        ///     Auction APIs currently provide rolling batches of data about current auctions. Fetching auction dumps
+        ///     is a two-step process that involves checking a per-realm index file to determine if a recent dump has
+        ///     been generated and then fetching the most recently generated dump file (if necessary).
+        /// </remarks>
+        /// <param name="realm">The realm to request.</param>
         /// <returns>
-        ///     The specified auction.
+        ///     The specified auction house status.
         /// </returns>
-        public async Task<RequestResult<AuctionFiles>> GetAuctionAsync(string realm)
+        public async Task<RequestResult<AuctionDataStatus>> GetAuctionDataStatusAsync(string realm)
         {
-            return await Get<AuctionFiles>($"{Host}/wow/auction/data/{realm}?locale={Locale}");
+            return await Get<AuctionDataStatus>($"{Host}/wow/auction/data/{realm}?locale={Locale}");
         }
 
         /// <summary>
-        ///     Get the auction house snapshot from the specified file.
+        ///     Get the auction house data dump from the specified file.
         /// </summary>
-        /// <param name="url">The URL for the auction house file.</param>
+        /// <param name="url">The URL for the auction house data dump.</param>
         /// <returns>
-        ///     The auction house snapshot from the specified file.
+        ///     The auction house data dump from the specified file.
         /// </returns>
-        public async Task<RequestResult<AuctionHouseSnapshot>> GetAuctionHouseSnapshotAsync(string url)
+        public async Task<RequestResult<AuctionDataDump>> GetAuctionHouseDataDumpAsync(string url)
         {
-            return await Get<AuctionHouseSnapshot>(url);
+            return await Get<AuctionDataDump>(url);
         }
 
         /// <summary>
-        ///     Get a list of all supported battlegroups.
+        ///     Returns a list of battlegroups for the specified region.
         /// </summary>
         /// <returns>
-        ///     A list of all supported battlegroups.
+        ///     A list of battlegroups for the specified region.
         /// </returns>
         public async Task<RequestResult<IEnumerable<Battlegroup>>> GetBattlegroupsAsync()
         {
@@ -91,12 +83,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified boss.
-        /// </summary>
-        /// <remarks>
+        ///     The boss API provides information about bosses.
         ///     A "boss" in this context should be considered a boss encounter, which may include more than one NPC.
-        /// </remarks>
-        /// <param name="id">The boss ID.</param>
+        /// </summary>
+        /// <param name="id">The ID of the boss to retrieve.</param>
         /// <returns>
         ///     The specified boss.
         /// </returns>
@@ -106,11 +96,9 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all supported bosses.
-        /// </summary>
-        /// <remarks>
+        ///     Returns a list of all supported bosses.
         ///     A "boss" in this context should be considered a boss encounter, which may include more than one NPC.
-        /// </remarks>
+        /// </summary>
         /// <returns>
         ///     A list of all supported bosses.
         /// </returns>
@@ -120,10 +108,12 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the challenge mode data for the entire region.
+        ///     The region leaderboard has the exact same data format as the realm leaderboards except there is
+        ///     no realm field. Instead, the response has the top 100 results gathered for each map for all of the
+        ///     available realm leaderboards in a region.
         /// </summary>
         /// <returns>
-        ///     The challenge mode data for the entire region.
+        ///     The challenge mode leaderboard for the entire region.
         /// </returns>
         public async Task<RequestResult<IEnumerable<Challenge>>> GetChallengesAsync()
         {
@@ -131,11 +121,14 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the challenge mode data for the specified realm.
+        ///     The request returns data for all nine challenge mode maps (currently). The map field includes the
+        ///     current medal times for each dungeon. Each ladder provides data about each character that was part of
+        ///     each run. The character data includes the current cached specialization of the character while the
+        ///     member field includes the specialization of the character during the challenge mode run.
         /// </summary>
-        /// <param name="realm">The realm.</param>
+        /// <param name="realm">The realm to request.</param>
         /// <returns>
-        ///     The challenge mode data for the specified realm.
+        ///     The challenge mode leaderboard for the specified realm.
         /// </returns>
         public async Task<RequestResult<IEnumerable<Challenge>>> GetChallengesAsync(string realm)
         {
@@ -143,13 +136,24 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified character.
+        ///     The Character Profile API is the primary way to access character information. This API can be used to
+        ///     fetch a single character at a time through an HTTP GET request to a URL describing the character
+        ///     profile resource. By default, these requests return a basic dataset, and each request can return zero
+        ///     or more additional fields. To access this API, craft a resource URL pointing to the desired character
+        ///     for which to retrieve information.
         /// </summary>
-        /// <param name="realm">The realm.</param>
-        /// <param name="characterName">The character name.</param>
-        /// <param name="fields">The character fields to include.</param>
+        /// <param name="realm">
+        ///     The character's realm.
+        ///     Can be provided as the proper realm name or the normalized realm name.
+        /// </param>
+        /// <param name="characterName">The name of the character to retrieve.</param>
+        /// <param name="fields">
+        ///     The dataset to retrieve for the character. Each field value is explained in more detail in the
+        ///     following requests. If no fields are specified the API will only return basic data about the character.
+        ///     <seealso cref="CharacterFields" />
+        /// </param>
         /// <returns>
-        ///     The specified character.
+        ///     The specified character profile and additional data.
         /// </returns>
         /// >
         public async Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName, CharacterFields fields = CharacterFields.None)
@@ -159,10 +163,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all of the achievements that characters can earn as well as the category structure and hierarchy.
+        ///     Returns a list of all achievements that characters can earn as well as the category structure and hierarchy.
         /// </summary>
         /// <returns>
-        ///     A list of all of the achievements that characters can earn as well as the category structure and hierarchy.
+        ///     A list of all achievements that characters can earn as well as the category structure and hierarchy.
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetCharacterAchievementsAsync()
         {
@@ -170,10 +174,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all supported character classes.
+        ///     Returns a list of character classes.
         /// </summary>
         /// <returns>
-        ///     A list of all supported character classes.
+        ///     A list of character classes.
         /// </returns>
         public async Task<RequestResult<IEnumerable<CharacterClassData>>> GetCharacterClassesAsync()
         {
@@ -181,10 +185,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all supported character races.
+        ///     Returns a list of races and their associated faction, name, unique ID, and skin.
         /// </summary>
         /// <returns>
-        ///     A list of all supported character races.
+        ///     A list of races and their associated faction, name, unique ID, and skin.
         /// </returns>
         public async Task<RequestResult<IEnumerable<CharacterRace>>> GetCharacterRacesAsync()
         {
@@ -192,13 +196,22 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified guild.
+        ///     The guild profile API is the primary way to access guild information. This API can fetch a single
+        ///     guild at a time through an HTTP GET request to a URL describing the guild profile resource. By default,
+        ///     these requests return a basic dataset and each request can retrieve zero or more additional fields.
+        ///     Although this endpoint has no required query string parameters, requests can optionally pass the fields
+        ///     query string parameter to indicate that one or more of the optional datasets is to be retrieved.
+        ///     Those additional fields are listed in the method titled "Optional Fields".
         /// </summary>
-        /// <param name="realm">The realm.</param>
-        /// <param name="guildName">The guild name.</param>
-        /// <param name="fields">The guild fields to include.</param>
+        /// <param name="realm">The guild's realm.</param>
+        /// <param name="guildName">The name of the guild to query.</param>
+        /// <param name="fields">
+        ///     The optional data to retrieve about the guild. Each field value is explained in more detail in the
+        ///     following methods. If no fields are specified the API will only return basic guild data.
+        ///     <seealso cref="GuildFields" />
+        /// </param>
         /// <returns>
-        ///     The specified guild.
+        ///     The specified guild profile and additional data.
         /// </returns>
         public async Task<RequestResult<Guild>> GetGuildAsync(string realm, string guildName, GuildFields fields = GuildFields.None)
         {
@@ -207,10 +220,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all guild achievements.
+        ///     Returns a list of all guild achievements as well as the category structure and hierarchy.
         /// </summary>
         /// <returns>
-        ///     A list of all guild achievements.
+        ///     A list of all guild achievements as well as the category structure and hierarchy.
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetGuildAchievementsAsync()
         {
@@ -218,7 +231,7 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all guild perks.
+        ///     Returns a list of all guild perks.
         /// </summary>
         /// <returns>
         ///     A list of all guild perks.
@@ -229,7 +242,7 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all guild rewards.
+        ///     The guild rewards data API provides a list of all guild rewards.
         /// </summary>
         /// <returns>
         ///     A list of all guild rewards.
@@ -240,9 +253,9 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified item.
+        ///     The item API provides detailed item information, including item set information.
         /// </summary>
-        /// <param name="itemId">The item ID.</param>
+        /// <param name="itemId">The requested item's unique ID.</param>
         /// <returns>
         ///     The specified item.
         /// </returns>
@@ -252,10 +265,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all item classes.
+        ///     Returns a list of item classes.
         /// </summary>
         /// <returns>
-        ///     A list of all item classes.
+        ///     A list of item classes.
         /// </returns>
         public async Task<RequestResult<IEnumerable<ItemClass>>> GetItemClassesAsync()
         {
@@ -263,9 +276,9 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified item set.
+        ///     The item API provides detailed item information, including item set information.
         /// </summary>
-        /// <param name="itemSetId">The item set ID.</param>
+        /// <param name="itemSetId">The requested set's unique ID.</param>
         /// <returns>
         ///     The specified item set.
         /// </returns>
@@ -286,10 +299,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all supported pets.
+        ///     Returns a list of all supported battle and vanity pets.
         /// </summary>
         /// <returns>
-        ///     A list of all supported pets.
+        ///     A list of all supported battle and vanity pets.
         /// </returns>
         public async Task<RequestResult<IEnumerable<Pet>>> GetPetsAsync()
         {
@@ -297,9 +310,9 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified pet ability.
+        ///     Returns data about a individual battle pet ability ID. This resource does not provide ability tooltips.
         /// </summary>
-        /// <param name="abilityId">The pet ability ID.</param>
+        /// <param name="abilityId">The ID of the ability to retrieve.</param>
         /// <returns>
         ///     The specified pet ability.
         /// </returns>
@@ -309,9 +322,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified pet species.
+        ///     Returns data about an individual pet species. Use pets as the field value in a character profile
+        ///     request to get species IDs. Each species also has data about its six abilities.
         /// </summary>
-        /// <param name="speciesId">The pet species ID.</param>
+        /// <param name="speciesId">The species for which to retrieve data.</param>
         /// <returns>
         ///     The specified pet species.
         /// </returns>
@@ -321,12 +335,24 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the pet stats for the specified pet species, level, breed, and quality.
+        ///     Returns detailed information about a given species of pet.
         /// </summary>
-        /// <param name="speciesId">The pet species ID.</param>
-        /// <param name="level">The pet level.</param>
-        /// <param name="breedId">The breed ID.</param>
-        /// <param name="quality">The quality.</param>
+        /// <param name="speciesId">
+        ///     The pet's species ID. This can be found by querying a user's list of pets via the
+        ///     Character Profile API.
+        /// </param>
+        /// <param name="level">
+        ///     The pet's level. Pet levels max out at 25. If omitted,
+        ///     the API assumes a default value of 1.
+        /// </param>
+        /// <param name="breedId">
+        ///     The pet's breed. Retrievable via the Character Profile API.
+        ///     If omitted the API assumes a default value of 3.
+        /// </param>
+        /// <param name="quality">
+        ///     The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5
+        ///     (0 is poor quality and 5 is legendary). If omitted, the API will assume a default value of 1.
+        /// </param>
         /// <returns>
         ///     The pet stats for the specified pet species, level, breed, and quality.
         /// </returns>
@@ -336,10 +362,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all pet types.
+        ///     Returns a list of the different battle pet types, including what they are strong and weak against.
         /// </summary>
         /// <returns>
-        ///     A list of all pet types.
+        ///     A list of the different battle pet types, including what they are strong and weak against.
         /// </returns>
         public async Task<RequestResult<IEnumerable<PetType>>> GetPetTypesAsync()
         {
@@ -347,11 +373,12 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the PvP leaderboard for the specified bracket.
+        ///     The Leaderboard API endpoint provides leaderboard information for the 2v2, 3v3, 5v5,
+        ///     and Rated Battleground leaderboards.
         /// </summary>
-        /// <param name="bracket">The PvP leaderboard bracket.  Valid entries are 2v2, 3v3, 5v5, and rbg.</param>
+        /// <param name="bracket">The type of leaderboard to retrieve. Valid entries are 2v2, 3v3, 5v5, and rbg.</param>
         /// <returns>
-        ///     The PvP leaderboard for the specified bracket.
+        ///     The specified PvP leaderboard.
         /// </returns>
         public async Task<RequestResult<PvpLeaderboard>> GetPvpLeaderboardAsync(string bracket)
         {
@@ -359,11 +386,11 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified quest.
+        ///     Returns metadata for a specified quest.
         /// </summary>
-        /// <param name="questId">The quest ID.</param>
+        /// <param name="questId">The ID of the quest to retrieve.</param>
         /// <returns>
-        ///     The specified quest.
+        ///     Metadata for a specified quest.
         /// </returns>
         public async Task<RequestResult<Quest>> GetQuestAsync(int questId)
         {
@@ -371,7 +398,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the statuses for all realms.
+        ///     The realm status API allows developers to retrieve realm status information. This information is
+        ///     limited to whether or not the realm is up, the type and state of the realm, and the current population.
+        ///     Although this endpoint has no required query string parameters, use the optional realms parameter to
+        ///     limit the realms returned to a specific set of realms.
         /// </summary>
         /// <returns>
         ///     The statuses for all realms.
@@ -382,11 +412,11 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified recipe.
+        ///     Returns basic recipe information.
         /// </summary>
-        /// <param name="recipeId">The recipe ID.</param>
+        /// <param name="recipeId">Unique ID for the desired recipe.</param>
         /// <returns>
-        ///     The specified recipe.
+        ///     The specified recipe information.
         /// </returns>
         public async Task<RequestResult<Recipe>> GetRecipeAsync(int recipeId)
         {
@@ -394,11 +424,11 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified spell.
+        ///     Returns information about spells.
         /// </summary>
-        /// <param name="spellId">The spell ID.</param>
+        /// <param name="spellId">The ID of the spell to retrieve.</param>
         /// <returns>
-        ///     The specified spell.
+        ///     The specified spell information.
         /// </returns>
         public async Task<RequestResult<Spell>> GetSpellAsync(int spellId)
         {
@@ -406,10 +436,10 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a dictionary of talents, indexed by character class.
+        ///     Returns a list of talents, specs, and glyphs for each class.
         /// </summary>
         /// <returns>
-        ///     A dictionary of talents, indexed by character class.
+        ///     A list of talents, specs, and glyphs for each class.
         /// </returns>
         public async Task<RequestResult<IDictionary<CharacterClass, TalentSet>>> GetTalentsAsync()
         {
@@ -417,11 +447,11 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get the specified zone.
+        ///     Returns information about zones.
         /// </summary>
-        /// <param name="zoneId">The zone ID.</param>
+        /// <param name="zoneId">The ID of the zone to retrieve.</param>
         /// <returns>
-        ///     The specified zone.
+        ///     The specified zone information.
         /// </returns>
         public async Task<RequestResult<Zone>> GetZoneAsync(int zoneId)
         {
@@ -429,10 +459,12 @@ namespace BattleMuffin.Clients
         }
 
         /// <summary>
-        ///     Get a list of all supported zones.
+        ///     Returns a list of all supported zones and their bosses. A "zone" in this context should be considered
+        ///     a dungeon or a raid, not a world zone. A "boss" in this context should be considered a boss encounter,
+        ///     which may include more than one NPC.
         /// </summary>
         /// <returns>
-        ///     A list of all supported zones.
+        ///     A list of all supported zones and their bosses.
         /// </returns>
         public async Task<RequestResult<IEnumerable<Zone>>> GetZonesAsync()
         {

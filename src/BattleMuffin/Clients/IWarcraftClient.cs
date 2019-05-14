@@ -7,7 +7,7 @@ using BattleMuffin.Web;
 namespace BattleMuffin.Clients
 {
     /// <summary>
-    ///     A client for the World of Warcraft Community APIs.
+    ///     A client for the World of Warcraft Community & Game Data APIs.
     /// </summary>
     public interface IWarcraftClient
     {
@@ -27,7 +27,7 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The specified auction.
         /// </returns>
-        Task<RequestResult<AuctionFiles>> GetAuctionAsync(string realm);
+        Task<RequestResult<AuctionDataStatus>> GetAuctionDataStatusAsync(string realm);
 
         /// <summary>
         ///     Get the auction house snapshot from the specified file.
@@ -36,7 +36,7 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The auction house snapshot from the specified file.
         /// </returns>
-        Task<RequestResult<AuctionHouseSnapshot>> GetAuctionHouseSnapshotAsync(string url);
+        Task<RequestResult<AuctionDataDump>> GetAuctionHouseDataDumpAsync(string url);
 
         /// <summary>
         ///     Get a list of all supported battlegroups.

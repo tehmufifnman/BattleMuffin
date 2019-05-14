@@ -39,7 +39,7 @@ namespace BattleMuffin.IntegrationTests
         [JsonData("auction.json")]
         public async void GetAuctionAsyncTest(string realm)
         {
-            var result = await Client.GetAuctionAsync(realm);
+            var result = await Client.GetAuctionDataStatusAsync(realm);
             Assert.NotNull(result.Value);
         }
 
@@ -47,7 +47,7 @@ namespace BattleMuffin.IntegrationTests
         [JsonData("auction_snapshot.json")]
         public async void GetAuctionHouseSnapshotAsyncTest(string auctionSnapshotUrl)
         {
-            var result = await Client.GetAuctionHouseSnapshotAsync(auctionSnapshotUrl);
+            var result = await Client.GetAuctionHouseDataDumpAsync(auctionSnapshotUrl);
             Assert.NotNull(result.Value);
         }
 
