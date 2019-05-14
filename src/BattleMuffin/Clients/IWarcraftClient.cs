@@ -290,15 +290,6 @@ namespace BattleMuffin.Clients
         Task<RequestResult<IDictionary<CharacterClass, TalentSet>>> GetTalentsAsync();
 
         /// <summary>
-        ///     Get user account details.
-        /// </summary>
-        /// <param name="accessToken">An OAuth access token for the user.</param>
-        /// <returns>
-        ///     User account details.
-        /// </returns>
-        Task<RequestResult<UserAccount>> GetUserAsync(string accessToken);
-
-        /// <summary>
         ///     Get the specified zone.
         /// </summary>
         /// <param name="zoneId">The zone ID.</param>

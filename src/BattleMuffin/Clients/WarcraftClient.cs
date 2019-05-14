@@ -1,35 +1,19 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using BattleMuffin.Enums;
 using BattleMuffin.Extensions;
 using BattleMuffin.Models;
 using BattleMuffin.Web;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace BattleMuffin.Clients
 {
     /// <summary>
     ///     A client for the World of Warcraft Community APIs.
     /// </summary>
-    public class WarcraftClient : IWarcraftClient
+    public class WarcraftClient : Client, IWarcraftClient
     {
-        private readonly HttpClient _client;
-        private readonly string _clientId;
-        private readonly string _clientSecret;
-        private readonly string _host;
-        private readonly Locale _locale;
-        private readonly Region _region;
-
-        private OAuthAccessToken? _token;
-        private DateTime _tokenExpiration;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="WarcraftClient" /> class.
         /// </summary>
@@ -55,20 +39,8 @@ namespace BattleMuffin.Clients
         ///     https://dev.battle.net/docs/read/community_apis to see a list of available locales.
         /// </param>
         /// <param name="client">The <see cref="HttpClient" /> that communicates with Blizzard.</param>
-        public WarcraftClient(string clientId, string clientSecret, Region region, Locale locale, HttpClient client)
+        public WarcraftClient(string clientId, string clientSecret, Region region, Locale locale, HttpClient client) : base(clientId, clientSecret, region, locale, client)
         {
-            _client = client ?? throw new ArgumentNullException(nameof(client));
-            _clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-            _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-
-            if (!locale.ValidateRegionLocale(region))
-            {
-                throw new ArgumentException("The locale selected is not supported by the selected region.");
-            }
-
-            _region = region;
-            _locale = locale;
-            _host = GetHost(region);
         }
 
         /// <summary>
@@ -80,7 +52,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Achievement>> GetAchievementAsync(int id)
         {
-            return await Get<Achievement>($"{_host}/wow/achievement/{id}?locale={_locale}");
+            return await Get<Achievement>($"{Host}/wow/achievement/{id}?locale={Locale}");
         }
 
         /// <summary>
@@ -92,7 +64,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<AuctionFiles>> GetAuctionAsync(string realm)
         {
-            return await Get<AuctionFiles>($"{_host}/wow/auction/data/{realm}?locale={_locale}");
+            return await Get<AuctionFiles>($"{Host}/wow/auction/data/{realm}?locale={Locale}");
         }
 
         /// <summary>
@@ -115,7 +87,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Battlegroup>>> GetBattlegroupsAsync()
         {
-            return await Get<IEnumerable<Battlegroup>>($"{_host}/wow/data/battlegroups/?locale={_locale}", "battlegroups");
+            return await Get<IEnumerable<Battlegroup>>($"{Host}/wow/data/battlegroups/?locale={Locale}", "battlegroups");
         }
 
         /// <summary>
@@ -130,7 +102,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Boss>> GetBossAsync(int id)
         {
-            return await Get<Boss>($"{_host}/wow/boss/{id}?locale={_locale}");
+            return await Get<Boss>($"{Host}/wow/boss/{id}?locale={Locale}");
         }
 
         /// <summary>
@@ -144,7 +116,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Boss>>> GetBossesAsync()
         {
-            return await Get<IEnumerable<Boss>>($"{_host}/wow/boss/?locale={_locale}", "bosses");
+            return await Get<IEnumerable<Boss>>($"{Host}/wow/boss/?locale={Locale}", "bosses");
         }
 
         /// <summary>
@@ -155,7 +127,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Challenge>>> GetChallengesAsync()
         {
-            return await Get<IEnumerable<Challenge>>($"{_host}/wow/challenge/region?locale={_locale}", "challenge");
+            return await Get<IEnumerable<Challenge>>($"{Host}/wow/challenge/region?locale={Locale}", "challenge");
         }
 
         /// <summary>
@@ -167,7 +139,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Challenge>>> GetChallengesAsync(string realm)
         {
-            return await Get<IEnumerable<Challenge>>($"{_host}/wow/challenge/{realm}?locale={_locale}", "challenge");
+            return await Get<IEnumerable<Challenge>>($"{Host}/wow/challenge/{realm}?locale={Locale}", "challenge");
         }
 
         /// <summary>
@@ -183,7 +155,7 @@ namespace BattleMuffin.Clients
         public async Task<RequestResult<Character>> GetCharacterAsync(string realm, string characterName, CharacterFields fields = CharacterFields.None)
         {
             var queryStringFields = fields.BuildQueryString();
-            return await Get<Character>($"{_host}/wow/character/{realm}/{characterName}?&locale={_locale}{queryStringFields}");
+            return await Get<Character>($"{Host}/wow/character/{realm}/{characterName}?&locale={Locale}{queryStringFields}");
         }
 
         /// <summary>
@@ -194,7 +166,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetCharacterAchievementsAsync()
         {
-            return await Get<IEnumerable<AchievementCategory>>($"{_host}/wow/data/character/achievements?locale={_locale}", "achievements");
+            return await Get<IEnumerable<AchievementCategory>>($"{Host}/wow/data/character/achievements?locale={Locale}", "achievements");
         }
 
         /// <summary>
@@ -205,7 +177,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<CharacterClassData>>> GetCharacterClassesAsync()
         {
-            return await Get<IEnumerable<CharacterClassData>>($"{_host}/wow/data/character/classes?locale={_locale}", "classes");
+            return await Get<IEnumerable<CharacterClassData>>($"{Host}/wow/data/character/classes?locale={Locale}", "classes");
         }
 
         /// <summary>
@@ -216,7 +188,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<CharacterRace>>> GetCharacterRacesAsync()
         {
-            return await Get<IEnumerable<CharacterRace>>($"{_host}/wow/data/character/races?locale={_locale}", "races");
+            return await Get<IEnumerable<CharacterRace>>($"{Host}/wow/data/character/races?locale={Locale}", "races");
         }
 
         /// <summary>
@@ -231,7 +203,7 @@ namespace BattleMuffin.Clients
         public async Task<RequestResult<Guild>> GetGuildAsync(string realm, string guildName, GuildFields fields = GuildFields.None)
         {
             var queryStringFields = fields.BuildQueryString();
-            return await Get<Guild>($"{_host}/wow/guild/{realm}/{Uri.EscapeUriString(guildName)}?locale={_locale}{queryStringFields}");
+            return await Get<Guild>($"{Host}/wow/guild/{realm}/{Uri.EscapeUriString(guildName)}?locale={Locale}{queryStringFields}");
         }
 
         /// <summary>
@@ -242,7 +214,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<AchievementCategory>>> GetGuildAchievementsAsync()
         {
-            return await Get<IEnumerable<AchievementCategory>>($"{_host}/wow/data/guild/achievements?locale={_locale}", "achievements");
+            return await Get<IEnumerable<AchievementCategory>>($"{Host}/wow/data/guild/achievements?locale={Locale}", "achievements");
         }
 
         /// <summary>
@@ -253,7 +225,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Perk>>> GetGuildPerksAsync()
         {
-            return await Get<IEnumerable<Perk>>($"{_host}/wow/data/guild/perks?locale={_locale}", "perks");
+            return await Get<IEnumerable<Perk>>($"{Host}/wow/data/guild/perks?locale={Locale}", "perks");
         }
 
         /// <summary>
@@ -264,7 +236,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Reward>>> GetGuildRewardsAsync()
         {
-            return await Get<IEnumerable<Reward>>($"{_host}/wow/data/guild/rewards?locale={_locale}", "rewards");
+            return await Get<IEnumerable<Reward>>($"{Host}/wow/data/guild/rewards?locale={Locale}", "rewards");
         }
 
         /// <summary>
@@ -276,7 +248,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Item>> GetItemAsync(int itemId)
         {
-            return await Get<Item>($"{_host}/wow/item/{itemId}?locale={_locale}");
+            return await Get<Item>($"{Host}/wow/item/{itemId}?locale={Locale}");
         }
 
         /// <summary>
@@ -287,7 +259,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<ItemClass>>> GetItemClassesAsync()
         {
-            return await Get<IEnumerable<ItemClass>>($"{_host}/wow/data/item/classes?locale={_locale}", "classes");
+            return await Get<IEnumerable<ItemClass>>($"{Host}/wow/data/item/classes?locale={Locale}", "classes");
         }
 
         /// <summary>
@@ -299,7 +271,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<ItemSet>> GetItemSetAsync(int itemSetId)
         {
-            return await Get<ItemSet>($"{_host}/wow/item/set/{itemSetId}?locale={_locale}");
+            return await Get<ItemSet>($"{Host}/wow/item/set/{itemSetId}?locale={Locale}");
         }
 
         /// <summary>
@@ -310,7 +282,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Mount>>> GetMountsAsync()
         {
-            return await Get<IEnumerable<Mount>>($"{_host}/wow/mount/?locale={_locale}", "mounts");
+            return await Get<IEnumerable<Mount>>($"{Host}/wow/mount/?locale={Locale}", "mounts");
         }
 
         /// <summary>
@@ -321,7 +293,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Pet>>> GetPetsAsync()
         {
-            return await Get<IEnumerable<Pet>>($"{_host}/wow/pet/?locale={_locale}", "pets");
+            return await Get<IEnumerable<Pet>>($"{Host}/wow/pet/?locale={Locale}", "pets");
         }
 
         /// <summary>
@@ -333,7 +305,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<PetAbility>> GetPetAbilityAsync(int abilityId)
         {
-            return await Get<PetAbility>($"{_host}/wow/pet/ability/{abilityId}?locale={_locale}");
+            return await Get<PetAbility>($"{Host}/wow/pet/ability/{abilityId}?locale={Locale}");
         }
 
         /// <summary>
@@ -345,7 +317,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<PetSpecies>> GetPetSpeciesAsync(int speciesId)
         {
-            return await Get<PetSpecies>($"{_host}/wow/pet/species/{speciesId}?locale={_locale}");
+            return await Get<PetSpecies>($"{Host}/wow/pet/species/{speciesId}?locale={Locale}");
         }
 
         /// <summary>
@@ -360,7 +332,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<PetStats>> GetPetStatsAsync(int speciesId, int level, int breedId, BattlePetQuality quality)
         {
-            return await Get<PetStats>($"{_host}/wow/pet/stats/{speciesId}?level={level}&breedId={breedId}&qualityId={quality:D}&locale={_locale}");
+            return await Get<PetStats>($"{Host}/wow/pet/stats/{speciesId}?level={level}&breedId={breedId}&qualityId={quality:D}&locale={Locale}");
         }
 
         /// <summary>
@@ -371,7 +343,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<PetType>>> GetPetTypesAsync()
         {
-            return await Get<IEnumerable<PetType>>($"{_host}/wow/data/pet/types?locale={_locale}", "petTypes");
+            return await Get<IEnumerable<PetType>>($"{Host}/wow/data/pet/types?locale={Locale}", "petTypes");
         }
 
         /// <summary>
@@ -383,7 +355,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<PvpLeaderboard>> GetPvpLeaderboardAsync(string bracket)
         {
-            return await Get<PvpLeaderboard>($"{_host}/wow/leaderboard/{bracket}?locale={_locale}");
+            return await Get<PvpLeaderboard>($"{Host}/wow/leaderboard/{bracket}?locale={Locale}");
         }
 
         /// <summary>
@@ -395,7 +367,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Quest>> GetQuestAsync(int questId)
         {
-            return await Get<Quest>($"{_host}/wow/quest/{questId}?locale={_locale}");
+            return await Get<Quest>($"{Host}/wow/quest/{questId}?locale={Locale}");
         }
 
         /// <summary>
@@ -406,7 +378,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Realm>>> GetRealmStatusAsync()
         {
-            return await Get<IEnumerable<Realm>>($"{_host}/wow/realm/status?locale={_locale}", "realms");
+            return await Get<IEnumerable<Realm>>($"{Host}/wow/realm/status?locale={Locale}", "realms");
         }
 
         /// <summary>
@@ -418,7 +390,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Recipe>> GetRecipeAsync(int recipeId)
         {
-            return await Get<Recipe>($"{_host}/wow/recipe/{recipeId}?locale={_locale}");
+            return await Get<Recipe>($"{Host}/wow/recipe/{recipeId}?locale={Locale}");
         }
 
         /// <summary>
@@ -430,7 +402,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Spell>> GetSpellAsync(int spellId)
         {
-            return await Get<Spell>($"{_host}/wow/spell/{spellId}?locale={_locale}");
+            return await Get<Spell>($"{Host}/wow/spell/{spellId}?locale={Locale}");
         }
 
         /// <summary>
@@ -441,19 +413,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IDictionary<CharacterClass, TalentSet>>> GetTalentsAsync()
         {
-            return await Get<IDictionary<CharacterClass, TalentSet>>($"{_host}/wow/data/talents?locale={_locale}");
-        }
-
-        /// <summary>
-        ///     Get user account details.
-        /// </summary>
-        /// <param name="accessToken">An OAuth access token for the user.</param>
-        /// <returns>
-        ///     User account details.
-        /// </returns>
-        public async Task<RequestResult<UserAccount>> GetUserAsync(string accessToken)
-        {
-            return await Get<UserAccount>($"{_host}/account/user?access_token={accessToken}");
+            return await Get<IDictionary<CharacterClass, TalentSet>>($"{Host}/wow/data/talents?locale={Locale}");
         }
 
         /// <summary>
@@ -465,7 +425,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<Zone>> GetZoneAsync(int zoneId)
         {
-            return await Get<Zone>($"{_host}/wow/zone/{zoneId}?locale={_locale}");
+            return await Get<Zone>($"{Host}/wow/zone/{zoneId}?locale={Locale}");
         }
 
         /// <summary>
@@ -476,172 +436,7 @@ namespace BattleMuffin.Clients
         /// </returns>
         public async Task<RequestResult<IEnumerable<Zone>>> GetZonesAsync()
         {
-            return await Get<IEnumerable<Zone>>($"{_host}/wow/zone/?locale={_locale}", "zones");
-        }
-
-        private static async Task<string?> StreamToStringAsync(Stream stream)
-        {
-            if (stream == null)
-            {
-                return null;
-            }
-
-            using var sr = new StreamReader(stream);
-            var content = await sr.ReadToEndAsync();
-            return content;
-        }
-
-        /// <summary>
-        ///     Retrieve an item of type <typeparamref name="T" /> from the Blizzard Community API.
-        /// </summary>
-        /// <typeparam name="T">
-        ///     The return type.
-        /// </typeparam>
-        /// <param name="requestUri">
-        ///     The URI the request is sent to.
-        /// </param>
-        /// <param name="arrayName">
-        ///     The name of the array to deserialize. This is used to avoid using a root object for JSON arrays.
-        /// </param>
-        /// <returns>
-        ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
-        /// </returns>
-        private async Task<RequestResult<T>> Get<T>(string requestUri, string? arrayName = null) where T : class
-        {
-            // Acquire a new OAuth token if we don't have one. Get a new one if it's expired.
-            if (_token == null || DateTime.UtcNow >= _tokenExpiration)
-            {
-                _token = await GetOAuthToken().ConfigureAwait(false);
-                _tokenExpiration = DateTime.UtcNow.AddSeconds(_token.ExpiresIn).AddSeconds(-30);
-            }
-
-            // Add an authentication header with the token.
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token.AccessToken);
-
-            // Retrieve the response.
-            var tokenSource = new CancellationTokenSource();
-            var token = tokenSource.Token;
-            using var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(false);
-
-            if (response.Content != null)
-            {
-                var stream = await response.Content.ReadAsStreamAsync();
-                var json = await StreamToStringAsync(stream);
-
-                if (!response.IsSuccessStatusCode || string.IsNullOrEmpty(json))
-                {
-                    var requestError = JsonConvert.DeserializeObject<RequestError>(json);
-                    return requestError;
-                }
-
-                try
-                {
-                    if (arrayName != null)
-                    {
-                        json = JObject.Parse(json).SelectToken(arrayName).ToString();
-                    }
-
-                    RequestResult<T> requestResult = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
-                    {
-                        ContractResolver = new WarcraftClientContractResolver(),
-                        MissingMemberHandling = MissingMemberHandling.Error
-                    });
-
-                    return requestResult;
-                }
-                catch (JsonReaderException ex)
-                {
-                    var requestError = new RequestError
-                    {
-                        Code = string.Empty,
-                        Detail = ex.Message,
-                        Type = typeof(JsonReaderException).ToString()
-                    };
-                    return new RequestResult<T>(requestError);
-                }
-            }
-
-            // If not then it is most likely a problem on our end due to an HTTP error.
-            var message = $"Response code {(int)response.StatusCode} ({response.ReasonPhrase}) does not indicate success. Request: {requestUri}";
-            throw new HttpRequestException(message);
-        }
-
-        /// <summary>
-        ///     Get an OAuth token.
-        /// </summary>
-        /// <returns>
-        ///     An OAuth token.
-        /// </returns>
-        private async Task<OAuthAccessToken> GetOAuthToken()
-        {
-            var credentials = $"{_clientId}:{_clientSecret}";
-            var oauthHost = GetOAuthHost(_region);
-
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(credentials)));
-
-            var requestBody = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("grant_type", "client_credentials")
-            });
-
-            var request = await _client.PostAsync($"{oauthHost}/oauth/token", requestBody);
-            var response = await request.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<OAuthAccessToken>(response);
-        }
-
-        /// <summary>
-        ///     Get the host for the specified region.
-        /// </summary>
-        /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
-        /// <returns>
-        ///     The host for the specified region.
-        /// </returns>
-        private static string GetHost(Region region)
-        {
-            switch (region)
-            {
-                case Region.China:
-                    return "https://cn.api.blizzard.com";
-                case Region.Europe:
-                    return "https://eu.api.blizzard.com";
-                case Region.Korea:
-                    return "https://kr.api.blizzard.com";
-                case Region.Taiwan:
-                    return "https://tw.api.blizzard.com";
-                case Region.US:
-                    return "https://us.api.blizzard.com";
-                default:
-                    return "https://us.api.blizzard.com";
-            }
-        }
-
-        /// <summary>
-        ///     Get the OAuth host for the specified region.
-        /// </summary>
-        /// <param name="region">Specifies the region for which an OAuth token will be acquired.</param>
-        /// <returns>
-        ///     The OAuth host for the specified region.
-        /// </returns>
-        private static string GetOAuthHost(Region region)
-        {
-            switch (region)
-            {
-                case Region.China:
-                    return "https://cn.battle.net";
-                case Region.Europe:
-                    return "https://eu.battle.net";
-                case Region.Korea:
-                    return "https://kr.battle.net";
-                case Region.Taiwan:
-                    return "https://tw.battle.net";
-                case Region.US:
-                    return "https://us.battle.net";
-                default:
-                    return "https://us.battle.net";
-            }
+            return await Get<IEnumerable<Zone>>($"{Host}/wow/zone/?locale={Locale}", "zones");
         }
     }
 }
