@@ -165,7 +165,7 @@ namespace BattleMuffin.UnitTests
         {
             var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/pet/stats/{petSpeciesId}?level={level}&breedId={breedId}&qualityId={quality}&locale=en_US", petStatsResponse);
 
-            var result = await warcraftClient.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality)quality);
+            var result = await warcraftClient.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality) quality);
             Assert.NotNull(result.Value);
         }
 
@@ -193,7 +193,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("realm_status.json")]
         public async void GetRealmStatusAsyncTest(string realmStatusResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/realm/status?locale=en_US", realmStatusResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/realm/status?locale=en_US", realmStatusResponse);
 
             var result = await warcraftClient.GetRealmStatusAsync();
             Assert.NotNull(result.Value);
@@ -223,7 +223,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("zones.json")]
         public async void GetZonesAsyncTest(string zonesResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/zone/?locale=en_US", zonesResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/zone/?locale=en_US", zonesResponse);
 
             var result = await warcraftClient.GetZonesAsync();
             Assert.NotNull(result.Value);
@@ -243,7 +243,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("battlegroups.json")]
         public async void GetBattlegroupsAsyncTest(string battlegroupsResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/battlegroups/?locale=en_US", battlegroupsResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/battlegroups/?locale=en_US", battlegroupsResponse);
 
             var result = await warcraftClient.GetBattlegroupsAsync();
             Assert.NotNull(result.Value);
@@ -253,7 +253,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("character_races.json")]
         public async void GetCharacterRacesAsyncTest(string characterRacesResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/character/races", characterRacesResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/character/races", characterRacesResponse);
 
             var result = await warcraftClient.GetCharacterRacesAsync();
             Assert.NotNull(result.Value);
@@ -263,7 +263,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("character_classes.json")]
         public async void GetCharacterClassesAsyncTest(string characterClassesResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/character/classes?locale=en_US", characterClassesResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/character/classes?locale=en_US", characterClassesResponse);
 
             var result = await warcraftClient.GetCharacterClassesAsync();
             Assert.NotNull(result.Value);
@@ -273,7 +273,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("character_achievements.json")]
         public async void GetCharacterAchievementsAsyncTest(string characterAchievementsResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/character/achievements?locale=en_US", characterAchievementsResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/character/achievements?locale=en_US", characterAchievementsResponse);
 
             var result = await warcraftClient.GetCharacterAchievementsAsync();
             Assert.NotNull(result.Value);
@@ -283,7 +283,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("guild_rewards.json")]
         public async void GetGuildRewardsAsyncTest(string guildRewardsResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/guild/rewards?locale=en_US", guildRewardsResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/guild/rewards?locale=en_US", guildRewardsResponse);
 
             var result = await warcraftClient.GetGuildRewardsAsync();
             Assert.NotNull(result.Value);
@@ -293,7 +293,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("guild_perks.json")]
         public async void GetGuildPerksAsyncTest(string guildPerksResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/guild/perks?locale=en_US", guildPerksResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/guild/perks?locale=en_US", guildPerksResponse);
 
             var result = await warcraftClient.GetGuildPerksAsync();
             Assert.NotNull(result.Value);
@@ -303,7 +303,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("guild_achievements.json")]
         public async void GetGuildAchievementsAsyncTest(string guildAchievementsResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/guild/achievements?locale=en_US", guildAchievementsResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/guild/achievements?locale=en_US", guildAchievementsResponse);
 
             var result = await warcraftClient.GetGuildAchievementsAsync();
             Assert.NotNull(result.Value);
@@ -313,7 +313,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("item_classes.json")]
         public async void GetItemClassesAsyncTest(string itemClassesResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/item/classes?locale=en_US", itemClassesResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/item/classes?locale=en_US", itemClassesResponse);
 
             var result = await warcraftClient.GetItemClassesAsync();
             Assert.NotNull(result.Value);
@@ -323,7 +323,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("talents.json")]
         public async void GetTalentsAsyncTest(string talentsResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/talents?locale=en_US", talentsResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/talents?locale=en_US", talentsResponse);
 
             var result = await warcraftClient.GetTalentsAsync();
             Assert.NotNull(result.Value);
@@ -333,7 +333,7 @@ namespace BattleMuffin.UnitTests
         [JsonData("pet_types.json")]
         public async void GetPetTypesAsyncTest(string petTypesResponse)
         {
-            var warcraftClient = BuildMockClient($"https://us.api.blizzard.com/wow/data/pet/types?locale=en_US", petTypesResponse);
+            var warcraftClient = BuildMockClient("https://us.api.blizzard.com/wow/data/pet/types?locale=en_US", petTypesResponse);
 
             var result = await warcraftClient.GetPetTypesAsync();
             Assert.NotNull(result.Value);
