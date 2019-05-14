@@ -112,17 +112,14 @@ namespace BattleMuffin.Clients
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token.AccessToken);
 
             // Retrieve the response.
-            var tokenSource = new CancellationTokenSource();
-            var token = tokenSource.Token;
-            using var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseContentRead, token).ConfigureAwait(false);
+            using var response = await _client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
-            if (response.Content != null)
+            if (response.IsSuccessStatusCode && response.Content != null)
             {
                 var stream = await response.Content.ReadAsStreamAsync();
                 var json = await StreamToStringAsync(stream);
 
-                if (!response.IsSuccessStatusCode || string.IsNullOrEmpty(json))
+                if (string.IsNullOrEmpty(json))
                 {
                     var requestError = JsonConvert.DeserializeObject<RequestError>(json);
                     return requestError;
