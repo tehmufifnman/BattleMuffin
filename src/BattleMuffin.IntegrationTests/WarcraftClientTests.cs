@@ -99,34 +99,6 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetBossesAsyncTest()
-        {
-            var result = await Client.GetBossesAsync();
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetChallengesRegionAsyncTest()
-        {
-            var result = await Client.GetChallengesAsync();
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetMountsAsyncTest()
-        {
-            var result = await Client.GetMountsAsync();
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetPetsAsyncTest()
-        {
-            var result = await Client.GetPetsAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("pet_abilities.json")]
         public async void GetPetAbilityAsyncTest(int petAbilityId)
@@ -147,7 +119,7 @@ namespace BattleMuffin.IntegrationTests
         [JsonData("pet_stats.json")]
         public async void GetPetStatsAsyncTest(int petSpeciesId, int level, int breedId, int quality)
         {
-            var result = await Client.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality)quality);
+            var result = await Client.GetPetStatsAsync(petSpeciesId, level, breedId, (BattlePetQuality) quality);
             Assert.NotNull(result.Value);
         }
 
@@ -167,13 +139,6 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetRealmStatusAsyncTest()
-        {
-            var result = await Client.GetRealmStatusAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("recipe.json")]
         public async void GetRecipeAsyncTest(int recipeId)
@@ -187,13 +152,6 @@ namespace BattleMuffin.IntegrationTests
         public async void GetSpellAsyncTest(int spellId)
         {
             var result = await Client.GetSpellAsync(spellId);
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetZonesAsyncTest()
-        {
-            var result = await Client.GetZonesAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -213,16 +171,16 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
-        public async void GetCharacterRacesAsyncTest()
+        public async void GetBossesAsyncTest()
         {
-            var result = await Client.GetCharacterRacesAsync();
+            var result = await Client.GetBossesAsync();
             Assert.NotNull(result.Value);
         }
 
         [Fact]
-        public async void GetCharacterClassesAsyncTest()
+        public async void GetChallengesRegionAsyncTest()
         {
-            var result = await Client.GetCharacterClassesAsync();
+            var result = await Client.GetChallengesAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -234,16 +192,16 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
-        public async void GetGuildRewardsAsyncTest()
+        public async void GetCharacterClassesAsyncTest()
         {
-            var result = await Client.GetGuildRewardsAsync();
+            var result = await Client.GetCharacterClassesAsync();
             Assert.NotNull(result.Value);
         }
 
         [Fact]
-        public async void GetGuildPerksAsyncTest()
+        public async void GetCharacterRacesAsyncTest()
         {
-            var result = await Client.GetGuildPerksAsync();
+            var result = await Client.GetCharacterRacesAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -255,9 +213,51 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
+        public async void GetGuildPerksAsyncTest()
+        {
+            var result = await Client.GetGuildPerksAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetGuildRewardsAsyncTest()
+        {
+            var result = await Client.GetGuildRewardsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
         public async void GetItemClassesAsyncTest()
         {
             var result = await Client.GetItemClassesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMountsAsyncTest()
+        {
+            var result = await Client.GetMountsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPetsAsyncTest()
+        {
+            var result = await Client.GetPetsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPetTypesAsyncTest()
+        {
+            var result = await Client.GetPetTypesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetRealmStatusAsyncTest()
+        {
+            var result = await Client.GetRealmStatusAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -269,9 +269,9 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
-        public async void GetPetTypesAsyncTest()
+        public async void GetZonesAsyncTest()
         {
-            var result = await Client.GetPetTypesAsync();
+            var result = await Client.GetZonesAsync();
             Assert.NotNull(result.Value);
         }
     }
