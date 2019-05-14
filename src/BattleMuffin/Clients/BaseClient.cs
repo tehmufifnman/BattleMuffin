@@ -94,7 +94,7 @@ namespace BattleMuffin.Clients
         ///     The URI the request is sent to.
         /// </param>
         /// <param name="arrayName">
-        ///     The name of the array to deserialize. This is used to avoid using a root object for JSON arrays.
+        ///     The name of the array to deserialize to prevent the use of JSON root objects.
         /// </param>
         /// <returns>
         ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
@@ -115,7 +115,7 @@ namespace BattleMuffin.Clients
             var tokenSource = new CancellationTokenSource();
             var token = tokenSource.Token;
             using var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(false);
+            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseContentRead, token).ConfigureAwait(false);
 
             if (response.Content != null)
             {
@@ -228,6 +228,7 @@ namespace BattleMuffin.Clients
 
             using var sr = new StreamReader(stream);
             var content = await sr.ReadToEndAsync();
+            stream.Close();
             return content;
         }
     }
