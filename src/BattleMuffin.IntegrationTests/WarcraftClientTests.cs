@@ -158,5 +158,121 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetPvpLeaderboardAsync(bracket);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("quest.json")]
+        public async void GetQuestAsyncTest(int questId)
+        {
+            var result = await Client.GetQuestAsync(questId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetRealmStatusAsyncTest()
+        {
+            var result = await Client.GetRealmStatusAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("recipe.json")]
+        public async void GetRecipeAsyncTest(int recipeId)
+        {
+            var result = await Client.GetRecipeAsync(recipeId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("recipe.json")]
+        public async void GetSpellAsyncTest(int spellId)
+        {
+            var result = await Client.GetSpellAsync(spellId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetZonesAsyncTest()
+        {
+            var result = await Client.GetZonesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("zone.json")]
+        public async void GetZoneAsyncTest(int zoneId)
+        {
+            var result = await Client.GetZoneAsync(zoneId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetBattlegroupsAsyncTest()
+        {
+            var result = await Client.GetBattlegroupsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetCharacterRacesAsyncTest()
+        {
+            var result = await Client.GetCharacterRacesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetCharacterClassesAsyncTest()
+        {
+            var result = await Client.GetCharacterClassesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetCharacterAchievementsAsyncTest()
+        {
+            var result = await Client.GetCharacterAchievementsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetGuildRewardsAsyncTest()
+        {
+            var result = await Client.GetGuildRewardsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetGuildPerksAsyncTest()
+        {
+            var result = await Client.GetGuildPerksAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetGuildAchievementsAsyncTest()
+        {
+            var result = await Client.GetGuildAchievementsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetItemClassesAsyncTest()
+        {
+            var result = await Client.GetItemClassesAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetTalentsAsyncTest()
+        {
+            var result = await Client.GetTalentsAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPetTypesAsyncTest()
+        {
+            var result = await Client.GetPetTypesAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }
