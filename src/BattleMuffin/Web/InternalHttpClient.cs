@@ -26,7 +26,7 @@ namespace BattleMuffin.Web
 
                 _instance = new HttpClient();
                 _instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                _instance.Timeout = TimeSpan.FromMinutes(1);
+                _instance.Timeout = TimeSpan.FromMinutes(5);
 
                 return _instance;
             }
