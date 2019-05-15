@@ -1,4 +1,4 @@
-using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -24,9 +24,15 @@ namespace BattleMuffin.Web
                     return _instance;
                 }
 
-                _instance = new HttpClient();
+                var handler = new SocketsHttpHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                };
+
+                _instance = new HttpClient(handler);
+                _instance.DefaultRequestHeaders.Accept.Clear();
                 _instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                _instance.Timeout = TimeSpan.FromMinutes(5);
+                _instance.Timeout = Timeout.InfiniteTimeSpan;
 
                 return _instance;
             }
