@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using BattleMuffin.Enums;
 using BattleMuffin.Extensions;
-using BattleMuffin.Models;
+using BattleMuffin.Models.Warcraft.Community;
 using BattleMuffin.Web;
 
 namespace BattleMuffin.Clients

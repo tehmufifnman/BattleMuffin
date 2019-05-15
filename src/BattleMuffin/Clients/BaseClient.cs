@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BattleMuffin.Enums;
+using BattleMuffin.Exceptions;
 using BattleMuffin.Extensions;
-using BattleMuffin.Models;
+using BattleMuffin.Models.Shared;
 using BattleMuffin.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -209,6 +210,33 @@ namespace BattleMuffin.Clients
                     return "https://us.battle.net";
                 default:
                     return "https://us.battle.net";
+            }
+        }
+
+        /// <summary>
+        ///     Get the namespace regionality for the specified region and namespace category
+        /// </summary>
+        /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
+        /// <param name="namespaceCategory">The namespace category depending on type of API data.</param>
+        /// <returns>
+        ///     The namespace regionality for the specified region and namespace category
+        /// </returns>
+        private static string GetNamespace(Region region, NamespaceCategory namespaceCategory)
+        {
+            switch (region)
+            {
+                case Region.China:
+                    throw new InvalidRegionException(region);
+                case Region.Europe:
+                    return $"{namespaceCategory.ToString().ToLower()}-eu";
+                case Region.Korea:
+                    return $"{namespaceCategory.ToString().ToLower()}-kr";
+                case Region.Taiwan:
+                    return $"{namespaceCategory.ToString().ToLower()}-tw";
+                case Region.US:
+                    return $"{namespaceCategory.ToString().ToLower()}-us";
+                default:
+                    return $"{namespaceCategory.ToString().ToLower()}-us";
             }
         }
 
