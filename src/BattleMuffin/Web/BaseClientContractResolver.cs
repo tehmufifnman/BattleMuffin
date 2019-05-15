@@ -6,7 +6,7 @@ namespace BattleMuffin.Web
     /// <summary>
     ///     A custom contract resolver for use with Json.NET.
     /// </summary>
-    internal class WarcraftClientContractResolver : DefaultContractResolver
+    internal class BaseClientContractResolver : DefaultContractResolver
     {
         /// <summary>
         ///     Determines which contract type is created for the given type.

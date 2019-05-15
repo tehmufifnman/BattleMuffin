@@ -137,7 +137,7 @@ namespace BattleMuffin.Clients
 
                     RequestResult<T> requestResult = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings
                     {
-                        ContractResolver = new WarcraftClientContractResolver(),
+                        ContractResolver = new BaseClientContractResolver(),
                         MissingMemberHandling = MissingMemberHandling.Error
                     });
 
