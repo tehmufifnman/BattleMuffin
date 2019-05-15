@@ -64,7 +64,7 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     An OAuth token.
         /// </returns>
-        public async Task<OAuthAccessToken> GetOAuthToken()
+        private async Task<OAuthAccessToken> GetOAuthToken()
         {
             var credentials = $"{_clientId}:{_clientSecret}";
             var oauthHost = GetOAuthHost(_region);
@@ -112,7 +112,10 @@ namespace BattleMuffin.Clients
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token.AccessToken);
 
             // Retrieve the response.
-            using var response = await _client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            var tokenSource = new CancellationTokenSource();
+            var token = tokenSource.Token;
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode && response.Content != null)
             {
