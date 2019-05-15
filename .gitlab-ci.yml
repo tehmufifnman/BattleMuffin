@@ -15,4 +15,4 @@ build:
 test:
     stage: test
     script: 
-        - "dotnet test"
+        - "dotnet test /p:CollectCoverage=true /p:Exclude=\"[xunit*]*\""
