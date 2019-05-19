@@ -221,12 +221,12 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The namespace regionality for the specified region and namespace category
         /// </returns>
-        private static string GetNamespace(Region region, NamespaceCategory namespaceCategory)
+        protected string GetNamespace(NamespaceCategory namespaceCategory)
         {
-            switch (region)
+            switch (_region)
             {
                 case Region.China:
-                    throw new InvalidRegionException(region);
+                    throw new InvalidRegionException(_region);
                 case Region.Europe:
                     return $"{namespaceCategory.ToString().ToLower()}-eu";
                 case Region.Korea:

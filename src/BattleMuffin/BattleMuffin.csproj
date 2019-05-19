@@ -20,8 +20,4 @@ Requires .NET Core 3.0 or higher.</Description>
         <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models\Warcraft\GameData" />
-    </ItemGroup>
-
 </Project>
