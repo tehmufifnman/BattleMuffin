@@ -48,5 +48,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<Media>($"{Host}/data/wow/media/achievement/{achievementId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<ConnectedRealmIndex>> GetConnectedRealmIndexAsync()
+        {
+            return await Get<ConnectedRealmIndex>($"{Host}/data/wow/connected-realm/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

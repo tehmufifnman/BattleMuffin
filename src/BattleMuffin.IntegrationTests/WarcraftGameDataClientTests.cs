@@ -62,5 +62,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetAchievementMediaAsync(achievementId);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetConnectedRealmIndexAsyncTest()
+        {
+            var result = await Client.GetConnectedRealmIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }

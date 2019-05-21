@@ -15,5 +15,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<Achievement>> GetAchievementAsync(int achievementId);
 
         Task<RequestResult<Media>> GetAchievementMediaAsync(int achievementMediaId);
+
+        Task<RequestResult<ConnectedRealmIndex>> GetConnectedRealmIndexAsync();
     }
 }
