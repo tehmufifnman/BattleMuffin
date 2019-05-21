@@ -63,5 +63,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<CreatureFamilyIndex>($"{Host}/data/wow/creature-family/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<CreatureFamily>> GetCreatureFamilyAsync(int creatureFamilyId)
+        {
+            return await Get<CreatureFamily>($"{Host}/data/wow/creature-family/{creatureFamilyId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

@@ -21,5 +21,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<ConnectedRealm>> GetConnectedRealmAsync(int connectedRealmId);
 
         Task<RequestResult<CreatureFamilyIndex>> GetCreatureFamilyIndexAsync();
+
+        Task<RequestResult<CreatureFamily>> GetCreatureFamilyAsync(int creatureFamilyId);
     }
 }
