@@ -46,5 +46,13 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetAchievementIndexAsync();
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/achievement.json")]
+        public async void GetAchievementAsyncTest(int achievementId)
+        {
+            var result = await Client.GetAchievementAsync(achievementId);
+            Assert.NotNull(result.Value);
+        }
     }
 }

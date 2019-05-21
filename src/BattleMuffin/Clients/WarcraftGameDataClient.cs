@@ -38,5 +38,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<AchievementIndex>($"{Host}/data/wow/achievement/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<Achievement>> GetAchievementAsync(int achievementId)
+        {
+            return await Get<Achievement>($"{Host}/data/wow/achievement/{achievementId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

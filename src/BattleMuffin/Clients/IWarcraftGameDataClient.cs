@@ -11,5 +11,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<AchievementCategory>> GetAchievementCategoryAsync(int achievementCategoryId);
 
         Task<RequestResult<AchievementIndex>> GetAchievementIndexAsync();
+
+        Task<RequestResult<Achievement>> GetAchievementAsync(int achievementId);
     }
 }
