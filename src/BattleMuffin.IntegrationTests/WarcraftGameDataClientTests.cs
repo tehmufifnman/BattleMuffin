@@ -69,5 +69,13 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetConnectedRealmIndexAsync();
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/connected_realm.json")]
+        public async void GetConnectedRealmAsyncTest(int connectedRealmId)
+        {
+            var result = await Client.GetConnectedRealmAsync(connectedRealmId);
+            Assert.NotNull(result.Value);
+        }
     }
 }
