@@ -58,5 +58,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<ConnectedRealm>($"{Host}/data/wow/connected-realm/{connectedRealmId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<CreatureFamilyIndex>> GetCreatureFamilyIndexAsync()
+        {
+            return await Get<CreatureFamilyIndex>($"{Host}/data/wow/creature-family/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

@@ -77,5 +77,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetConnectedRealmAsync(connectedRealmId);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetCreatureFamilyIndexAsyncTest()
+        {
+            var result = await Client.GetCreatureFamilyIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }
