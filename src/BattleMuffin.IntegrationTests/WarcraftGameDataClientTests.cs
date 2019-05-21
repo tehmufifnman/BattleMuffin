@@ -39,5 +39,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetAchievementCategoryAsync(achievementCategoryId);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetAchievementIndexAsyncTest()
+        {
+            var result = await Client.GetAchievementIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }
