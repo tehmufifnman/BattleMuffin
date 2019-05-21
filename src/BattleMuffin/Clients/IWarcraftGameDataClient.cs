@@ -29,5 +29,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<CreatureType>> GetCreatureTypeAsync(int creatureTypeId);
 
         Task<RequestResult<Creature>> GetCreatureAsync(int creatureId);
+
+        Task<RequestResult<Media>> GetCreatureDisplayMediaAsync(int creatureDisplayId);
+
+        Task<RequestResult<Media>> GetCreatureFamilyMediaAsync(int creatureFamilyId);
     }
 }
