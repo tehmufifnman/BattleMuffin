@@ -107,5 +107,13 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetCreatureTypeAsync(creatureTypeId);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/creature.json")]
+        public async void GetCreatureAsyncTest(int creatureId)
+        {
+            var result = await Client.GetCreatureAsync(creatureId);
+            Assert.NotNull(result.Value);
+        }
     }
 }

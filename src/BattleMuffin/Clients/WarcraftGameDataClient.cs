@@ -78,5 +78,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<CreatureType>($"{Host}/data/wow/creature-type/{creatureTypeId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<Creature>> GetCreatureAsync(int creatureId)
+        {
+            return await Get<Creature>($"{Host}/data/wow/creature/{creatureId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

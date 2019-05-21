@@ -88,6 +88,9 @@
         <None Update="Data\GameData\creature_type.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Data\GameData\creature.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>    
 
 </Project>
