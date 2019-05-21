@@ -24,7 +24,6 @@ namespace BattleMuffin.IntegrationTests
                 _client = new WarcraftClient(clientId, clientSecret);
                 return _client;
             }
-            set => _client = value;
         }
 
         [Theory]

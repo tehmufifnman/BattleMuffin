@@ -24,9 +24,14 @@ namespace BattleMuffin.Clients
         {
         }
 
-        public async Task<RequestResult<AchievementCategoryIndex>> GetAchievementCategoryIndex()
+        public async Task<RequestResult<AchievementCategoryIndex>> GetAchievementCategoryIndexAsync()
         {
             return await Get<AchievementCategoryIndex>($"{Host}/data/wow/achievement-category/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<AchievementCategory>> GetAchievementCategoryAsync(int achievementCategoryId)
+        {
+            return await Get<AchievementCategory>($"{Host}/data/wow/achievement-category/{achievementCategoryId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
     }
 }

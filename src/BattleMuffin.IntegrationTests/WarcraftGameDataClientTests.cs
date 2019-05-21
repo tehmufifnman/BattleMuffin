@@ -1,5 +1,6 @@
 using System;
 using BattleMuffin.Clients;
+using BattleMuffin.IntegrationTests.Attributes;
 using Xunit;
 
 namespace BattleMuffin.IntegrationTests
@@ -22,13 +23,20 @@ namespace BattleMuffin.IntegrationTests
                 _client = new WarcraftGameDataClient(clientId, clientSecret);
                 return _client;
             }
-            set => _client = value;
         }
 
         [Fact]
-        public async void GetBattlegroupsAsyncTest()
+        public async void GetAchievementCategoryIndexAsyncTest()
         {
-            var result = await Client.GetAchievementCategoryIndex();
+            var result = await Client.GetAchievementCategoryIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/achievement_category.json")]
+        public async void GetAchievementCategoryAsyncTest(int achievementCategoryId)
+        {
+            var result = await Client.GetAchievementCategoryAsync(achievementCategoryId);
             Assert.NotNull(result.Value);
         }
     }

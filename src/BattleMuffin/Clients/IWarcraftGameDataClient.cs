@@ -6,6 +6,8 @@ namespace BattleMuffin.Clients
 {
     public interface IWarcraftGameDataClient
     {
-        Task<RequestResult<AchievementCategoryIndex>> GetAchievementCategoryIndex();
+        Task<RequestResult<AchievementCategoryIndex>> GetAchievementCategoryIndexAsync();
+
+        Task<RequestResult<AchievementCategory>> GetAchievementCategoryAsync(int achievementCategoryId);
     }
 }
