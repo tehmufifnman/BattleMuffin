@@ -131,5 +131,13 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetCreatureFamilyMediaAsync(creatureFamilyId);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/guild.json")]
+        public async void GetGuildAsyncTest(string realmSlug, string guildNameSlug)
+        {
+            var result = await Client.GetGuildAsync(realmSlug, guildNameSlug);
+            Assert.NotNull(result.Value);
+        }
     }
 }

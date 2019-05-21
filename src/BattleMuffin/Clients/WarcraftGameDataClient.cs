@@ -93,5 +93,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<Media>($"{Host}/data/wow/media/creature-family/{creatureFamilyId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<Guild>> GetGuildAsync(string realmSlug, string guildNameSlug)
+        {
+            return await Get<Guild>($"{Host}/data/wow/guild/{realmSlug}/{guildNameSlug}?namespace={GetNamespace(NamespaceCategory.Profile)}&locale={Locale}");
+        }
     }
 }
