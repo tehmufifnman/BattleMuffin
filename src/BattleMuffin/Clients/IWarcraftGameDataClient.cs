@@ -13,5 +13,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<AchievementIndex>> GetAchievementIndexAsync();
 
         Task<RequestResult<Achievement>> GetAchievementAsync(int achievementId);
+
+        Task<RequestResult<Media>> GetAchievementMediaAsync(int achievementMediaId);
     }
 }
