@@ -92,5 +92,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetCreatureFamilyAsync(creatureFamilyId);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetCreatureTypeIndexAsyncTest()
+        {
+            var result = await Client.GetCreatureTypeIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }

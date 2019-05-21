@@ -23,5 +23,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<CreatureFamilyIndex>> GetCreatureFamilyIndexAsync();
 
         Task<RequestResult<CreatureFamily>> GetCreatureFamilyAsync(int creatureFamilyId);
+
+        Task<RequestResult<CreatureTypeIndex>> GetCreatureTypeIndexAsync();
     }
 }
