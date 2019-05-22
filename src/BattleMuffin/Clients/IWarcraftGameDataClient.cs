@@ -45,5 +45,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<Media>> GetGuildCrestBorderMediaAsync(int borderId);
 
         Task<RequestResult<Media>> GetGuildCrestEmblemMediaAsync(int emblemId);
+
+        Task<RequestResult<MythicKeystoneAffixIndex>> GetMythicKeystoneAffixIndexAsync();
+
+        Task<RequestResult<MythicKeystoneAffix>> GetMythicKeystoneAffixAsync(int keystoneAffixId);
     }
 }

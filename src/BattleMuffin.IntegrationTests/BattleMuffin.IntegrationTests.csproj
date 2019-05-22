@@ -112,6 +112,9 @@
         <None Update="Data\GameData\guild_crest_emblem_media.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Data\GameData\mythic_keystone_affix.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>    
 
 </Project>

@@ -123,5 +123,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<Media>($"{Host}/data/wow/media/guild-crest/emblem/{emblemId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MythicKeystoneAffixIndex>> GetMythicKeystoneAffixIndexAsync()
+        {
+            return await Get<MythicKeystoneAffixIndex>($"{Host}/data/wow/keystone-affix/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystoneAffix>> GetMythicKeystoneAffixAsync(int keystoneAffixId)
+        {
+            return await Get<MythicKeystoneAffix>($"{Host}/data/wow/keystone-affix/{keystoneAffixId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

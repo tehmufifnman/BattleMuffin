@@ -69,7 +69,64 @@ Console.WriteLine("Iten Name - " + result.Value.Name); // Ghost Iron Ore
 | Pet Types                         | /wow/data/pet/types                   | Yes          | 
 
 ## World of Warcraft Game Data APIs
-NYI
+| Name                               | Route                                                                                        | Implemented? | 
+|------------------------------------|----------------------------------------------------------------------------------------------|--------------| 
+| Achievement Categories Index       | /data/wow/achievement-category/index                                                         | Yes          | 
+| Achievement Category               | /data/wow/achievement-category/{achievementCategoryId}                                       | Yes          | 
+| Achievements Index                 | /data/wow/achievement/index                                                                  | Yes          | 
+| Achievement                        | /data/wow/achievement/{achievementId}                                                        | Yes          | 
+| Achievement Media                  | /data/wow/media/achievement/{achievementId}                                                  | Yes          | 
+| Connected Realms Index             | /data/wow/connected-realm/index                                                              | Yes          | 
+| Connected Realm                    | /data/wow/connected-realm/{connectedRealmId}                                                 | Yes          | 
+| Create Families Index              | /data/wow/creature-family/index                                                              | Yes          | 
+| Creature Family                    | /data/wow/creature-family/{creatureFamilyId}                                                 | Yes          | 
+| Creature Types Index               | /data/wow/creature-type/index                                                                | Yes          | 
+| Creature Type                      | /data/wow/creature-type/{creatureTypeId}                                                     | Yes          | 
+| Creature                           | /data/wow/creature/{creatureId}                                                              | Yes          | 
+| Creature Display Media             | /data/wow/media/creature-display/{creatureDisplayId}                                         | Yes          | 
+| Creature Family Media              | /data/wow/media/creature-family/{creatureFamilyId}                                           | Yes          | 
+| Guild                              | /data/wow/guild/{realmSlug}/{nameSlug}                                                       | Yes          | 
+| Guild Achievements                 | /data/wow/guild/{realmSlug}/{nameSlug}/achievements                                          | Yes          | 
+| Guild Roster                       | /data/wow/guild/{realmSlug}/{nameSlug}/roster                                                | Yes          | 
+| Guild Crest Components Index       | /data/wow/guild-crest/index                                                                  | Yes          | 
+| Guild Crest Border Media           | /data/wow/media/guild-crest/border/{borderId}                                                | Yes          | 
+| Guild Crest Emblem Media           | /data/wow/media/guild-crest/emblem/{emblemId}                                                | Yes          | 
+| Mythic Keystone Affixes Index      | /data/wow/keystone-affix/index                                                               | Yes          | 
+| Mythic Keystone Affix              | /data/wow/keystone-affix/{keystoneAffixId}                                                   | Yes          | 
+| Mythic Raid Leaderboard            | /data/wow/leaderboard/hall-of-fame/{raid}/{faction}                                          | No           | 
+| Mounts Index                       | /data/wow/mount/index                                                                        | No           | 
+| Mount                              | /data/wow/mount/{mountId}                                                                    | No           | 
+| Mythic Keystones Dungeons Index    | /data/wow/mythic-keystone/dungeon/index                                                      | No           | 
+| Mythic Keystone Dungeon            | /data/wow/mythic-keystone/dungeon/{dungeonId}                                                | No           | 
+| Mythic Keystone Index              | /data/wow/mythic-keystone/index                                                              | No           | 
+| Mythic Keystone Periods Index      | /data/wow/mythic-keystone/period/index                                                       | No           | 
+| Mythic Keystone Period             | /data/wow/mythic-keystone/period/{periodId}                                                  | No           | 
+| Mythic Keystone Seasons Index      | /data/wow/mythic-keystone/season/index                                                       | No           | 
+| Mythic Keystone Season             | /data/wow/mythic-keystone/season/{seasonId}                                                  | No           | 
+| Mythic Keystone Leaderboards Index | /data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/index                        | No           | 
+| Mythic Keystone Leaderboard        | /data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/{dungeonId}/period/{period}  | No           | 
+| Pets Index                         | /data/wow/pet/index                                                                          | No           | 
+| Pet                                | /data/wow/pet/{petId}                                                                        | No           | 
+| Playable Class Index               | /data/wow/playable-class/index                                                               | No           | 
+| Playable Class                     | /data/wow/playable-class/{classId}                                                           | No           | 
+| PvP Talent Slots                   | /data/wow/playable-class/{classId}/pvp-talent-slots                                          | No           | 
+| Playable Specializations Index     | /data/wow/playable-specialization/index                                                      | No           | 
+| Playable Specialization            | /data/wow/playable-specialization/{specId}                                                   | No           | 
+| Power Types Index                  | /data/wow/power-type/index                                                                   | No           | 
+| Power Type                         | /data/wow/power-type/{powerTypeId}                                                           | No           | 
+| PvP Seasons Index                  | /data/wow/pvp-season/index                                                                   | No           | 
+| PvP Season                         | /data/wow/pvp-season/{pvpSeasonId}                                                           | No           | 
+| PvP Leaderboards Index             | /data/wow/pvp-season/{pvpSeasonId}/pvp-leaderboard/index                                     | No           | 
+| PvP Leaderboard                    | /data/wow/pvp-season/{pvpSeasonId}/pvp-leaderboard/{pvpBracket}                              | No           | 
+| PvP Rewards Index                  | /data/wow/pvp-season/{pvpSeasonId}/pvp-reward/index                                          | No           | 
+| PvP Tier Media                     | /data/wow/media/pvp-tier/{pvpTierId}                                                         | No           | 
+| PvP Tiers Index                    | /data/wow/pvp-tier/index                                                                     | No           | 
+| PvP Tier                           | /data/wow/pvp-tier/{pvpTierId}                                                               | No           | 
+| Realms Index                       | /data/wow/realm/index                                                                        | No           | 
+| Realm                              | /data/wow/realm/{realmSlug}                                                                  | No           | 
+| Regions Index                      | /data/wow/region/index                                                                       | No           | 
+| Region                             | /data/wow/region/{regionId}                                                                  | No           | 
+| WoW Token Index                    | /data/wow/token/index                                                                        | No           | 
 
 ## World of Warcraft Profile APIs
 NYI

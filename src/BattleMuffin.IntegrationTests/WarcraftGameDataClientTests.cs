@@ -178,5 +178,20 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetGuildCrestEmblemMediaAsync(emblemId);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetMythicKeystoneAffixIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystoneAffixIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/mythic_keystone_affix.json")]
+        public async void GetMythicKeystoneAffixAsyncTest(int keystoneAffixId)
+        {
+            var result = await Client.GetMythicKeystoneAffixAsync(keystoneAffixId);
+            Assert.NotNull(result.Value);
+        }
     }
 }
