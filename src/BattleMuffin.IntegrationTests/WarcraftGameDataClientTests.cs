@@ -155,5 +155,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetGuildRosterAsync(realmSlug, guildNameSlug);
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetGuildCrestComponentsIndexAsyncTest()
+        {
+            var result = await Client.GetGuildCrestComponentsIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }

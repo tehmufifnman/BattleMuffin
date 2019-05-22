@@ -108,5 +108,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<GuildRoster>($"{Host}/data/wow/guild/{realmSlug}/{guildNameSlug}/roster?namespace={GetNamespace(NamespaceCategory.Profile)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<GuildCrestComponentsIndex>> GetGuildCrestComponentsIndexAsync()
+        {
+            return await Get<GuildCrestComponentsIndex>($"{Host}/data/wow/guild-crest/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

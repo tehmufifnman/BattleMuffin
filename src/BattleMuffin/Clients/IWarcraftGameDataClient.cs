@@ -39,5 +39,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<GuildAchievementIndex>> GetGuildAchievementsAsync(string realmSlug, string guildNameSlug);
 
         Task<RequestResult<GuildRoster>> GetGuildRosterAsync(string realmSlug, string guildNameSlug);
+
+        Task<RequestResult<GuildCrestComponentsIndex>> GetGuildCrestComponentsIndexAsync();
     }
 }
