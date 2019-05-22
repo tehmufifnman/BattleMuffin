@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace BattleMuffin.Models.Warcraft.GameData
@@ -12,5 +13,11 @@ namespace BattleMuffin.Models.Warcraft.GameData
 
         [JsonProperty("amount")]
         public int Amount { get; set; }
+
+        [JsonProperty("is_completed")]
+        public bool IsCompleted { get; set; }
+
+        [JsonProperty("child_criteria")]
+        public IEnumerable<Criteria>? ChildCriteria { get; set; }
     }
 }

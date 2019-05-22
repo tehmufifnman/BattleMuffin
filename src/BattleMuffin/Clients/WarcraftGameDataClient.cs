@@ -98,5 +98,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<Guild>($"{Host}/data/wow/guild/{realmSlug}/{guildNameSlug}?namespace={GetNamespace(NamespaceCategory.Profile)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<GuildAchievementIndex>> GetGuildAchievementsAsync(string realmSlug, string guildNameSlug)
+        {
+            return await Get<GuildAchievementIndex>($"{Host}/data/wow/guild/{realmSlug}/{guildNameSlug}/achievements?namespace={GetNamespace(NamespaceCategory.Profile)}&locale={Locale}");
+        }
     }
 }

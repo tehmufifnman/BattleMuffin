@@ -139,5 +139,13 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetGuildAsync(realmSlug, guildNameSlug);
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/guild_achievements.json")]
+        public async void GetGuildAchievementsAsyncTest(string realmSlug, string guildNameSlug)
+        {
+            var result = await Client.GetGuildAchievementsAsync(realmSlug, guildNameSlug);
+            Assert.NotNull(result.Value);
+        }
     }
 }

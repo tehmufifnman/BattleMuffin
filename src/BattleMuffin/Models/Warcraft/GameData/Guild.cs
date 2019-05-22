@@ -4,6 +4,9 @@ namespace BattleMuffin.Models.Warcraft.GameData
 {
     public class Guild
     {
+        [JsonProperty("key")]
+        public Key? Key { get; set; }
+
         [JsonProperty("_links")]
         public Links? Links { get; set; }
 
@@ -32,7 +35,7 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public GuildRoster? Roster { get; set; }
 
         [JsonProperty("achievements")]
-        public GuildAchievements? Achievements { get; set; }
+        public GuildAchievementIndex? Achievements { get; set; }
 
         [JsonProperty("created_timestamp")]
         public long CreatedTimestamp { get; set; }

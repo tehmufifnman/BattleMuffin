@@ -35,5 +35,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<Media>> GetCreatureFamilyMediaAsync(int creatureFamilyId);
 
         Task<RequestResult<Guild>> GetGuildAsync(string realmSlug, string guildNameSlug);
+
+        Task<RequestResult<GuildAchievementIndex>> GetGuildAchievementsAsync(string realmSlug, string guildNameSlug);
     }
 }
