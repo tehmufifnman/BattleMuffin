@@ -103,6 +103,9 @@
         <None Update="Data\GameData\guild_achievements.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Data\GameData\guild_roster.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>    
 
 </Project>
