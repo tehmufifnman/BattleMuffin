@@ -10,6 +10,7 @@ before_script:
 build:
     stage: build
     script:
+        - "dotnet --version"
         - "dotnet build"
 
 test:
