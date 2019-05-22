@@ -1,11 +1,10 @@
-image: mcr.microsoft.com/dotnet/core-nightly/sdk:3.0
+image: mcr.microsoft.com/dotnet/core/sdk:3.0
 
 stages:
     - build
     - test
 
 before_script:
-    - "dotnet --version"
     - "dotnet restore"
     
 build:
