@@ -41,5 +41,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<GuildRoster>> GetGuildRosterAsync(string realmSlug, string guildNameSlug);
 
         Task<RequestResult<GuildCrestComponentsIndex>> GetGuildCrestComponentsIndexAsync();
+
+        Task<RequestResult<Media>> GetGuildCrestBorderMediaAsync(int borderId);
+
+        Task<RequestResult<Media>> GetGuildCrestEmblemMediaAsync(int emblemId);
     }
 }

@@ -162,5 +162,21 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetGuildCrestComponentsIndexAsync();
             Assert.NotNull(result.Value);
         }
+
+        [Theory]
+        [JsonData("GameData/guild_crest_border_media.json")]
+        public async void GetGuildCrestBorderMediaAsyncTest(int borderId)
+        {
+            var result = await Client.GetGuildCrestBorderMediaAsync(borderId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/guild_crest_emblem_media.json")]
+        public async void GetGuildCrestEmblemMediaAsyncTest(int emblemId)
+        {
+            var result = await Client.GetGuildCrestEmblemMediaAsync(emblemId);
+            Assert.NotNull(result.Value);
+        }
     }
 }

@@ -113,5 +113,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<GuildCrestComponentsIndex>($"{Host}/data/wow/guild-crest/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<Media>> GetGuildCrestBorderMediaAsync(int borderId)
+        {
+            return await Get<Media>($"{Host}/data/wow/media/guild-crest/border/{borderId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<Media>> GetGuildCrestEmblemMediaAsync(int emblemId)
+        {
+            return await Get<Media>($"{Host}/data/wow/media/guild-crest/emblem/{emblemId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }
