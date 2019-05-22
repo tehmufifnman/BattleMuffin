@@ -5,12 +5,12 @@ stages:
     - test
 
 before_script:
+    - "dotnet --version"
     - "dotnet restore"
     
 build:
     stage: build
     script:
-        - "dotnet --version"
         - "dotnet build"
 
 test:
