@@ -111,5 +111,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<RealmIndex>> GetRealmIndexAsync();
 
         Task<RequestResult<Realm>> GetRealmAsync(string realmSlug);
+
+        Task<RequestResult<RegionIndex>> GetRegionIndexAsync();
+
+        Task<RequestResult<Region>> GetRegionAsync(int regionId);
     }
 }

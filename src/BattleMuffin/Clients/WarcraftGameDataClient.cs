@@ -289,5 +289,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<Realm>($"{Host}/data/wow/realm/{realmSlug}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<RegionIndex>> GetRegionIndexAsync()
+        {
+            return await Get<RegionIndex>($"{Host}/data/wow/region/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<Models.Warcraft.GameData.Region>> GetRegionAsync(int regionId)
+        {
+            return await Get<Models.Warcraft.GameData.Region>($"{Host}/data/wow/region/{regionId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

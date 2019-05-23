@@ -297,6 +297,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/region.json")]
+        public async void GetRegionAsyncTest(int regionId)
+        {
+            var result = await Client.GetRegionAsync(regionId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -427,6 +435,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetRealmIndexAsyncTest()
         {
             var result = await Client.GetRealmIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetRegionIndexAsyncTest()
+        {
+            var result = await Client.GetRegionIndexAsync();
             Assert.NotNull(result.Value);
         }
     }
