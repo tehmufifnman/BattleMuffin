@@ -299,5 +299,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<Models.Warcraft.GameData.Region>($"{Host}/data/wow/region/{regionId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<WoWTokenIndex>> GetWoWTokenIndexAsync()
+        {
+            return await Get<WoWTokenIndex>($"{Host}/data/wow/token/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

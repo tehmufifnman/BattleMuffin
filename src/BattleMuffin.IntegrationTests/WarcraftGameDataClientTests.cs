@@ -444,5 +444,12 @@ namespace BattleMuffin.IntegrationTests
             var result = await Client.GetRegionIndexAsync();
             Assert.NotNull(result.Value);
         }
+
+        [Fact]
+        public async void GetWoWTokenIndexAsyncTest()
+        {
+            var result = await Client.GetWoWTokenIndexAsync();
+            Assert.NotNull(result.Value);
+        }
     }
 }

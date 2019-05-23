@@ -115,5 +115,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<RegionIndex>> GetRegionIndexAsync();
 
         Task<RequestResult<Region>> GetRegionAsync(int regionId);
+
+        Task<RequestResult<WoWTokenIndex>> GetWoWTokenIndexAsync();
     }
 }
