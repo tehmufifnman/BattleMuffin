@@ -25,25 +25,11 @@ namespace BattleMuffin.IntegrationTests
             }
         }
 
-        [Fact]
-        public async void GetAchievementCategoryIndexAsyncTest()
-        {
-            var result = await Client.GetAchievementCategoryIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("GameData/achievement_category.json")]
         public async void GetAchievementCategoryAsyncTest(int achievementCategoryId)
         {
             var result = await Client.GetAchievementCategoryAsync(achievementCategoryId);
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetAchievementIndexAsyncTest()
-        {
-            var result = await Client.GetAchievementIndexAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -63,13 +49,6 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetConnectedRealmIndexAsyncTest()
-        {
-            var result = await Client.GetConnectedRealmIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("GameData/connected_realm.json")]
         public async void GetConnectedRealmAsyncTest(int connectedRealmId)
@@ -78,25 +57,11 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetCreatureFamilyIndexAsyncTest()
-        {
-            var result = await Client.GetCreatureFamilyIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("GameData/creature_family.json")]
         public async void GetCreatureFamilyAsyncTest(int creatureFamilyId)
         {
             var result = await Client.GetCreatureFamilyAsync(creatureFamilyId);
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetCreatureTypeIndexAsyncTest()
-        {
-            var result = await Client.GetCreatureTypeIndexAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -156,13 +121,6 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetGuildCrestComponentsIndexAsyncTest()
-        {
-            var result = await Client.GetGuildCrestComponentsIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("GameData/guild_crest_border_media.json")]
         public async void GetGuildCrestBorderMediaAsyncTest(int borderId)
@@ -179,18 +137,60 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
-        [Fact]
-        public async void GetMythicKeystoneAffixIndexAsyncTest()
-        {
-            var result = await Client.GetMythicKeystoneAffixIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
         [Theory]
         [JsonData("GameData/mythic_keystone_affix.json")]
         public async void GetMythicKeystoneAffixAsyncTest(int keystoneAffixId)
         {
             var result = await Client.GetMythicKeystoneAffixAsync(keystoneAffixId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetAchievementCategoryIndexAsyncTest()
+        {
+            var result = await Client.GetAchievementCategoryIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetAchievementIndexAsyncTest()
+        {
+            var result = await Client.GetAchievementIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetConnectedRealmIndexAsyncTest()
+        {
+            var result = await Client.GetConnectedRealmIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetCreatureFamilyIndexAsyncTest()
+        {
+            var result = await Client.GetCreatureFamilyIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetCreatureTypeIndexAsyncTest()
+        {
+            var result = await Client.GetCreatureTypeIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetGuildCrestComponentsIndexAsyncTest()
+        {
+            var result = await Client.GetGuildCrestComponentsIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMythicKeystoneAffixIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystoneAffixIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

@@ -26,7 +26,7 @@ namespace BattleMuffin.Web
 
                 var handler = new SocketsHttpHandler
                 {
-                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
                 };
 
                 _instance = new HttpClient(handler);
