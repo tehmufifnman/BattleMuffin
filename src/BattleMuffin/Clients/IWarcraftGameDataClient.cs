@@ -83,5 +83,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<PlayableClass>> GetPlayableClassAsync(int classId);
 
         Task<RequestResult<PlayableClassPvPTalentSlots>> GetPlayableClassPvPTalentSlotsAsync(int classId);
+
+        Task<RequestResult<PlayableSpecializationIndex>> GetPlayableSpecializationIndexAsync();
+
+        Task<RequestResult<PlayableSpecialization>> GetPlayableSpecializationAsync(int specId);
     }
 }

@@ -218,5 +218,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<PlayableClassPvPTalentSlots>($"{Host}/data/wow/playable-class/{classId}/pvp-talent-slots?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<PlayableSpecializationIndex>> GetPlayableSpecializationIndexAsync()
+        {
+            return await Get<PlayableSpecializationIndex>($"{Host}/data/wow/playable-specialization/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PlayableSpecialization>> GetPlayableSpecializationAsync(int specId)
+        {
+            return await Get<PlayableSpecialization>($"{Host}/data/wow/playable-specialization/{specId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

@@ -225,6 +225,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/playable_specialization.json")]
+        public async void GetPlayableSpecializationAsyncTest(int specId)
+        {
+            var result = await Client.GetPlayableSpecializationAsync(specId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -320,6 +328,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetPlayableClassIndexAsyncTest()
         {
             var result = await Client.GetPlayableClassIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPlayableSpecializationIndexAsyncTest()
+        {
+            var result = await Client.GetPlayableSpecializationIndexAsync();
             Assert.NotNull(result.Value);
         }
     }
