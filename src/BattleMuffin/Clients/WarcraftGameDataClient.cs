@@ -228,5 +228,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<PlayableSpecialization>($"{Host}/data/wow/playable-specialization/{specId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<PowerTypeIndex>> GetPowerTypeIndexAsync()
+        {
+            return await Get<PowerTypeIndex>($"{Host}/data/wow/power-type/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PowerType>> GetPowerTypeAsync(int powerTypeId)
+        {
+            return await Get<PowerType>($"{Host}/data/wow/power-type/{powerTypeId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

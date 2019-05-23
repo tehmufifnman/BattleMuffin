@@ -233,6 +233,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/power_type.json")]
+        public async void GetPowerTypeAsyncTest(int powerTypeId)
+        {
+            var result = await Client.GetPowerTypeAsync(powerTypeId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -335,6 +343,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetPlayableSpecializationIndexAsyncTest()
         {
             var result = await Client.GetPlayableSpecializationIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPowerTypeIndexAsyncTest()
+        {
+            var result = await Client.GetPowerTypeIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

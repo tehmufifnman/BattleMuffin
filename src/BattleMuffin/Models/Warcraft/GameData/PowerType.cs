@@ -7,10 +7,13 @@ namespace BattleMuffin.Models.Warcraft.GameData
         [JsonProperty("key")]
         public Key? Key { get; set; }
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("_links")]
+        public Links? Links { get; set; }
 
         [JsonProperty("id")]
         public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string? Name { get; set; }
     }
 }

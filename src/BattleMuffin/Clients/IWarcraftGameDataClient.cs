@@ -87,5 +87,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<PlayableSpecializationIndex>> GetPlayableSpecializationIndexAsync();
 
         Task<RequestResult<PlayableSpecialization>> GetPlayableSpecializationAsync(int specId);
+
+        Task<RequestResult<PowerTypeIndex>> GetPowerTypeIndexAsync();
+
+        Task<RequestResult<PowerType>> GetPowerTypeAsync(int powerTypeId);
     }
 }
