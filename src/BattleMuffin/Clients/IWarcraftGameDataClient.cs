@@ -49,5 +49,7 @@ namespace BattleMuffin.Clients
         Task<RequestResult<MythicKeystoneAffixIndex>> GetMythicKeystoneAffixIndexAsync();
 
         Task<RequestResult<MythicKeystoneAffix>> GetMythicKeystoneAffixAsync(int keystoneAffixId);
+
+        Task<RequestResult<MythicRaidLeaderboard>> GetMythicRaidLeaderboardAsync(string raid, string faction);
     }
 }

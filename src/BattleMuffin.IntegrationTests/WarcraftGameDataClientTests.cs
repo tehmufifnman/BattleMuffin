@@ -145,6 +145,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/mythic_raid_leaderboard.json")]
+        public async void GetMythicRaidLeaderboardAsyncTest(string raid, string faction)
+        {
+            var result = await Client.GetMythicRaidLeaderboardAsync(raid, faction);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {

@@ -133,5 +133,10 @@ namespace BattleMuffin.Clients
         {
             return await Get<MythicKeystoneAffix>($"{Host}/data/wow/keystone-affix/{keystoneAffixId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MythicRaidLeaderboard>> GetMythicRaidLeaderboardAsync(string raid, string faction)
+        {
+            return await Get<MythicRaidLeaderboard>($"{Host}/data/wow/leaderboard/hall-of-fame/{raid}/{faction}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }
