@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BattleMuffin.Models.Warcraft.GameData
 {
-    public class MythicKeystoneDungeon
+    public class MythicKeystoneSeason
     {
         [JsonProperty("href")]
         public string? Href { get; set; }
@@ -17,16 +17,13 @@ namespace BattleMuffin.Models.Warcraft.GameData
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        [JsonProperty("start_timestamp")]
+        public long StartTimestamp { get; set; }
 
-        [JsonProperty("map")]
-        public MythicKeystoneDungeonMap? Map { get; set; }
+        [JsonProperty("end_timestamp")]
+        public long EndTimestamp { get; set; }
 
-        [JsonProperty("zone")]
-        public Zone? Zone { get; set; }
-
-        [JsonProperty("keystone_upgrades")]
-        public IEnumerable<MythicKeystoneUpgrade>? KeystoneUpgrades { get; set; }
+        [JsonProperty("periods")]
+        public IEnumerable<MythicKeystonePeriod>? Periods { get; set; }
     }
 }

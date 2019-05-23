@@ -158,5 +158,30 @@ namespace BattleMuffin.Clients
         {
             return await Get<MythicKeystoneDungeon>($"{Host}/data/wow/mythic-keystone/dungeon/{dungeonId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MythicKeystoneIndex>> GetMythicKeystoneIndexAsync()
+        {
+            return await Get<MythicKeystoneIndex>($"{Host}/data/wow/mythic-keystone/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystonePeriodIndex>> GetMythicKeystonePeriodIndexAsync()
+        {
+            return await Get<MythicKeystonePeriodIndex>($"{Host}/data/wow/mythic-keystone/period/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystonePeriod>> GetMythicKeystonePeriodAsync(int periodId)
+        {
+            return await Get<MythicKeystonePeriod>($"{Host}/data/wow/mythic-keystone/period/{periodId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystoneSeasonIndex>> GetMythicKeystoneSeasonIndexAsync()
+        {
+            return await Get<MythicKeystoneSeasonIndex>($"{Host}/data/wow/mythic-keystone/season/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystoneSeason>> GetMythicKeystoneSeasonAsync(int seasonId)
+        {
+            return await Get<MythicKeystoneSeason>($"{Host}/data/wow/mythic-keystone/season/{seasonId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

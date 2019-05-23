@@ -169,6 +169,22 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/mythic_keystone_period.json")]
+        public async void GetMythicKeystonePeriodAsyncTest(int periodId)
+        {
+            var result = await Client.GetMythicKeystonePeriodAsync(periodId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/mythic_keystone_season.json")]
+        public async void GetMythicKeystoneSeasonAsyncTest(int seasonId)
+        {
+            var result = await Client.GetMythicKeystoneSeasonAsync(seasonId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -229,6 +245,27 @@ namespace BattleMuffin.IntegrationTests
         public async void GetMythicKeystoneDungeonIndexAsyncTest()
         {
             var result = await Client.GetMythicKeystoneDungeonIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMythicKeystoneIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystoneIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMythicKeystonePeriodIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystonePeriodIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMythicKeystoneSeasonIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystoneSeasonIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

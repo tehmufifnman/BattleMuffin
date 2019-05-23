@@ -59,5 +59,15 @@ namespace BattleMuffin.Clients
         Task<RequestResult<MythicKeystoneDungeonIndex>> GetMythicKeystoneDungeonIndexAsync();
 
         Task<RequestResult<MythicKeystoneDungeon>> GetMythicKeystoneDungeonAsync(int dungeonId);
+
+        Task<RequestResult<MythicKeystoneIndex>> GetMythicKeystoneIndexAsync();
+
+        Task<RequestResult<MythicKeystonePeriodIndex>> GetMythicKeystonePeriodIndexAsync();
+
+        Task<RequestResult<MythicKeystonePeriod>> GetMythicKeystonePeriodAsync(int periodId);
+
+        Task<RequestResult<MythicKeystoneSeasonIndex>> GetMythicKeystoneSeasonIndexAsync();
+
+        Task<RequestResult<MythicKeystoneSeason>> GetMythicKeystoneSeasonAsync(int seasonId);
     }
 }
