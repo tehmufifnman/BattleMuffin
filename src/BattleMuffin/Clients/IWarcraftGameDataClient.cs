@@ -55,5 +55,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<MountIndex>> GetMountIndexAsync();
 
         Task<RequestResult<Mount>> GetMountAsync(int mountId);
+
+        Task<RequestResult<MythicKeystoneDungeonIndex>> GetMythicKeystoneDungeonIndexAsync();
+
+        Task<RequestResult<MythicKeystoneDungeon>> GetMythicKeystoneDungeonAsync(int dungeonId);
     }
 }

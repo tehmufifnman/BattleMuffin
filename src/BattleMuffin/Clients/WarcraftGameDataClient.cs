@@ -148,5 +148,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<Mount>($"{Host}/data/wow/mount/{mountId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MythicKeystoneDungeonIndex>> GetMythicKeystoneDungeonIndexAsync()
+        {
+            return await Get<MythicKeystoneDungeonIndex>($"{Host}/data/wow/mythic-keystone/dungeon/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystoneDungeon>> GetMythicKeystoneDungeonAsync(int dungeonId)
+        {
+            return await Get<MythicKeystoneDungeon>($"{Host}/data/wow/mythic-keystone/dungeon/{dungeonId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

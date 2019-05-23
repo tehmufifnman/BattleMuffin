@@ -9,5 +9,8 @@ namespace BattleMuffin.Models.Warcraft.GameData
 
         [JsonProperty("name")]
         public string? Name { get; set; }
+
+        [JsonProperty("slug")]
+        public string? Slug { get; set; }
     }
 }

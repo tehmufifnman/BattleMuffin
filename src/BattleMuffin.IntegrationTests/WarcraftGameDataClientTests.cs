@@ -161,6 +161,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/mythic_keystone_dungeon.json")]
+        public async void GetMythicKeystoneDungeonAsyncTest(int dungeonId)
+        {
+            var result = await Client.GetMythicKeystoneDungeonAsync(dungeonId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -214,6 +222,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetMountIndexAsyncTest()
         {
             var result = await Client.GetMountIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMythicKeystoneDungeonIndexAsyncTest()
+        {
+            var result = await Client.GetMythicKeystoneDungeonIndexAsync();
             Assert.NotNull(result.Value);
         }
     }
