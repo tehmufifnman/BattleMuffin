@@ -263,5 +263,20 @@ namespace BattleMuffin.Clients
         {
             return await Get<PvPSeasonRewardIndex>($"{Host}/data/wow/pvp-season/{pvpSeasonId}/pvp-reward/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<Media>> GetPvPTierMediaAsync(int pvpTierId)
+        {
+            return await Get<Media>($"{Host}/data/wow/media/pvp-tier/{pvpTierId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPTierIndex>> GetPvPTierIndexAsync()
+        {
+            return await Get<PvPTierIndex>($"{Host}/data/wow/pvp-tier/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPTier>> GetPvPTierAsync(int pvpTierId)
+        {
+            return await Get<PvPTier>($"{Host}/data/wow/pvp-tier/{pvpTierId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace BattleMuffin.Models.Warcraft.GameData
 {
-    public class PvPSeasonMatchStatistics
+    public class PvPMatchStatistics
     {
         [JsonProperty("played")]
         public int Played { get; set; }

@@ -273,6 +273,22 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/pvp_tier.json")]
+        public async void GetPvPTierMediaAsyncTest(int pvpTierId)
+        {
+            var result = await Client.GetPvPTierMediaAsync(pvpTierId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/pvp_tier.json")]
+        public async void GetPvPTierAsyncTest(int pvpTierId)
+        {
+            var result = await Client.GetPvPTierAsync(pvpTierId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -389,6 +405,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetPvPSeasonIndexAsyncTest()
         {
             var result = await Client.GetPvPSeasonIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPvPTierIndexAsyncTest()
+        {
+            var result = await Client.GetPvPTierIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

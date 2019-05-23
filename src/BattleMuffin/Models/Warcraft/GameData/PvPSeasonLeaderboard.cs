@@ -21,7 +21,7 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public PvPSeason? Season { get; set; }
 
         [JsonProperty("bracket")]
-        public PvPSeasonBracket? Bracket { get; set; }
+        public PvPBracket? Bracket { get; set; }
 
         [JsonProperty("entries")]
         public IEnumerable<PvPSeasonLeaderboardEntry>? Entries { get; set; }

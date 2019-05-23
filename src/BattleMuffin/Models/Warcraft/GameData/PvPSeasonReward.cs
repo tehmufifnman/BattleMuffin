@@ -5,7 +5,7 @@ namespace BattleMuffin.Models.Warcraft.GameData
     public class PvPSeasonReward
     {
         [JsonProperty("bracket")]
-        public PvPSeasonBracket? Bracket { get; set; }
+        public PvPBracket? Bracket { get; set; }
 
         [JsonProperty("achievement")]
         public Achievement? Achievement { get; set; }

@@ -2,12 +2,12 @@ using Newtonsoft.Json;
 
 namespace BattleMuffin.Models.Warcraft.GameData
 {
-    public class PvPSeasonTier
+    public class PvPBracket
     {
-        [JsonProperty("key")]
-        public Key? Key { get; set; }
-
         [JsonProperty("id")]
         public int Id { get; set; }
+
+        [JsonProperty("type")]
+        public string? Type { get; set; }
     }
 }

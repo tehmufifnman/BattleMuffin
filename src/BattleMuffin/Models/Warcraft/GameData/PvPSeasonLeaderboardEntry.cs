@@ -17,9 +17,9 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public int Rating { get; set; }
 
         [JsonProperty("season_match_statistics")]
-        public PvPSeasonMatchStatistics? SeasonMatchStatistics { get; set; }
+        public PvPMatchStatistics? SeasonMatchStatistics { get; set; }
 
         [JsonProperty("tier")]
-        public PvPSeasonTier? Tier { get; set; }
+        public PvPTier? Tier { get; set; }
     }
 }
