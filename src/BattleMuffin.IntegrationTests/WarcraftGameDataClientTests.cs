@@ -289,6 +289,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/realm.json")]
+        public async void GetRealmAsyncTest(string realmSlug)
+        {
+            var result = await Client.GetRealmAsync(realmSlug);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -412,6 +420,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetPvPTierIndexAsyncTest()
         {
             var result = await Client.GetPvPTierIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetRealmIndexAsyncTest()
+        {
+            var result = await Client.GetRealmIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

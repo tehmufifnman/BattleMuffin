@@ -4,6 +4,9 @@ namespace BattleMuffin.Models.Warcraft.GameData
 {
     public class Realm
     {
+        [JsonProperty("_links")]
+        public Links? Links { get; set; }
+
         [JsonProperty("key")]
         public Key? Key { get; set; }
 
@@ -11,7 +14,7 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public int Id { get; set; }
 
         [JsonProperty("region")]
-        public ConnectedRealmRegion? Region { get; set; }
+        public Region? Region { get; set; }
 
         [JsonProperty("connected_realm")]
         public ConnectedRealm? ConnectedRealm { get; set; }

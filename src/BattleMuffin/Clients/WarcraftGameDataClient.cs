@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BattleMuffin.Enums;
 using BattleMuffin.Models.Warcraft.GameData;
 using BattleMuffin.Web;
+using Region = BattleMuffin.Enums.Region;
 
 namespace BattleMuffin.Clients
 {
@@ -277,6 +278,16 @@ namespace BattleMuffin.Clients
         public async Task<RequestResult<PvPTier>> GetPvPTierAsync(int pvpTierId)
         {
             return await Get<PvPTier>($"{Host}/data/wow/pvp-tier/{pvpTierId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<RealmIndex>> GetRealmIndexAsync()
+        {
+            return await Get<RealmIndex>($"{Host}/data/wow/realm/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<Realm>> GetRealmAsync(string realmSlug)
+        {
+            return await Get<Realm>($"{Host}/data/wow/realm/{realmSlug}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
     }
 }

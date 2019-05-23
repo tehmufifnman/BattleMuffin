@@ -107,5 +107,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<PvPTierIndex>> GetPvPTierIndexAsync();
 
         Task<RequestResult<PvPTier>> GetPvPTierAsync(int pvpTierId);
+
+        Task<RequestResult<RealmIndex>> GetRealmIndexAsync();
+
+        Task<RequestResult<Realm>> GetRealmAsync(string realmSlug);
     }
 }
