@@ -203,5 +203,20 @@ namespace BattleMuffin.Clients
         {
             return await Get<BattlePet>($"{Host}/data/wow/pet/{petId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<PlayableClassIndex>> GetPlayableClassIndexAsync()
+        {
+            return await Get<PlayableClassIndex>($"{Host}/data/wow/playable-class/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PlayableClass>> GetPlayableClassAsync(int classId)
+        {
+            return await Get<PlayableClass>($"{Host}/data/wow/playable-class/{classId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PlayableClassPvPTalentSlots>> GetPlayableClassPvPTalentSlotsAsync(int classId)
+        {
+            return await Get<PlayableClassPvPTalentSlots>($"{Host}/data/wow/playable-class/{classId}/pvp-talent-slots?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

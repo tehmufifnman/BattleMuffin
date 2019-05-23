@@ -11,6 +11,6 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public Faction? Faction { get; set; }
 
         [JsonProperty("specialization")]
-        public Specialization? Specialization { get; set; }
+        public PlayableSpecialization? Specialization { get; set; }
     }
 }

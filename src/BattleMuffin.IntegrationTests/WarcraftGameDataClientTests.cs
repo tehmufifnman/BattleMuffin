@@ -209,6 +209,22 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/playable_class.json")]
+        public async void GetPlayableClassAsyncTest(int classId)
+        {
+            var result = await Client.GetPlayableClassAsync(classId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/playable_class.json")]
+        public async void GetPlayableClassPvPTalentSlotsAsyncTest(int classId)
+        {
+            var result = await Client.GetPlayableClassPvPTalentSlotsAsync(classId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -297,6 +313,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetBattlePetIndexAsyncTest()
         {
             var result = await Client.GetBattlePetIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPlayableClassIndexAsyncTest()
+        {
+            var result = await Client.GetPlayableClassIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

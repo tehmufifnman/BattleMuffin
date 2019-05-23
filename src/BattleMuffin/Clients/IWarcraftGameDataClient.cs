@@ -77,5 +77,11 @@ namespace BattleMuffin.Clients
         Task<RequestResult<BattlePetIndex>> GetBattlePetIndexAsync();
 
         Task<RequestResult<BattlePet>> GetBattlePetAsync(int petId);
+
+        Task<RequestResult<PlayableClassIndex>> GetPlayableClassIndexAsync();
+
+        Task<RequestResult<PlayableClass>> GetPlayableClassAsync(int classId);
+
+        Task<RequestResult<PlayableClassPvPTalentSlots>> GetPlayableClassPvPTalentSlotsAsync(int classId);
     }
 }
