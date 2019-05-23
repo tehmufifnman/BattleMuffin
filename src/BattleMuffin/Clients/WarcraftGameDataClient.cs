@@ -138,5 +138,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<MythicRaidLeaderboard>($"{Host}/data/wow/leaderboard/hall-of-fame/{raid}/{faction}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MountIndex>> GetMountIndexAsync()
+        {
+            return await Get<MountIndex>($"{Host}/data/wow/mount/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<Mount>> GetMountAsync(int mountId)
+        {
+            return await Get<Mount>($"{Host}/data/wow/mount/{mountId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }

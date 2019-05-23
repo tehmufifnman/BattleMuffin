@@ -153,6 +153,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/mount.json")]
+        public async void GetMountAsyncTest(int mountId)
+        {
+            var result = await Client.GetMountAsync(mountId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -199,6 +207,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetMythicKeystoneAffixIndexAsyncTest()
         {
             var result = await Client.GetMythicKeystoneAffixIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetMountIndexAsyncTest()
+        {
+            var result = await Client.GetMountIndexAsync();
             Assert.NotNull(result.Value);
         }
     }
