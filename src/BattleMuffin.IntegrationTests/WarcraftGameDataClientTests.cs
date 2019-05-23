@@ -201,6 +201,14 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/battle_pet.json")]
+        public async void GetBattlePetAsyncTest(int petId)
+        {
+            var result = await Client.GetBattlePetAsync(petId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -282,6 +290,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetMythicKeystoneSeasonIndexAsyncTest()
         {
             var result = await Client.GetMythicKeystoneSeasonIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetBattlePetIndexAsyncTest()
+        {
+            var result = await Client.GetBattlePetIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

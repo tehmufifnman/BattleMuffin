@@ -73,5 +73,9 @@ namespace BattleMuffin.Clients
         Task<RequestResult<MythicKeystoneLeaderboardIndex>> GetMythicKeystoneLeaderboardIndexAsync(int connectedRealmId);
 
         Task<RequestResult<MythicKeystoneLeaderboard>> GetMythicKeystoneLeaderboardAsync(int connectedRealmId, int dungeonId, int periodId);
+
+        Task<RequestResult<BattlePetIndex>> GetBattlePetIndexAsync();
+
+        Task<RequestResult<BattlePet>> GetBattlePetAsync(int petId);
     }
 }

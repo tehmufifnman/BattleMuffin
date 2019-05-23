@@ -193,5 +193,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<MythicKeystoneLeaderboard>($"{Host}/data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/{dungeonId}/period/{periodId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<BattlePetIndex>> GetBattlePetIndexAsync()
+        {
+            return await Get<BattlePetIndex>($"{Host}/data/wow/pet/index?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<BattlePet>> GetBattlePetAsync(int petId)
+        {
+            return await Get<BattlePet>($"{Host}/data/wow/pet/{petId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
+        }
     }
 }
