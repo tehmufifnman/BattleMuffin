@@ -130,6 +130,12 @@
         <None Update="Data\GameData\mythic_keystone_season.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Data\GameData\mythic_keystone_leaderboard.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Data\GameData\mythic_keystone_leaderboard_index.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>    
 
 </Project>

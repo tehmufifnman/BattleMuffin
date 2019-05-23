@@ -21,5 +21,11 @@ namespace BattleMuffin.Models.Warcraft.GameData
 
         [JsonProperty("media")]
         public Media? Media { get; set; }
+
+        [JsonProperty("keystone_affix")]
+        public MythicKeystoneAffix? KeystoneAffix { get; set; }
+
+        [JsonProperty("starting_level")]
+        public int StartingLevel { get; set; }
     }
 }

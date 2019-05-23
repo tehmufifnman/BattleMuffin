@@ -185,6 +185,22 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/mythic_keystone_leaderboard_index.json")]
+        public async void GetMythicKeystoneLeaderboardIndexAsyncTest(int connectedRealmId)
+        {
+            var result = await Client.GetMythicKeystoneLeaderboardIndexAsync(connectedRealmId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/mythic_keystone_leaderboard.json")]
+        public async void GetMythicKeystoneLeaderboardAsyncTest(int connectedRealmId, int dungeonId, int periodId)
+        {
+            var result = await Client.GetMythicKeystoneLeaderboardAsync(connectedRealmId, dungeonId, periodId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {

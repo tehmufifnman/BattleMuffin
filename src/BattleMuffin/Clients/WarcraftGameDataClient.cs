@@ -183,5 +183,15 @@ namespace BattleMuffin.Clients
         {
             return await Get<MythicKeystoneSeason>($"{Host}/data/wow/mythic-keystone/season/{seasonId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<MythicKeystoneLeaderboardIndex>> GetMythicKeystoneLeaderboardIndexAsync(int connectedRealmId)
+        {
+            return await Get<MythicKeystoneLeaderboardIndex>($"{Host}/data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<MythicKeystoneLeaderboard>> GetMythicKeystoneLeaderboardAsync(int connectedRealmId, int dungeonId, int periodId)
+        {
+            return await Get<MythicKeystoneLeaderboard>($"{Host}/data/wow/connected-realm/{connectedRealmId}/mythic-leaderboard/{dungeonId}/period/{periodId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

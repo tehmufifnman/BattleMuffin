@@ -27,6 +27,6 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public IEnumerable<Realm>? Realms { get; set; }
 
         [JsonProperty("mythic_leaderboards")]
-        public MythicLeaderboards? MythicLeaderboards { get; set; }
+        public MythicKeystoneLeaderboardIndex? MythicLeaderboards { get; set; }
     }
 }
