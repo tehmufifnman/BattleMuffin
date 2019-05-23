@@ -9,9 +9,9 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public Links? Links { get; set; }
 
         [JsonProperty("emblems")]
-        public IList<GuildCrestEmblem>? Emblems { get; set; }
+        public IEnumerable<GuildCrestEmblem>? Emblems { get; set; }
 
         [JsonProperty("borders")]
-        public IList<GuildCrestBorder>? Borders { get; set; }
+        public IEnumerable<GuildCrestBorder>? Borders { get; set; }
     }
 }

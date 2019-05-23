@@ -148,6 +148,12 @@
         <None Update="Data\GameData\power_type.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Data\GameData\pvp_season.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Data\GameData\pvp_season_leaderboard.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>    
 
 </Project>

@@ -91,5 +91,15 @@ namespace BattleMuffin.Clients
         Task<RequestResult<PowerTypeIndex>> GetPowerTypeIndexAsync();
 
         Task<RequestResult<PowerType>> GetPowerTypeAsync(int powerTypeId);
+
+        Task<RequestResult<PvPSeasonIndex>> GetPvPSeasonIndexAsync();
+
+        Task<RequestResult<PvPSeason>> GetPvPSeasonAsync(int pvpSeasonId);
+
+        Task<RequestResult<PvPSeasonLeaderboardIndex>> GetPvPSeasonLeaderboardIndexAsync(int pvpSeasonId);
+
+        Task<RequestResult<PvPSeasonLeaderboard>> GetPvPSeasonLeaderboardAsync(int pvpSeasonId, string pvpBracket);
+
+        Task<RequestResult<PvPSeasonRewardIndex>> GetPvPSeasonRewardIndexAsync(int pvpSeasonId);
     }
 }

@@ -9,9 +9,9 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public Links? Links { get; set; }
 
         [JsonProperty("character_specializations")]
-        public IList<PlayableSpecialization>? CharacterSpecializations { get; set; }
+        public IEnumerable<PlayableSpecialization>? CharacterSpecializations { get; set; }
 
         [JsonProperty("pet_specializations")]
-        public IList<PlayableSpecialization>? PetSpecializations { get; set; }
+        public IEnumerable<PlayableSpecialization>? PetSpecializations { get; set; }
     }
 }

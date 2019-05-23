@@ -241,6 +241,38 @@ namespace BattleMuffin.IntegrationTests
             Assert.NotNull(result.Value);
         }
 
+        [Theory]
+        [JsonData("GameData/pvp_season.json")]
+        public async void GetPvPSeasonAsyncTest(int pvpSeasonId)
+        {
+            var result = await Client.GetPvPSeasonAsync(pvpSeasonId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/pvp_season.json")]
+        public async void GetPvPSeasonLeaderboardIndexAsyncTest(int pvpSeasonId)
+        {
+            var result = await Client.GetPvPSeasonLeaderboardIndexAsync(pvpSeasonId);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/pvp_season_leaderboard.json")]
+        public async void GetPvPSeasonLeaderboardAsyncTest(int pvpSeasonId, string pvpBracket)
+        {
+            var result = await Client.GetPvPSeasonLeaderboardAsync(pvpSeasonId, pvpBracket);
+            Assert.NotNull(result.Value);
+        }
+
+        [Theory]
+        [JsonData("GameData/pvp_season.json")]
+        public async void GetPvPSeasonRewardIndexAsyncTest(int pvpSeasonId)
+        {
+            var result = await Client.GetPvPSeasonRewardIndexAsync(pvpSeasonId);
+            Assert.NotNull(result.Value);
+        }
+
         [Fact]
         public async void GetAchievementCategoryIndexAsyncTest()
         {
@@ -350,6 +382,13 @@ namespace BattleMuffin.IntegrationTests
         public async void GetPowerTypeIndexAsyncTest()
         {
             var result = await Client.GetPowerTypeIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
+        public async void GetPvPSeasonIndexAsyncTest()
+        {
+            var result = await Client.GetPvPSeasonIndexAsync();
             Assert.NotNull(result.Value);
         }
     }

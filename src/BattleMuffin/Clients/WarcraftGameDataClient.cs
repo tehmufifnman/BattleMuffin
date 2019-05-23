@@ -238,5 +238,30 @@ namespace BattleMuffin.Clients
         {
             return await Get<PowerType>($"{Host}/data/wow/power-type/{powerTypeId}?namespace={GetNamespace(NamespaceCategory.Static)}&locale={Locale}");
         }
+
+        public async Task<RequestResult<PvPSeasonIndex>> GetPvPSeasonIndexAsync()
+        {
+            return await Get<PvPSeasonIndex>($"{Host}/data/wow/pvp-season/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPSeason>> GetPvPSeasonAsync(int pvpSeasonId)
+        {
+            return await Get<PvPSeason>($"{Host}/data/wow/pvp-season/{pvpSeasonId}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPSeasonLeaderboardIndex>> GetPvPSeasonLeaderboardIndexAsync(int pvpSeasonId)
+        {
+            return await Get<PvPSeasonLeaderboardIndex>($"{Host}/data/wow/pvp-season/{pvpSeasonId}/pvp-leaderboard/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPSeasonLeaderboard>> GetPvPSeasonLeaderboardAsync(int pvpSeasonId, string pvpBracket)
+        {
+            return await Get<PvPSeasonLeaderboard>($"{Host}/data/wow/pvp-season/{pvpSeasonId}/pvp-leaderboard/{pvpBracket}?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
+
+        public async Task<RequestResult<PvPSeasonRewardIndex>> GetPvPSeasonRewardIndexAsync(int pvpSeasonId)
+        {
+            return await Get<PvPSeasonRewardIndex>($"{Host}/data/wow/pvp-season/{pvpSeasonId}/pvp-reward/index?namespace={GetNamespace(NamespaceCategory.Dynamic)}&locale={Locale}");
+        }
     }
 }

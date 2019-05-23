@@ -9,6 +9,6 @@ namespace BattleMuffin.Models.Warcraft.GameData
         public int Level { get; set; }
 
         [JsonProperty("talents")]
-        public IList<PlayableSpecializationTalent>? Talents { get; set; }
+        public IEnumerable<PlayableSpecializationTalent>? Talents { get; set; }
     }
 }
