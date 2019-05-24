@@ -320,6 +320,13 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
+        public async void GetBattlePetIndexAsyncTest()
+        {
+            var result = await Client.GetBattlePetIndexAsync();
+            Assert.NotNull(result.Value);
+        }
+
+        [Fact]
         public async void GetConnectedRealmIndexAsyncTest()
         {
             var result = await Client.GetConnectedRealmIndexAsync();
@@ -348,16 +355,16 @@ namespace BattleMuffin.IntegrationTests
         }
 
         [Fact]
-        public async void GetMythicKeystoneAffixIndexAsyncTest()
+        public async void GetMountIndexAsyncTest()
         {
-            var result = await Client.GetMythicKeystoneAffixIndexAsync();
+            var result = await Client.GetMountIndexAsync();
             Assert.NotNull(result.Value);
         }
 
         [Fact]
-        public async void GetMountIndexAsyncTest()
+        public async void GetMythicKeystoneAffixIndexAsyncTest()
         {
-            var result = await Client.GetMountIndexAsync();
+            var result = await Client.GetMythicKeystoneAffixIndexAsync();
             Assert.NotNull(result.Value);
         }
 
@@ -386,13 +393,6 @@ namespace BattleMuffin.IntegrationTests
         public async void GetMythicKeystoneSeasonIndexAsyncTest()
         {
             var result = await Client.GetMythicKeystoneSeasonIndexAsync();
-            Assert.NotNull(result.Value);
-        }
-
-        [Fact]
-        public async void GetBattlePetIndexAsyncTest()
-        {
-            var result = await Client.GetBattlePetIndexAsync();
             Assert.NotNull(result.Value);
         }
 

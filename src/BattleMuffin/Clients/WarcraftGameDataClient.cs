@@ -14,7 +14,7 @@ namespace BattleMuffin.Clients
         /// </summary>
         /// <param name="clientId">The Blizzard OAuth client ID.</param>
         /// <param name="clientSecret">The Blizzard OAuth client secret.</param>
-        /// <param name="region">Specifies the <see cref="Region" /> that the API will retrieve its data from.</param>
+        /// <param name="region">Specifies the <see cref="Enums.Region" /> that the API will retrieve its data from.</param>
         /// <param name="locale">
         ///     Specifies the language that the result will be localized in. Visit
         ///     https://develop.battle.net/documentation/guides/regionality-partitions-and-localization
