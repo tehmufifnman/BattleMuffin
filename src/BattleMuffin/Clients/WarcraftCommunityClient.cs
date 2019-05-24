@@ -12,10 +12,10 @@ namespace BattleMuffin.Clients
     /// <summary>
     ///     A client for the World of Warcraft Community & Game Data APIs.
     /// </summary>
-    public class WarcraftClient : BaseClient, IWarcraftClient
+    public class WarcraftCommunityClient : BaseClient, IWarcraftCommunityClient
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WarcraftClient" /> class.
+        ///     Initializes a new instance of the <see cref="WarcraftCommunityClient" /> class.
         /// </summary>
         /// <param name="clientId">The Blizzard OAuth client ID.</param>
         /// <param name="clientSecret">The Blizzard OAuth client secret.</param>
@@ -26,7 +26,7 @@ namespace BattleMuffin.Clients
         ///     to see a list of available locales.
         /// </param>
         /// <param name="client">The <see cref="HttpClient" /> to use for all API requests.</param>
-        public WarcraftClient(string clientId, string clientSecret, Region region = Region.US, Locale locale = Locale.en_US, HttpClient? client = null) : base(clientId, clientSecret, region, locale, client)
+        public WarcraftCommunityClient(string clientId, string clientSecret, Region region = Region.Us, Locale locale = Locale.EnUs, HttpClient? client = null) : base(clientId, clientSecret, region, locale, client)
         {
         }
 

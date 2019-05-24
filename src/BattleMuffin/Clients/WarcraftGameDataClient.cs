@@ -21,7 +21,7 @@ namespace BattleMuffin.Clients
         ///     to see a list of available locales.
         /// </param>
         /// <param name="client">The <see cref="HttpClient" /> to use for all API requests.</param>
-        public WarcraftGameDataClient(string clientId, string clientSecret, Region region = Region.US, Locale locale = Locale.en_US, HttpClient? client = null) : base(clientId, clientSecret, region, locale, client)
+        public WarcraftGameDataClient(string clientId, string clientSecret, Region region = Region.Us, Locale locale = Locale.EnUs, HttpClient? client = null) : base(clientId, clientSecret, region, locale, client)
         {
         }
 

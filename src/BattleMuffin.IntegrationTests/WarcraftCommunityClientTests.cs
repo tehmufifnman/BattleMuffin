@@ -6,11 +6,11 @@ using Xunit;
 
 namespace BattleMuffin.IntegrationTests
 {
-    public class WarcraftClientTests
+    public class WarcraftCommunityClientTests
     {
-        private WarcraftClient? _client;
+        private WarcraftCommunityClient? _client;
 
-        private WarcraftClient Client
+        private WarcraftCommunityClient Client
         {
             get
             {
@@ -21,7 +21,7 @@ namespace BattleMuffin.IntegrationTests
 
                 var clientId = Environment.GetEnvironmentVariable("BLIZZARD_CLIENT_ID");
                 var clientSecret = Environment.GetEnvironmentVariable("BLIZZARD_CLIENT_SECRET");
-                _client = new WarcraftClient(clientId, clientSecret);
+                _client = new WarcraftCommunityClient(clientId, clientSecret);
                 return _client;
             }
         }

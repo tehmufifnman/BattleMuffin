@@ -180,7 +180,7 @@ namespace BattleMuffin.Clients
                     return "https://kr.api.blizzard.com";
                 case Region.Taiwan:
                     return "https://tw.api.blizzard.com";
-                case Region.US:
+                case Region.Us:
                     return "https://us.api.blizzard.com";
                 default:
                     return "https://us.api.blizzard.com";
@@ -206,7 +206,7 @@ namespace BattleMuffin.Clients
                     return "https://kr.battle.net";
                 case Region.Taiwan:
                     return "https://tw.battle.net";
-                case Region.US:
+                case Region.Us:
                     return "https://us.battle.net";
                 default:
                     return "https://us.battle.net";
@@ -233,7 +233,7 @@ namespace BattleMuffin.Clients
                     return $"{namespaceCategory.ToString().ToLower()}-kr";
                 case Region.Taiwan:
                     return $"{namespaceCategory.ToString().ToLower()}-tw";
-                case Region.US:
+                case Region.Us:
                     return $"{namespaceCategory.ToString().ToLower()}-us";
                 default:
                     return $"{namespaceCategory.ToString().ToLower()}-us";

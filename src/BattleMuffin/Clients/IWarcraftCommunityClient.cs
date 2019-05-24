@@ -9,7 +9,7 @@ namespace BattleMuffin.Clients
     /// <summary>
     ///     A client for the World of Warcraft Community & Game Data APIs.
     /// </summary>
-    public interface IWarcraftClient
+    public interface IWarcraftCommunityClient
     {
         /// <summary>
         ///     Get the specified achievement.
