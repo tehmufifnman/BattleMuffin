@@ -20,14 +20,27 @@ You must have a set of Blizzard API client credentials to use their API.  Please
 ## Using the BattleMuffin API Client
 
 ``` cs
+//Warcraft Community API Example
 var clientId = "CLIENT_ID";
 var clientSecret = "CLIENT_SECRET";
-var warcraftClient = new WarcraftClient(clientId, clientSecret);
+var client = new WarcraftCommunityClient(clientId, clientSecret);
 // or to specify a region and locale.
-// var warcraftClient = new WarcraftClient(clientId, clientSecret, Region.EU, "Locale.en_GB");
+// var client = new WarcraftCommunityClient(clientId, clientSecret, Region.EU, "Locale.en_GB");
 
-var result = await warcraftClient.GetItemAsync(72092); 
+var result = await client.GetItemAsync(72092); 
 Console.WriteLine("Iten Name - " + result.Value.Name); // Ghost Iron Ore
+```
+
+``` cs
+//Warcraft GameData API Example
+var clientId = "CLIENT_ID";
+var clientSecret = "CLIENT_SECRET";
+var client = new WarcraftGameDataClient(clientId, clientSecret);
+// or to specify a region and locale.
+// var client = new WarcraftGameDataClient(clientId, clientSecret, Region.EU, "Locale.en_GB");
+
+var result = await client.GetRealmAsync("hyjal"); 
+Console.WriteLine("Realm Timezone - " + result.Value.Timezone); // America/Los_Angeles
 ```
 
 # API Implementation Plan
