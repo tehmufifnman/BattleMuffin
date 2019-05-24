@@ -354,7 +354,7 @@ namespace BattleMuffin.UnitTests
                 mockHttp.When(requestUri).Respond(statusCode.Value, "application/json", responseContent);
             }
 
-            return new WarcraftCommunityClient("clientIdHere", "clientSecretHere", Region.Us, Locale.EnUs, mockHttp.ToHttpClient());
+            return new WarcraftCommunityClient("clientIdHere", "clientSecretHere", Region.US, Locale.en_US, mockHttp.ToHttpClient());
         }
     }
 }

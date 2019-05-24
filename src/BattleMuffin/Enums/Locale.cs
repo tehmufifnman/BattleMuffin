@@ -10,79 +10,79 @@ namespace BattleMuffin.Enums
         /// <summary>
         ///     English (United States of America)
         /// </summary>
-        [LocaleRegion(Region.Us)]
-        EnUs,
+        [LocaleRegion(Region.US)]
+        en_US,
 
         /// <summary>
         ///     Spanish (Mexico)
         /// </summary>
-        [LocaleRegion(Region.Us)]
-        EsMx,
+        [LocaleRegion(Region.US)]
+        es_MX,
 
         /// <summary>
         ///     Portuguese (Brazil)
         /// </summary>
-        [LocaleRegion(Region.Us)]
-        PtBr,
+        [LocaleRegion(Region.US)]
+        pt_BR,
 
         /// <summary>
         ///     English (United Kingdom)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        EnGb,
+        en_GB,
 
         /// <summary>
         ///     Spanish (Spain)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        EsEs,
+        es_ES,
 
         /// <summary>
         ///     French (France)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        FrFr,
+        fr_FR,
 
         /// <summary>
         ///     Russian (Russian Federation)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        RuRu,
+        ru_RU,
 
         /// <summary>
         ///     German (Germany)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        DeDe,
+        de_DE,
 
         /// <summary>
         ///     Portuguese (Portugal)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        PtPt,
+        pt_PT,
 
         /// <summary>
         ///     Italian (Italy)
         /// </summary>
         [LocaleRegion(Region.Europe)]
-        ItIt,
+        it_IT,
 
         /// <summary>
         ///     Korean (Korea)
         /// </summary>
         [LocaleRegion(Region.Korea)]
-        KoKr,
+        ko_KR,
 
         /// <summary>
         ///     Chinese (Taiwan)
         /// </summary>
         [LocaleRegion(Region.Taiwan)]
-        ZhTw,
+        zh_TW,
 
         /// <summary>
         ///     Chinese (China)
         /// </summary>
         [LocaleRegion(Region.China)]
-        ZhCn
+        zh_CN
     }
 }

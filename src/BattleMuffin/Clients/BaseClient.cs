@@ -180,7 +180,7 @@ namespace BattleMuffin.Clients
                     return "https://kr.api.blizzard.com";
                 case Region.Taiwan:
                     return "https://tw.api.blizzard.com";
-                case Region.Us:
+                case Region.US:
                     return "https://us.api.blizzard.com";
                 default:
                     return "https://us.api.blizzard.com";
@@ -206,7 +206,7 @@ namespace BattleMuffin.Clients
                     return "https://kr.battle.net";
                 case Region.Taiwan:
                     return "https://tw.battle.net";
-                case Region.Us:
+                case Region.US:
                     return "https://us.battle.net";
                 default:
                     return "https://us.battle.net";
@@ -216,7 +216,6 @@ namespace BattleMuffin.Clients
         /// <summary>
         ///     Get the namespace regionality for the specified region and namespace category
         /// </summary>
-        /// <param name="region">Specifies the region that the API will retrieve its data from.</param>
         /// <param name="namespaceCategory">The namespace category depending on type of API data.</param>
         /// <returns>
         ///     The namespace regionality for the specified region and namespace category
@@ -233,7 +232,7 @@ namespace BattleMuffin.Clients
                     return $"{namespaceCategory.ToString().ToLower()}-kr";
                 case Region.Taiwan:
                     return $"{namespaceCategory.ToString().ToLower()}-tw";
-                case Region.Us:
+                case Region.US:
                     return $"{namespaceCategory.ToString().ToLower()}-us";
                 default:
                     return $"{namespaceCategory.ToString().ToLower()}-us";

@@ -28,6 +28,6 @@ namespace BattleMuffin.Enums
         /// <summary>
         ///     United States.
         /// </summary>
-        Us = 5
+        US = 5
     }
 }
