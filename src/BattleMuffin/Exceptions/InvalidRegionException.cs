@@ -10,7 +10,7 @@ namespace BattleMuffin.Exceptions
         }
 
         public InvalidRegionException(Region region) : base(
-            $"Invalid Student Name: {region}.  This region cannot be used with the World of Warcraft Game Data API.")
+            $"Invalid Region: {region}.  This region cannot be used with the World of Warcraft Game Data API.")
         {
         }
     }

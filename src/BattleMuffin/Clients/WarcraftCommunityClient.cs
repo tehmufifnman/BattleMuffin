@@ -41,9 +41,9 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The specified auction house status.
         /// </returns>
-        public async Task<RequestResult<AuctionDataStatus>> GetAuctionDataStatusAsync(string realm)
+        public Task<RequestResult<AuctionDataStatus>> GetAuctionDataStatusAsync(string realm)
         {
-            return await Get<AuctionDataStatus>($"{Host}/wow/auction/data/{realm}?locale={Locale}");
+            return Get<AuctionDataStatus>($"{Host}/wow/auction/data/{realm}?locale={Locale}");
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The auction house data dump from the specified file.
         /// </returns>
-        public async Task<RequestResult<AuctionDataDump>> GetAuctionHouseDataDumpAsync(string url)
+        public Task<RequestResult<AuctionDataDump>> GetAuctionHouseDataDumpAsync(string url)
         {
-            return await Get<AuctionDataDump>(url);
+            return Get<AuctionDataDump>(url);
         }
     }
 }
