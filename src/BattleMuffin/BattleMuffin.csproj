@@ -1,23 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
-        <LangVersion>8</LangVersion>
-        <NullableContextOptions>enable</NullableContextOptions>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <PackageIconUrl>https://www.gravatar.com/avatar/74828271ae9d0a2b32e492f337cbe506</PackageIconUrl>
-        <PackageProjectUrl>https://gitlab.com/themuffinman/BattleMuffin</PackageProjectUrl>
-        <RepositoryUrl>https://gitlab.com/themuffinman/BattleMuffin</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-        <PackageTags>Warcraft BattleNet Battle.Net Blizzard</PackageTags>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Description>BattleMuffin is a .NET Core 3.0 wrapper for the Blizzard Web API written in C# 8.0.
-
-Requires .NET Core 3.0 or higher.</Description>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
 
 </Project>
