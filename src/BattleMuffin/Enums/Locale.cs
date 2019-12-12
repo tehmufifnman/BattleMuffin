@@ -1,4 +1,4 @@
-using BattleMuffin.Attributes.BattleMuffin.Attributes;
+using BattleMuffin.Attributes;
 
 namespace BattleMuffin.Enums
 {

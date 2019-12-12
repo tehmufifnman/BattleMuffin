@@ -1,5 +1,5 @@
 using System.Reflection;
-using BattleMuffin.Attributes.BattleMuffin.Attributes;
+using BattleMuffin.Attributes;
 using BattleMuffin.Enums;
 
 namespace BattleMuffin.Extensions
