@@ -6,7 +6,7 @@ namespace BattleMuffin.Attributes
     /// <summary>
     ///     Attribute used to set a valid <see cref="Region" /> for a given <see cref="Locale" />.
     /// </summary>
-    public class LocaleRegion : Attribute
+    public sealed class LocaleRegion : Attribute
     {
         /// <summary>
         ///     Sets the <see cref="Region" /> of the attribute.
