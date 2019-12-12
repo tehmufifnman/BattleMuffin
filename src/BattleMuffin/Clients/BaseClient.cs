@@ -81,7 +81,7 @@ namespace BattleMuffin.Clients
             var request = CreateRequest(HttpMethod.Post, $"{oauthHost}/oauth/token", content);
             var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
                 .ConfigureAwait(false);
-            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
             return await JsonSerializer.DeserializeAsync<OAuthAccessToken>(stream,
                 DefaultJsonSerializerOptions.Options);
         }
@@ -109,7 +109,33 @@ namespace BattleMuffin.Clients
         /// <returns>
         ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
         /// </returns>
-        protected async Task<RequestResult<T>> Get<T>(string url, string? arrayName = null) where T : class
+        protected Task<RequestResult<T>> Get<T>(string url, string? arrayName = null) where T : class
+        {
+            var tokenSource = new CancellationTokenSource();
+            var token = tokenSource.Token;
+            return Get<T>(url, token, arrayName);
+        }
+
+        /// <summary>
+        ///     Retrieve an item of type <typeparamref name="T" /> from the Blizzard Community
+        ///     or Game Data API.
+        /// </summary>
+        /// <typeparam name="T">
+        ///     The return type.
+        /// </typeparam>
+        /// <param name="url">
+        ///     The URI the request is sent to.
+        /// </param>
+        /// <param name="token">
+        ///     Custom cancellation token.
+        /// </param>
+        /// <param name="arrayName">
+        ///     The name of the array to deserialize to prevent the use of JSON root objects.
+        /// </param>
+        /// <returns>
+        ///     The JSON response, deserialized to an object of type <typeparamref name="T" />.
+        /// </returns>
+        protected async Task<RequestResult<T>> Get<T>(string url, CancellationToken token, string? arrayName = null) where T : class
         {
             // Acquire a new OAuth token if we don't have one. Get a new one if it's expired.
             if (_token == null || DateTime.UtcNow >= _tokenExpiration)
@@ -122,15 +148,13 @@ namespace BattleMuffin.Clients
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token.AccessToken);
 
             // Retrieve the response.
-            var tokenSource = new CancellationTokenSource();
-            var token = tokenSource.Token;
             var request = CreateRequest(HttpMethod.Get, url);
             using var response = await _client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token)
                 .ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode && response.Content != null)
             {
-                await using var stream = await response.Content.ReadAsStreamAsync();
+                await using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
                 try
                 {
                     if (arrayName != null)
@@ -242,7 +266,7 @@ namespace BattleMuffin.Clients
             if (stream == null) return null;
 
             using var sr = new StreamReader(stream);
-            var content = await sr.ReadToEndAsync();
+            var content = await sr.ReadToEndAsync().ConfigureAwait(false);
             stream.Close();
             return content;
         }
