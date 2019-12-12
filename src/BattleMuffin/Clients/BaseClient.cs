@@ -163,8 +163,7 @@ namespace BattleMuffin.Clients
 
                         if (string.IsNullOrEmpty(json))
                         {
-                            var error = JsonSerializer.Deserialize<RequestError>(json,
-                                DefaultJsonSerializerOptions.Options);
+                            var error = await JsonSerializer.DeserializeAsync<RequestError>(stream, DefaultJsonSerializerOptions.Options, token);
                             return error;
                         }
 
