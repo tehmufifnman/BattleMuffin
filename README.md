@@ -3,7 +3,7 @@ Battle is a .NET Core 3.1 wrapper for the [Blizzard Community & Game Data APIs](
 
 ## Requirements
 
-You must have a set of Blizzard API client credentials to use their API.  Please see their [getting startard](https://develop.battle.net/documentation/guides/getting-started) page for more information.
+You must have a set of Blizzard API client credentials to use their API.  Please see their [getting started](https://develop.battle.net/documentation/guides/getting-started) page for more information.
 
 ## Installing via NuGet
 
