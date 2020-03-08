@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using BattleMuffin.Attributes;
 using BattleMuffin.Enums;
-using BattleMuffin.Exceptions;
 using BattleMuffin.Extensions;
 
 namespace BattleMuffin.Configuration
 {
     internal static class RegionConfigurationMap
     {
-        internal static readonly Dictionary<Region, RegionConfiguration> Mapping =
+        internal static readonly IReadOnlyDictionary<Region, RegionConfiguration> Mapping =
             new Dictionary<Region, RegionConfiguration>
             {
                 {
                     Region.US, new RegionConfiguration
                     (
                         Region.US.GetAttribute<PrefixAttribute>().Prefix,
+                        Locale.EnglishUS,
                         new List<Locale>
                         {
                             Locale.EnglishUS,
@@ -27,6 +27,7 @@ namespace BattleMuffin.Configuration
                     Region.EU, new RegionConfiguration
                     (
                         Region.EU.GetAttribute<PrefixAttribute>().Prefix,
+                        Locale.EnglishGB,
                         new List<Locale>
                         {
                             Locale.EnglishGB,
@@ -43,6 +44,7 @@ namespace BattleMuffin.Configuration
                     Region.KR, new RegionConfiguration
                     (
                         Region.KR.GetAttribute<PrefixAttribute>().Prefix,
+                        Locale.KoreanKR,
                         new List<Locale>
                         {
                             Locale.KoreanKR
@@ -53,6 +55,7 @@ namespace BattleMuffin.Configuration
                     Region.TW, new RegionConfiguration
                     (
                         Region.TW.GetAttribute<PrefixAttribute>().Prefix,
+                        Locale.ChineseTW,
                         new List<Locale>
                         {
                             Locale.ChineseTW
@@ -64,6 +67,7 @@ namespace BattleMuffin.Configuration
                     (
                         Region.CN.GetAttribute<PrefixAttribute>().Prefix,
                         "https://gateway.battlenet.com.cn/",
+                        Locale.ChineseCN,
                         new List<Locale>
                         {
                             Locale.ChineseCN

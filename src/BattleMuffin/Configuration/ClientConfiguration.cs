@@ -8,8 +8,8 @@ namespace BattleMuffin.Configuration
     [UsedImplicitly]
     public class ClientConfiguration : IClientConfiguration
     {
-        public string Host { get; set; }
-        public Locale Locale { get; set; }
+        public string Host { get; }
+        public Locale Locale { get; }
 
         public ClientConfiguration(Region region)
         {

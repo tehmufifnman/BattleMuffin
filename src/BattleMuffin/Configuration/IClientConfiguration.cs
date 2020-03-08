@@ -4,7 +4,7 @@ namespace BattleMuffin.Configuration
 {
     public interface IClientConfiguration
     {
-        string Host { get; set; }
-        Locale Locale { get; set; }
+        string Host { get; }
+        Locale Locale { get; }
     }
 }

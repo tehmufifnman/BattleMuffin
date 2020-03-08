@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using BattleMuffin.Enums;
+using BattleMuffin.Exceptions;
 
 namespace BattleMuffin.Configuration
 {
@@ -9,22 +11,30 @@ namespace BattleMuffin.Configuration
         private const string BaseApiUrl = "api.blizzard.com";
         internal string Prefix { get; }
         internal string Host { get; }
-        internal IEnumerable<Locale> AvailableLocales { get; }
+        internal IReadOnlyCollection<Locale> AvailableLocales { get; }
 
-        internal Locale DefaultLocale => AvailableLocales.First();
+        internal Locale DefaultLocale { get; }
 
-        internal RegionConfiguration(string prefix, IEnumerable<Locale> availableLocales)
+        internal RegionConfiguration(string prefix, Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales)
         {
             Prefix = prefix;
             Host = $"https://{prefix}.{BaseApiUrl}";
+            DefaultLocale = defaultLocale;
             AvailableLocales = availableLocales;
         }
 
-        internal RegionConfiguration(string prefix, string host, IEnumerable<Locale> availableLocales)
+        internal RegionConfiguration(string prefix, string host,  Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales)
         {
             Prefix = prefix;
             Host = host;
+            DefaultLocale = defaultLocale;
             AvailableLocales = availableLocales;
+        }
+
+        internal void Validate()
+        {
+            if(AvailableLocales.All(x => x != DefaultLocale))
+                throw new LocaleException("Invalid default locale specified.");
         }
     }
 }
