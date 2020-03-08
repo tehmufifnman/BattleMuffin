@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,27 +10,24 @@ namespace BattleMuffin.Web
     {
         private static HttpClient? _instance;
 
-        public static HttpClient Instance
+        internal static HttpClient GetInstance(string apiBaseUrl)
         {
-            get
+            if (_instance != null) return _instance;
+
+            var handler = new TimeoutHandler
             {
-                if (_instance != null) return _instance;
-
-                var handler = new TimeoutHandler
+                InnerHandler = new HttpClientHandler
                 {
-                    InnerHandler = new HttpClientHandler
-                    {
-                        AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-                    }
-                };
+                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+                }
+            };
 
-                _instance = new HttpClient(handler);
-                _instance.DefaultRequestHeaders.Accept.Clear();
-                _instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                _instance.Timeout = Timeout.InfiniteTimeSpan;
+            _instance = new HttpClient(handler) {BaseAddress = new Uri(apiBaseUrl)};
+            _instance.DefaultRequestHeaders.Accept.Clear();
+            _instance.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _instance.Timeout = Timeout.InfiniteTimeSpan;
 
-                return _instance;
-            }
+            return _instance;
         }
     }
 }
