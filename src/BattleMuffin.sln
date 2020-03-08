@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleMuffin.IntegrationTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleMuffin.UnitTests", "BattleMuffin.UnitTests\BattleMuffin.UnitTests.csproj", "{EC77FD58-3B68-46D5-AEB4-D6CADDC32CF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleMuffin.Examples", "BattleMuffin.Examples\BattleMuffin.Examples.csproj", "{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{EC77FD58-3B68-46D5-AEB4-D6CADDC32CF2}.Release|x64.Build.0 = Release|Any CPU
 		{EC77FD58-3B68-46D5-AEB4-D6CADDC32CF2}.Release|x86.ActiveCfg = Release|Any CPU
 		{EC77FD58-3B68-46D5-AEB4-D6CADDC32CF2}.Release|x86.Build.0 = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|x64.Build.0 = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Debug|x86.Build.0 = Debug|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|x64.ActiveCfg = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|x64.Build.0 = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|x86.ActiveCfg = Release|Any CPU
+		{F5C423CB-5F2A-4304-9E89-CBDE6F54B667}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
