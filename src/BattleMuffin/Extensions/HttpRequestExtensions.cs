@@ -7,11 +7,12 @@ namespace BattleMuffin.Extensions
     {
         private const string TimeoutPropertyKey = "RequestTimeout";
 
-        internal static void SetTimeout(this HttpRequestMessage request, TimeSpan? timeout)
+        internal static HttpRequestMessage SetTimeout(this HttpRequestMessage request, TimeSpan? timeout)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             request.Properties[TimeoutPropertyKey] = timeout;
+            return request;
         }
 
         internal static TimeSpan? GetTimeout(this HttpRequestMessage request)
