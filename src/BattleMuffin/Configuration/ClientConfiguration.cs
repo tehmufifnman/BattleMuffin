@@ -31,7 +31,7 @@ namespace BattleMuffin.Configuration
                 ? RegionConfigurationMap.Mapping[region]
                 : throw new RegionException("Configuration not found for specified region");
 
-            if(regionConfig.AvailableLocales.Any(x => x == locale))
+            if (regionConfig.AvailableLocales.Any(x => x == locale))
                 throw new LocaleException("Locale not valid for specified region");
 
             Host = regionConfig.Host;
