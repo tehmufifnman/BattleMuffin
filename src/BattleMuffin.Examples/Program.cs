@@ -10,11 +10,11 @@ namespace BattleMuffin.Examples
         {
             //Consumer of lib would DI the client configuration
             var client1 = new BaseClient(
-                new ClientConfiguration(Region.US)
+                new ClientConfiguration(Region.US, "client-id", "client-secret")
             );
 
             var client2 = new BaseClient(
-                new ClientConfiguration(Region.US, Locale.SpanishMX)
+                new ClientConfiguration(Region.US, "client-id", "client-secret", Locale.SpanishMX)
             );
         }
     }

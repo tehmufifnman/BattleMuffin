@@ -1,8 +1,6 @@
-using System;
-
 namespace BattleMuffin.Exceptions
 {
-    public class RegionException : Exception
+    public class RegionException : ConfigurationException
     {
         public RegionException(string message) : base(message)
         {

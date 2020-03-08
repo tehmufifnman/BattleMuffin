@@ -6,7 +6,7 @@ namespace BattleMuffin.Attributes
     {
         internal string Prefix { get; }
 
-        public PrefixAttribute(string prefix)
+        internal PrefixAttribute(string prefix)
         {
             Prefix = prefix;
         }

@@ -66,12 +66,12 @@ namespace BattleMuffin.Configuration
                     Region.CN, new RegionConfiguration
                     (
                         Region.CN.GetAttribute<PrefixAttribute>().Prefix,
-                        "https://gateway.battlenet.com.cn/",
                         Locale.ChineseCN,
                         new List<Locale>
                         {
                             Locale.ChineseCN
-                        }
+                        },
+                        "https://gateway.battlenet.com.cn/"
                     )
                 }
             };

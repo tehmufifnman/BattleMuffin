@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using BattleMuffin.Enums;
 using BattleMuffin.Exceptions;
@@ -23,7 +22,7 @@ namespace BattleMuffin.Configuration
             AvailableLocales = availableLocales;
         }
 
-        internal RegionConfiguration(string prefix, string host,  Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales)
+        internal RegionConfiguration(string prefix, Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales, string host)
         {
             Prefix = prefix;
             Host = host;
