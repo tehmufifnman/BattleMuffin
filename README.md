@@ -1,5 +1,5 @@
 # BattleMuffin Blizzard API Client
-Battle is a .NET Core 3.1 wrapper for the [Blizzard Community & Game Data APIs](https://develop.battle.net/) written in C# 8.0.
+Battle is an .NET Core 3.1 wrapper for the [Blizzard Community & Game Data APIs](https://develop.battle.net/) written in C# 8.0.
 
 ## Requirements
 
