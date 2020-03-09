@@ -12,7 +12,8 @@ namespace BattleMuffin.Examples
             var services = new ServiceCollection();
 
             services.AddWarcraftClient(Region.US, "client-id", "client-secret");
-            services.AddTransient<ConsoleApplication>();    return services;
+            services.AddTransient<ConsoleApplication>();
+            return services;
         }
 
         private static async Task Main()
