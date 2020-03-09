@@ -11,6 +11,7 @@ namespace BattleMuffin.Configuration
         public string ClientId { get; }
         public string ClientSecret { get; }
         public string Host { get; }
+        public string OauthHost { get; }
         public Locale Locale { get; }
 
         public ClientConfiguration(Region region, string clientId, string clientSecret)
@@ -20,6 +21,7 @@ namespace BattleMuffin.Configuration
                 : throw new RegionException("Configuration not found for specified region");
 
             Host = regionConfig.Host;
+            OauthHost = regionConfig.OauthHost;
             Locale = regionConfig.DefaultLocale;
             ClientId = clientId;
             ClientSecret = clientSecret;
@@ -35,6 +37,7 @@ namespace BattleMuffin.Configuration
                 throw new LocaleException("Locale not valid for specified region");
 
             Host = regionConfig.Host;
+            OauthHost = regionConfig.OauthHost;
             Locale = locale;
             ClientId = clientId;
             ClientSecret = clientSecret;

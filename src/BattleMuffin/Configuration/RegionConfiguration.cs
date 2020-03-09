@@ -8,7 +8,9 @@ namespace BattleMuffin.Configuration
     public class RegionConfiguration
     {
         private const string ApiBaseUrl = "api.blizzard.com";
+        private const string OauthBaseUrl = "battle.net";
         internal string Prefix { get; }
+        internal string OauthHost { get; }
         internal string Host { get; }
         internal IReadOnlyCollection<Locale> AvailableLocales { get; }
 
@@ -18,15 +20,17 @@ namespace BattleMuffin.Configuration
         {
             Prefix = prefix;
             Host = $"https://{prefix}.{ApiBaseUrl}";
+            OauthHost = $"https://{prefix}.{OauthBaseUrl}";
             DefaultLocale = defaultLocale;
             AvailableLocales = availableLocales;
         }
 
         internal RegionConfiguration(string prefix, Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales,
-            string host)
+            string host, string oauthHost)
         {
             Prefix = prefix;
             Host = host;
+            OauthHost = oauthHost;
             DefaultLocale = defaultLocale;
             AvailableLocales = availableLocales;
         }

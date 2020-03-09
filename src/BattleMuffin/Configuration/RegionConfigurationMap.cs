@@ -71,7 +71,8 @@ namespace BattleMuffin.Configuration
                         {
                             Locale.ChineseCN
                         },
-                        "https://gateway.battlenet.com.cn/"
+                        "https://gateway.battlenet.com.cn/",
+                        " https://www.battlenet.com.cn"
                     )
                 }
             };

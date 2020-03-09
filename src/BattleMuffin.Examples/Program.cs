@@ -1,21 +1,26 @@
-﻿using BattleMuffin.Clients;
-using BattleMuffin.Configuration;
+﻿using System.Threading.Tasks;
 using BattleMuffin.Enums;
+using BattleMuffin.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BattleMuffin.Examples
 {
     internal static class Program
     {
-        private static void Main()
+        private static IServiceCollection ConfigureServices()
         {
-            //Consumer of lib would DI the client configuration
-            var client1 = new BaseClient(
-                new ClientConfiguration(Region.US, "client-id", "client-secret")
-            );
+            var services = new ServiceCollection();
 
-            var client2 = new BaseClient(
-                new ClientConfiguration(Region.US, "client-id", "client-secret", Locale.SpanishMX)
-            );
+            services.AddWarcraftClient(Region.US, "client-id", "client-secret");
+            services.AddTransient<ConsoleApplication>();    return services;
+        }
+
+        private static async Task Main()
+        {
+            var services = ConfigureServices();
+            var serviceProvider = services.BuildServiceProvider();
+
+            await serviceProvider.GetService<ConsoleApplication>().Run();
         }
     }
 }
