@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BattleMuffin.Attributes;
+using System.Globalization;
 using BattleMuffin.Enums;
 using BattleMuffin.Extensions;
 
@@ -13,66 +13,61 @@ namespace BattleMuffin.Configuration
                 {
                     Region.US, new RegionConfiguration
                     (
-                        Region.US.GetAttribute<PrefixAttribute>().Prefix,
-                        Locale.EnglishUS,
-                        new List<Locale>
+                        nameof(Region.US).ToLower(),
+                        new List<CultureInfo>
                         {
-                            Locale.EnglishUS,
-                            Locale.SpanishMX,
-                            Locale.PortugueseBR
+                            new CultureInfo("en-US", false),
+                            new CultureInfo("es_MX", false),
+                            new CultureInfo("pt_BR", false)
                         }
                     )
                 },
                 {
                     Region.EU, new RegionConfiguration
                     (
-                        Region.EU.GetAttribute<PrefixAttribute>().Prefix,
-                        Locale.EnglishGB,
-                        new List<Locale>
+                        nameof(Region.EU).ToLower(),
+                        new List<CultureInfo>
                         {
-                            Locale.EnglishGB,
-                            Locale.SpanishES,
-                            Locale.FrenchFR,
-                            Locale.RussianRU,
-                            Locale.GermanDE,
-                            Locale.PortuguesePT,
-                            Locale.ItalyIT
+                            new CultureInfo("en_GB", false),
+                            new CultureInfo("es_ES", false),
+                            new CultureInfo("fr_FR", false),
+                            new CultureInfo("ru_RU", false),
+                            new CultureInfo("de_DE", false),
+                            new CultureInfo("pt_PT", false),
+                            new CultureInfo("it_IT", false)
                         }
                     )
                 },
                 {
                     Region.KR, new RegionConfiguration
                     (
-                        Region.KR.GetAttribute<PrefixAttribute>().Prefix,
-                        Locale.KoreanKR,
-                        new List<Locale>
+                        nameof(Region.KR).ToLower(),
+                        new List<CultureInfo>
                         {
-                            Locale.KoreanKR
+                            new CultureInfo("ko_KR", false)
                         }
                     )
                 },
                 {
                     Region.TW, new RegionConfiguration
                     (
-                        Region.TW.GetAttribute<PrefixAttribute>().Prefix,
-                        Locale.ChineseTW,
-                        new List<Locale>
+                        nameof(Region.TW).ToLower(),
+                        new List<CultureInfo>
                         {
-                            Locale.ChineseTW
+                            new CultureInfo("zh_TW", false)
                         }
                     )
                 },
                 {
                     Region.CN, new RegionConfiguration
                     (
-                        Region.CN.GetAttribute<PrefixAttribute>().Prefix,
-                        Locale.ChineseCN,
-                        new List<Locale>
+                        nameof(Region.CN).ToLower(),
+                        new List<CultureInfo>
                         {
-                            Locale.ChineseCN
+                            new CultureInfo("zh_TW", false)
                         },
                         "https://gateway.battlenet.com.cn/",
-                        " https://www.battlenet.com.cn"
+                        "https://www.battlenet.com.cn"
                     )
                 }
             };

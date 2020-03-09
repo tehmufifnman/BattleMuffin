@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using BattleMuffin.Enums;
 using BattleMuffin.Exceptions;
 
 namespace BattleMuffin.Configuration
@@ -9,35 +9,32 @@ namespace BattleMuffin.Configuration
     {
         private const string ApiBaseUrl = "api.blizzard.com";
         private const string OauthBaseUrl = "battle.net";
-        internal string Prefix { get; }
         internal string OauthHost { get; }
         internal string Host { get; }
-        internal IReadOnlyCollection<Locale> AvailableLocales { get; }
+        internal IReadOnlyCollection<CultureInfo> AvailableLocales { get; }
 
-        internal Locale DefaultLocale { get; }
+        internal CultureInfo DefaultLocale { get; }
 
-        internal RegionConfiguration(string prefix, Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales)
+        internal RegionConfiguration(string prefix, IReadOnlyCollection<CultureInfo> availableLocales)
         {
-            Prefix = prefix;
             Host = $"https://{prefix}.{ApiBaseUrl}";
             OauthHost = $"https://{prefix}.{OauthBaseUrl}";
-            DefaultLocale = defaultLocale;
+            DefaultLocale = availableLocales.First();
             AvailableLocales = availableLocales;
         }
 
-        internal RegionConfiguration(string prefix, Locale defaultLocale, IReadOnlyCollection<Locale> availableLocales,
+        internal RegionConfiguration(string prefix, IReadOnlyCollection<CultureInfo> availableLocales,
             string host, string oauthHost)
         {
-            Prefix = prefix;
             Host = host;
             OauthHost = oauthHost;
-            DefaultLocale = defaultLocale;
+            DefaultLocale = availableLocales.First();
             AvailableLocales = availableLocales;
         }
 
         internal void Validate()
         {
-            if (AvailableLocales.All(x => x != DefaultLocale))
+            if (AvailableLocales.All(x => !x.Equals(DefaultLocale)))
                 throw new LocaleException("Invalid default locale specified.");
         }
     }

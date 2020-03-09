@@ -6,9 +6,7 @@ using System.Security.Authentication;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using BattleMuffin.Attributes;
 using BattleMuffin.Configuration;
-using BattleMuffin.Extensions;
 using IdentityModel.Client;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.WebUtilities;
@@ -75,7 +73,7 @@ namespace BattleMuffin.Clients
             var token = tokenSource.Token;
 
             parameters ??= new Dictionary<string, string>();
-            parameters.Add("locale", _clientConfiguration.Locale.GetAttribute<RfcTagAttribute>().Tag);
+            parameters.Add("locale", _clientConfiguration.Locale.Name);
             parameters.Add("namespace", requestNamespace);
 
             var requestUri = QueryHelpers.AddQueryString($"{requestPath}", parameters);

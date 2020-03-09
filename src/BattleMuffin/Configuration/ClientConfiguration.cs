@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using BattleMuffin.Enums;
 using BattleMuffin.Exceptions;
@@ -12,7 +13,7 @@ namespace BattleMuffin.Configuration
         public string ClientSecret { get; }
         public string Host { get; }
         public string OauthHost { get; }
-        public Locale Locale { get; }
+        public CultureInfo Locale { get; }
 
         public ClientConfiguration(Region region, string clientId, string clientSecret)
         {
@@ -27,13 +28,13 @@ namespace BattleMuffin.Configuration
             ClientSecret = clientSecret;
         }
 
-        public ClientConfiguration(Region region, string clientId, string clientSecret, Locale locale)
+        public ClientConfiguration(Region region, string clientId, string clientSecret, CultureInfo locale)
         {
             var regionConfig = RegionConfigurationMap.Mapping.ContainsKey(region)
                 ? RegionConfigurationMap.Mapping[region]
                 : throw new RegionException("Configuration not found for specified region");
 
-            if (regionConfig.AvailableLocales.Any(x => x == locale))
+            if (regionConfig.AvailableLocales.Any(x => x.Equals(locale)))
                 throw new LocaleException("Locale not valid for specified region");
 
             Host = regionConfig.Host;

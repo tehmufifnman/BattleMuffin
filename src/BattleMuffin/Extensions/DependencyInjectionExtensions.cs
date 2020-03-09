@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -32,7 +33,7 @@ namespace BattleMuffin.Extensions
             serviceCollection.AddSingleton<IWarcraftClient, WarcraftClient>();
         }
 
-        public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret, Locale locale)
+        public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret, CultureInfo locale)
         {
             serviceCollection.AddSingleton<IClientConfiguration>(x => new ClientConfiguration(region, clientId, clientSecret, locale));
             serviceCollection.AddBattleMuffinHttpClient();

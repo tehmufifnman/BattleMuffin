@@ -1,4 +1,4 @@
-using BattleMuffin.Enums;
+using System.Globalization;
 
 namespace BattleMuffin.Configuration
 {
@@ -8,6 +8,6 @@ namespace BattleMuffin.Configuration
         string ClientSecret { get; }
         string Host { get; }
         string OauthHost { get; }
-        Locale Locale { get; }
+        CultureInfo Locale { get; }
     }
 }
