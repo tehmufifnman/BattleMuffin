@@ -18,9 +18,9 @@ namespace BattleMuffin.Clients
     {
         private readonly IClientConfiguration _clientConfiguration;
         private readonly HttpClient _httpClient;
-        private TokenResponse? _tokenResponse;
         private DiscoveryDocumentResponse? _discoveryDocumentResponse;
         private DateTime _tokenExpiration;
+        private TokenResponse? _tokenResponse;
 
         public BattleMuffinClient(IClientConfiguration clientConfiguration, HttpClient httpClient)
         {

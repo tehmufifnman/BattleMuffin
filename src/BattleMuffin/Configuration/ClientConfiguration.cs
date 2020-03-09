@@ -9,12 +9,6 @@ namespace BattleMuffin.Configuration
     [UsedImplicitly]
     public class ClientConfiguration : IClientConfiguration
     {
-        public string ClientId { get; }
-        public string ClientSecret { get; }
-        public string Host { get; }
-        public string OauthHost { get; }
-        public CultureInfo Locale { get; }
-
         public ClientConfiguration(Region region, string clientId, string clientSecret)
         {
             var regionConfig = RegionConfigurationMap.Mapping.ContainsKey(region)
@@ -45,5 +39,11 @@ namespace BattleMuffin.Configuration
             ClientId = clientId;
             ClientSecret = clientSecret;
         }
+
+        public string ClientId { get; }
+        public string ClientSecret { get; }
+        public string Host { get; }
+        public string OauthHost { get; }
+        public CultureInfo Locale { get; }
     }
 }
