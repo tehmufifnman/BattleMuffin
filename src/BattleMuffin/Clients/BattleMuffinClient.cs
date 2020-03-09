@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Authentication;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,6 +40,12 @@ namespace BattleMuffin.Clients
                     Address = $"{_clientConfiguration.OauthHost}/oauth/.well-known/openid-configuration"
                 }).ConfigureAwait(false);
             }
+
+            if (_discoveryDocumentResponse == null || string.IsNullOrEmpty(_discoveryDocumentResponse.TokenEndpoint))
+            {
+                throw new AuthenticationException("Could not retrieve OpenID configuration.");
+            }
+
             if (_tokenResponse == null || DateTime.UtcNow >= _tokenExpiration)
             {
                 _tokenResponse = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
@@ -49,9 +56,14 @@ namespace BattleMuffin.Clients
                     Scope = "openid",
                     GrantType = "client_credentials"
                 }).ConfigureAwait(false);
-
-                _tokenExpiration = DateTime.UtcNow.AddSeconds(_tokenResponse.ExpiresIn).AddSeconds(-30);
             }
+
+            if (_tokenResponse == null)
+            {
+                throw new AuthenticationException("Could not refresh OAuth token.");
+            }
+
+            _tokenExpiration = DateTime.UtcNow.AddSeconds(_tokenResponse.ExpiresIn).AddSeconds(-30);
         }
 
         internal async Task<T> Get<T>(string requestPath, string requestNamespace, Dictionary<string, string>? parameters = null) where T : class
