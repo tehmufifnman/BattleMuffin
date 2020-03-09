@@ -8,7 +8,7 @@ namespace BattleMuffin.Clients
     {
         private readonly BattleMuffinClientFactory _battleMuffinClientFactory;
 
-        public WarcraftClient(BattleMuffinClientFactory  battleMuffinClientFactory)
+        public WarcraftClient(BattleMuffinClientFactory battleMuffinClientFactory)
         {
             _battleMuffinClientFactory = battleMuffinClientFactory ?? throw new ArgumentNullException(nameof(battleMuffinClientFactory));
         }

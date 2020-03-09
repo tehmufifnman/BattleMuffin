@@ -15,14 +15,14 @@ namespace BattleMuffin.Extensions
         private static void AddBattleMuffinHttpClient(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddHttpClient<BattleMuffinClient>("BattleMuffinClient", client =>
-            {
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            })
-            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
-            {
-                AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
-            });
+                {
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                })
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
+                });
 
             serviceCollection.AddSingleton<BattleMuffinClientFactory>();
         }

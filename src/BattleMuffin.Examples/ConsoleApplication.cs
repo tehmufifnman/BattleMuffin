@@ -12,7 +12,6 @@ namespace BattleMuffin.Examples
             _warcraftClient = warcraftClient;
         }
 
-        // Application starting point
         public async Task Run()
         {
             var achievementCategoriesIndex = await _warcraftClient.GetAchievementCategoriesIndexAsync();

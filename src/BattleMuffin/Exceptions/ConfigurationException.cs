@@ -4,6 +4,8 @@ namespace BattleMuffin.Exceptions
 {
     public class ConfigurationException : Exception
     {
-        protected ConfigurationException(string message) : base(message) { }
+        protected ConfigurationException(string message) : base(message)
+        {
+        }
     }
 }

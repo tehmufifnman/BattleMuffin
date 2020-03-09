@@ -35,7 +35,9 @@ namespace BattleMuffin.Configuration
                 : throw new RegionException("Configuration not found for specified region");
 
             if (regionConfig.AvailableLocales.Any(x => x.Equals(locale)))
+            {
                 throw new LocaleException("Locale not valid for specified region");
+            }
 
             Host = regionConfig.Host;
             OauthHost = regionConfig.OauthHost;
