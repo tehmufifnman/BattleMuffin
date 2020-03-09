@@ -9,33 +9,20 @@ namespace BattleMuffin.Configuration
     [UsedImplicitly]
     public class ClientConfiguration : IClientConfiguration
     {
-        public ClientConfiguration(Region region, string clientId, string clientSecret)
+        public ClientConfiguration(Region region, string clientId, string clientSecret, CultureInfo? locale = null)
         {
             var regionConfig = RegionConfigurationMap.Mapping.ContainsKey(region)
                 ? RegionConfigurationMap.Mapping[region]
                 : throw new RegionException("Configuration not found for specified region");
 
-            Host = regionConfig.Host;
-            OauthHost = regionConfig.OauthHost;
-            Locale = regionConfig.DefaultLocale;
-            ClientId = clientId;
-            ClientSecret = clientSecret;
-        }
-
-        public ClientConfiguration(Region region, string clientId, string clientSecret, CultureInfo locale)
-        {
-            var regionConfig = RegionConfigurationMap.Mapping.ContainsKey(region)
-                ? RegionConfigurationMap.Mapping[region]
-                : throw new RegionException("Configuration not found for specified region");
-
-            if (regionConfig.AvailableLocales.All(x => !x.Equals(locale)))
+            if (locale != null && !regionConfig.AvailableLocales.Any(x => x.Equals(locale)))
             {
                 throw new LocaleException("Locale not valid for specified region");
             }
 
             Host = regionConfig.Host;
             OauthHost = regionConfig.OauthHost;
-            Locale = locale;
+            Locale = locale ?? regionConfig.DefaultLocale;
             ClientId = clientId;
             ClientSecret = clientSecret;
         }
