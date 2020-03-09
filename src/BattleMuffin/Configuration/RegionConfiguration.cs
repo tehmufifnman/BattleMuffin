@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using BattleMuffin.Exceptions;
 
 namespace BattleMuffin.Configuration
 {
@@ -23,19 +22,13 @@ namespace BattleMuffin.Configuration
             AvailableLocales = availableLocales;
         }
 
-        internal RegionConfiguration(string prefix, IReadOnlyCollection<CultureInfo> availableLocales,
+        internal RegionConfiguration(IReadOnlyCollection<CultureInfo> availableLocales,
             string host, string oauthHost)
         {
             Host = host;
             OauthHost = oauthHost;
             DefaultLocale = availableLocales.First();
             AvailableLocales = availableLocales;
-        }
-
-        internal void Validate()
-        {
-            if (AvailableLocales.All(x => !x.Equals(DefaultLocale)))
-                throw new LocaleException("Invalid default locale specified.");
         }
     }
 }

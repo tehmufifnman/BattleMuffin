@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using BattleMuffin.Clients;
 using BattleMuffin.Configuration;
 using BattleMuffin.Enums;
+using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BattleMuffin.Extensions
@@ -33,6 +34,7 @@ namespace BattleMuffin.Extensions
             serviceCollection.AddSingleton<IWarcraftClient, WarcraftClient>();
         }
 
+        [UsedImplicitly]
         public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret, CultureInfo locale)
         {
             serviceCollection.AddSingleton<IClientConfiguration>(x => new ClientConfiguration(region, clientId, clientSecret, locale));

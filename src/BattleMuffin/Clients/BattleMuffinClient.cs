@@ -29,7 +29,7 @@ namespace BattleMuffin.Clients
             _httpClient.BaseAddress = new Uri(_clientConfiguration.Host);
         }
 
-        internal async Task RefreshToken()
+        private async Task RefreshToken()
         {
             if (_discoveryDocumentResponse == null)
             {

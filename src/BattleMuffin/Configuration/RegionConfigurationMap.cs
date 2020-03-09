@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using BattleMuffin.Enums;
-using BattleMuffin.Extensions;
 
 namespace BattleMuffin.Configuration
 {
@@ -61,7 +60,6 @@ namespace BattleMuffin.Configuration
                 {
                     Region.CN, new RegionConfiguration
                     (
-                        nameof(Region.CN).ToLower(),
                         new List<CultureInfo>
                         {
                             new CultureInfo("zh_TW", false)
