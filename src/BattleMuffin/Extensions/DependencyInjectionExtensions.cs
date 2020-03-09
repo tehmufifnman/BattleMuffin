@@ -26,16 +26,9 @@ namespace BattleMuffin.Extensions
 
             serviceCollection.AddSingleton<BattleMuffinClientFactory>();
         }
-
-        public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret)
-        {
-            serviceCollection.AddSingleton<IClientConfiguration>(x => new ClientConfiguration(region, clientId, clientSecret));
-            serviceCollection.AddBattleMuffinHttpClient();
-            serviceCollection.AddSingleton<IWarcraftClient, WarcraftClient>();
-        }
-
+        
         [UsedImplicitly]
-        public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret, CultureInfo locale)
+        public static void AddWarcraftClient(this IServiceCollection serviceCollection, Region region, string clientId, string clientSecret, CultureInfo? locale = null)
         {
             serviceCollection.AddSingleton<IClientConfiguration>(x => new ClientConfiguration(region, clientId, clientSecret, locale));
             serviceCollection.AddBattleMuffinHttpClient();
